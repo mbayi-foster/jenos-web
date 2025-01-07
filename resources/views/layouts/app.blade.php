@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="./assets/img/fav.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.tailwindcss.css" />
     <title>Jenos-Food</title>
     @vite(['resources/css/app.css'])
@@ -22,15 +24,17 @@
 
     <!-- strat content -->
     <div class="p-4 sm:ml-64">
+
         <div class="p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 mt-14">
             <div class="flex flex-col justify-center mb-3">
+
                 <h3
                     class="mb-4 text-3xl font-extrabold tracking-tight leading-none text-gray-900 md:text-4xl lg:text-5xl dark:text-white">
-                    {{$title}}
+                    {{ $title }}
                 </h3>
                 <p class="mb-8 text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-                  {{$mot}}</p>
-            {{--     <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0">
+                    {{ $mot }}</p>
+                {{--     <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0">
                     <a href="#"
                         class="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900">
                         Get started
