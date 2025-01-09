@@ -1,5 +1,6 @@
 import './bootstrap';
 import 'flowbite'
+import axios from 'axios'
 import { DataTable } from 'simple-datatables';
 import Alpine from 'alpinejs';
 

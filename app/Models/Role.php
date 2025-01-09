@@ -12,7 +12,7 @@ class Role extends Model
         'status'
     ];
 
-    public function user(){
+    public function users(){
         return $this->belongsToMany(User::class, 'role_user');
     }
 }

@@ -20,6 +20,10 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
+//route admin
+
+//route for users
 Route::resource('/users', UserController::class);
+Route::post('users/change/{id}', [UserController::class, 'change'])->name('users.change');
 
 

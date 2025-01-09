@@ -13,8 +13,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('users.admin.list-person', compact('users'));
+        $users = User::with('roles')->get();
+        $roles = Role::all();
+        return view('users.admin.list-person', compact('users', 'roles'));
     }
 
     /**
@@ -78,5 +79,28 @@ class UserController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function change(Request $request, string $id)
+    {
+        $user = User::find($id);
+        if (isset($request->roles)) {
+            $roles = $request->roles;
+            foreach ($roles as $role) {
+                $rol = Role::where('id', $role)->first();
+                if (!$user->roles()->where('role_id', $role)->exists()) {
+                    $user->roles()->attach($rol->id);
+                } else {
+                    $user->roles()->detach($rol->id);
+                }
+            }
+        } else {
+            $user->roles()->detach();
+        }
+        $user->nom = $request->nom;
+        $user->prenom = $request->prenom;
+        $user->phone = $request->phone;
+        $user->save();
+        return response()->json($user);
     }
 }
