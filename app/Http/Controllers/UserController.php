@@ -83,15 +83,21 @@ class UserController extends Controller
 
     public function change(Request $request, string $id)
     {
-        $user = User::find($id);
+        $user = User::with('roles')->findOrFail($id);
+        $userRoles = $user->roles;
         if (isset($request->roles)) {
             $roles = $request->roles;
             foreach ($roles as $role) {
                 $rol = Role::where('id', $role)->first();
                 if (!$user->roles()->where('role_id', $role)->exists()) {
                     $user->roles()->attach($rol->id);
-                } else {
-                    $user->roles()->detach($rol->id);
+                }
+            }
+
+            foreach ($userRoles as $userRol) {
+                $idRoles = $userRol->id;
+                if (!in_array($idRoles, $roles)) {
+                    $user->roles()->detach($userRol);
                 }
             }
         } else {
@@ -101,6 +107,6 @@ class UserController extends Controller
         $user->prenom = $request->prenom;
         $user->phone = $request->phone;
         $user->save();
-        return response()->json($user);
+        return response()->json($userRoles);
     }
 }

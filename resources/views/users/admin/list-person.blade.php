@@ -3,7 +3,14 @@
         Personnels
     </x-slot>
     <x-slot name="mot">
-        La liste des personnels, livreurs, gérants et administrateurs.
+        <div class="flex items-center justify-between mb-4">
+            <p> La liste des personnels, livreurs, gérants et administrateurs.</p>
+            <a href="{{ route('users.create') }}"
+                class="py-8 px-8 text-white bg-orange-700 hover:bg-orange-800 focus:ring-4 focus:outline-none focus:ring-orange-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center me-2 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800">
+                <i class="fa-solid fa-plus"></i>
+                <span class="sr-only">Icon description</span>
+            </a>
+        </div>
     </x-slot>
     <table id="search-table">
         <thead>
@@ -57,13 +64,14 @@
                     <td class="px-6 py-4">
                         <div class="items-center">
                             @foreach ($user->roles as $item)
-                                <p>- {{$item['nom']}}</p>
+                                <p>- {{ $item['nom'] }}</p>
                             @endforeach
                         </div>
                     </td>
                     <td class="px-6 py-4">
                         <div class="inline-flex rounded-md shadow-sm" role="group">
-                            <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button" title="Modifier le status du personnel" href="#"
+                            <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button"
+                                title="Modifier le status du personnel" onclick="getStatus({{ $user->id }})"
                                 class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
                                 @if ($user->status != true) >
                                     <i class="fa-solid fa-toggle-on"></i>
@@ -144,7 +152,7 @@
                                     rôles</label>
                                 @foreach ($roles as $role)
                                     <div class="flex items-center mb-4">
-                                        <input id="role{{ $loop->index }}" type="checkbox" name="roles[]"
+                                        <input id="role{{ $role->id }}" type="checkbox" name="roles[]"
                                             value="{{ $role->id }}"
                                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                         <label for="default-checkbox"
@@ -166,32 +174,46 @@
             </div>
         </div>
     </div>
-    
 
-    
-    <div id="popup-modal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+
+
+    <div id="popup-modal" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                <button type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-hide="popup-modal">
-                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                <button type="button"
+                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="popup-modal">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                     </svg>
                     <span class="sr-only">Close modal</span>
                 </button>
                 <div class="p-4 md:p-5 text-center">
-                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
-                    <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Are you sure you want to delete this product?</h3>
-                    <button data-modal-hide="popup-modal" type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
-                        Yes, I'm sure
+                    <h3 id="status" class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                    </h3>
+                    <button onclick="changeStatus()" id="yes" data-modal-hide="popup-modal" type="button"
+                        class="hidden text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                        Oui
                     </button>
-                    <button data-modal-hide="popup-modal" type="button" class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">No, cancel</button>
+                    <button onclick="changeStatus()" id="non" data-modal-hide="popup-modal" type="button"
+                        class=" text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:green-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center hidden">
+                        Oui
+                    </button>
+                    <button data-modal-hide="popup-modal" type="button"
+                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Annuler</button>
                 </div>
             </div>
         </div>
     </div>
-    
+
 
     <script>
         let nom = document.getElementById('nom')
@@ -199,19 +221,69 @@
         let email = document.getElementById('email')
         let phone = document.getElementById('phone')
         let form = document.getElementById('change')
+        let idUser
 
         function getUser(id) {
+            document.getElementById('role1').checked = false
+            document.getElementById('role2').checked = false
             axios.get(`/api/users/${id}`)
                 .then(function(response) {
                     const user = response.data
-                    console.log(response.data);
+                    const roles = user.roles
+                    // console.log(response.data);
                     nom.value = user.nom
                     prenom.value = user.prenom
                     email.value = user.email
                     phone.value = user.phone
                     const dynamicAction = `users/change/${id}`; // Remplace par l'URL désirée
                     form.action = dynamicAction;
+                    Object.keys(roles).forEach((id) => {
+                        const checkbox = document.getElementById(`role${id}`);
+                        checkbox.checked = true;
+                    });
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                })
+        }
 
+        function getStatus(id) {
+            axios.get(`/api/users/${id}`)
+                .then(function(response) {
+                    const status = response.data.status
+                    idUser = response.data.id
+                    const stat = document.getElementById('status')
+                    const yes = document.getElementById('yes')
+                    const non = document.getElementById('non')
+                    console.log(response.data);
+                    if (status == 1) {
+                        stat.textContent = "Voulez vous vraiment désactiver ce personnel"
+                        if (!non.classList.contains("hidden")) {
+                            non.classList.add('hidden')
+                        }
+
+                        yes.classList.remove('hidden')
+                    }
+                    if (status == 0) {
+                        stat.textContent = "Voulez vous vraiment activer ce personnel"
+                        if (!yes.classList.contains("hidden")) {
+                            yes.classList.add('hidden')
+                        }
+                        non.classList.remove('hidden')
+                    }
+                })
+                .catch(function(error) {
+                    // handle error
+                    console.log(error);
+                })
+
+        }
+
+        function changeStatus() {
+            axios.get(`/api/status/change/${idUser}`)
+                .then(function(response) {
+                    location.reload(); 
                 })
                 .catch(function(error) {
                     // handle error
