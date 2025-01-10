@@ -15,7 +15,21 @@
                     </svg>
                     <span class="ms-3">Tableau de bord</span>
                 </a>
-            </li>  
+            </li>
+            <li>
+                <a href="{{ route('users.index') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-users"></i>
+                    <span class="ms-3">Utilisateurs</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('zones.index') }}"
+                    class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span class="ms-3">Zones</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ZoneController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,8 @@ require __DIR__.'/auth.php';
 
 //route for users
 Route::resource('/users', UserController::class);
+Route::resource('/zones', ZoneController::class);
 Route::post('users/change/{id}', [UserController::class, 'change'])->name('users.change');
+Route::post('zones/change/{id}', [ZoneController::class, 'change'])->name('users.change');
 
 

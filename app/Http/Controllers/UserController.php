@@ -107,6 +107,6 @@ class UserController extends Controller
         $user->prenom = $request->prenom;
         $user->phone = $request->phone;
         $user->save();
-        return response()->json($userRoles);
+        return redirect()->back()->with('success', 'Mis à jour réussie !');
     }
 }

@@ -66,5 +66,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'role_user');
     }
 
+    public function zones(){
+        return $this->hasMany(Zone::class);
+    }
+
 
 }
