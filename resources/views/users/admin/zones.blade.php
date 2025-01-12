@@ -84,28 +84,64 @@
                     </td>
                     <td>
                         <div class="inline-flex rounded-md shadow-sm" role="group">
-                            <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" type="button"
-                                title="Modifier le status du personnel" onclick="getStatus({{ $zone->id }})"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white"
-                                @if ($zone->status != true) >
+                            @if ($zone->status != true)
+                                <button data-modal-target="popup-modal1" data-modal-toggle="popup-modal1" type="button"
+                                    title="Modifier le status du personnel" onclick="getStatus({{ $zone->id }})"
+                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                     <i class="fa-solid fa-toggle-on"></i>
-                                @else
-                                >
-                                    <i class="fa-solid fa-toggle-off"></i> @endif
                                 </button>
-                                <button onclick="getZone({{ $zone->id }})" type="button" href="#"
-                                    title="Modifier la zone" data-modal-target="authentication-modal"
-                                    data-modal-toggle="authentication-modal"
-                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                                    <i class="fa-solid fa-circle-info"></i>
+                            @else
+                                <button data-modal-target="popup-modal2" data-modal-toggle="popup-modal2" type="button"
+                                    title="Modifier le status du personnel" onclick="getStatus({{ $zone->id }})"
+                                    class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                                    <i class="fa-solid fa-toggle-off"></i>
                                 </button>
+                            @endif
+                            <button onclick="getZone({{ $zone->id }})" type="button" href="#"
+                                title="Modifier la zone" data-modal-target="authentication-modal"
+                                data-modal-toggle="authentication-modal"
+                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </button>
                         </div>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-    <div id="popup-modal" tabindex="-1"
+    <div id="popup-modal1" tabindex="-1"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-md max-h-full">
+            <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                <button type="button"
+                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                    data-modal-hide="popup-modal1">
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                    <span class="sr-only">Close modal</span>
+                </button>
+                <div class="p-4 md:p-5 text-center">
+                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 dark:text-gray-200" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    <h3 id="status" class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Voulez vous
+                        vraiment activer cette zone</h3>
+                    <button onclick="changeStatus()" id="non" data-modal-hide="popup-modal1" type="button"
+                        class="text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:green-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                        Oui
+                    </button>
+                    <button data-modal-hide="popup-modal1" type="button"
+                        class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Annuler</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="popup-modal2" tabindex="-1"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
             <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
@@ -125,17 +161,13 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
-                    <h3 id="status" class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                    </h3>
-                    <button onclick="changeStatus()" id="yes" data-modal-hide="popup-modal" type="button"
-                        class="hidden text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
+                    <h3 id="status" class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Voulez vous
+                        vraiment désactiver cette zone</h3>
+                    <button onclick="changeStatus()" id="yes" data-modal-hide="popup-modal2" type="button"
+                        class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                         Oui
                     </button>
-                    <button onclick="changeStatus()" id="non" data-modal-hide="popup-modal" type="button"
-                        class=" text-white bg-green-600 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:green-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center hidden">
-                        Oui
-                    </button>
-                    <button data-modal-hide="popup-modal" type="button"
+                    <button data-modal-hide="popup-modal2" type="button"
                         class="py-2.5 px-5 ms-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Annuler</button>
                 </div>
             </div>
@@ -190,7 +222,7 @@
                                 <button type="submit"
                                     class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mt-4 me-4">Enregistrer</button>
                                 <button type="reset"
-                                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 mt-4">Reset</button>
+                                    class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 mt-4">Effacer</button>
 
                             </div>
                     </form>
@@ -221,36 +253,7 @@
         }
 
         function getStatus(id) {
-            axios.get(`/api/zones/${id}`)
-                .then(function(response) {
-                    const status = response.data.status
-                    idZone = response.data.id
-                    const stat = document.getElementById('status')
-                    const yes = document.getElementById('yes')
-                    const non = document.getElementById('non')
-                    console.log(response.data);
-                    if (status == 1) {
-                        stat.textContent = "Voulez vous vraiment désactiver cette zone"
-                        if (!non.classList.contains("hidden")) {
-                            non.classList.add('hidden')
-                        }
-
-                        yes.classList.remove('hidden')
-                    }
-                    if (status == 0) {
-                        stat.textContent = "Voulez vous vraiment activer cette zone"
-                        if (!yes.classList.contains("hidden")) {
-                            yes.classList.add('hidden')
-                        }
-                        non.classList.remove('hidden')
-                    }
-
-                })
-                .catch(function(error) {
-                    // handle error
-                    console.log(error);
-                })
-
+            idZone = id
         }
 
         function changeStatus() {

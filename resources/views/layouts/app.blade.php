@@ -15,14 +15,9 @@
 </head>
 
 <body class="bg-gray-100">
-
-
     <x-nav-bar></x-nav-bar>
-
-
     <!-- strat wrapper -->
     <x-side-bar></x-side-bar>
-
     <!-- strat content -->
     <div class="p-4 sm:ml-64">
 
