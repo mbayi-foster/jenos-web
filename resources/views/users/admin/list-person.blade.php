@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">
-        Utilisateurss
+        Utilisateurs
     </x-slot>
     <x-slot name="mot">
 
