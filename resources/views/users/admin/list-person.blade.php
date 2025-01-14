@@ -80,7 +80,7 @@
                         @else
                             <div class="h-2.5 w-2.5 rounded-full bg-red-500 me-2"></div>
                         @endif
-                        <img class="w-10 h-10 rounded-full" src="assets/img/logo.png" alt="Jese image">
+                        <img class="w-10 h-10 rounded-full" src="{{ Storage::url($user->photo) }}" alt="Jese image">
                         <div class="ps-3">
                             <div class="text-base font-semibold">{{ $user->prenom }} {{ $user->nom }} </div>
                             <div class="font-normal text-gray-500">{{ $user->email }}</div>
