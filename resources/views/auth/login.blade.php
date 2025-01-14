@@ -58,8 +58,8 @@
                 </div>
                 <h2 class="text-2xl font-bold mb-6">Connectez vous</h2>
                 @error('error')
-                                        <p class="text-center small text-danger">{{ $message }}</p>
-                                    @enderror
+                    <p class="text-sm text-red-600 dark:text-white">{{ $message }}</p>
+                @enderror
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
                     <div class="mb-4">
@@ -76,7 +76,8 @@
                         <input type="checkbox" id="remember" class="mr-2" name="remember">
                         <label for="remember" class="text-sm text-gray-600">Rester connecté</label>
                     </div>
-                    <button type="submit" class="w-full bg-orange-500 text-white font-bold py-2 rounded">Se connecter</button>
+                    <button type="submit" class="w-full bg-orange-500 text-white font-bold py-2 rounded">Se
+                        connecter</button>
                     <p class="text-sm mt-4 text-gray-600">Mot de passe oublier ? <a href="#"
                             class="text-blue-500">Contacter l'administrateur</a></p>
                 </form>

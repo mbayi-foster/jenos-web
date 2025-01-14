@@ -30,15 +30,15 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->intended(route('dashboard', absolute: false)); */
         $request->validate([
-            'pseudo' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
         ]);
+        $remember = $request->has('remember');
 
-        if (Auth::attempt(['email' => $request->pseudo, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'status' => true], $remember)) {
             return redirect()->intended('/profile');
         }
-        return back()->withErrors(['error' => 'Pseudo ou mot de passe incorrect veillez réessayer ou contacter l\'administrateur']);
-  
+        return back()->withErrors(['error' => 'Email ou mot de passe incorrect veillez réessayer ou contacter l\'administrateur']);
     }
 
     /**

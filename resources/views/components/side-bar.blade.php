@@ -16,6 +16,8 @@
                     <span class="ms-3">Tableau de bord</span>
                 </a>
             </li>
+            {{-- Liens pour les administrateurs --}}
+            @if (Auth::user()->roles->contains('nom', 'administrateur'))
             <li>
                 <a href="{{ route('users.index') }}"
                     class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -37,6 +39,8 @@
                     <span class="ms-3">Plats</span>
                 </a>
             </li>
+            @endif
+            {{-- Liens pour les gérants --}}
         </ul>
     </div>
 </aside>
