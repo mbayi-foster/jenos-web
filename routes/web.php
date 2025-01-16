@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\PlatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -28,6 +29,7 @@ require __DIR__.'/auth.php';
 Route::resource('/users', UserController::class);
 Route::resource('/zones', ZoneController::class);
 Route::resource('/plats', PlatController::class);
+Route::resource('/commandes', CommandeController::class);
 Route::post('users/change/{id}', [UserController::class, 'change'])->name('users.change');
 Route::post('zones/change/{id}', [ZoneController::class, 'change'])->name('zones.change');
 Route::post('plats/change/{id}', [PlatController::class, 'change'])->name('plats.change');
