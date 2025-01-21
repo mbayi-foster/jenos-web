@@ -63,7 +63,7 @@ class PlatController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('users.admin.plat');
     }
 
     /**

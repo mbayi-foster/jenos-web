@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CommandeController extends Controller
@@ -35,7 +36,10 @@ class CommandeController extends Controller
      */
     public function show(string $id)
     {
-        return view('users.gerant.commande');
+        $livreurs = User::where('status', true)->whereHas('roles', function ($query) {
+            $query->where('nom', 'Livreur'); // Changez 'name' selon votre colonne de rôle
+        })->get();
+        return view('users.gerant.commande', compact('livreurs'));
     }
 
     /**
