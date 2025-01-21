@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CommandeController;
 use App\Http\Controllers\PlatController;
 use App\Http\Controllers\ProfileController;
@@ -34,4 +35,5 @@ Route::post('users/change/{id}', [UserController::class, 'change'])->name('users
 Route::post('zones/change/{id}', [ZoneController::class, 'change'])->name('zones.change');
 Route::post('plats/change/{id}', [PlatController::class, 'change'])->name('plats.change');
 
+Route::get('dashboard/', [AdminController::class, 'index'])->name('admin.dashboard');
 

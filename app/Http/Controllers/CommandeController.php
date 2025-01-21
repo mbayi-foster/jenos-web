@@ -35,7 +35,7 @@ class CommandeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('users.gerant.commande');
     }
 
     /**

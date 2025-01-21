@@ -1,6 +1,7 @@
 import './bootstrap';
 import 'flowbite'
 import axios from 'axios'
+import '@fortawesome/fontawesome-free/css/all.css'
 import { DataTable } from 'simple-datatables';
 import Alpine from 'alpinejs';
 
