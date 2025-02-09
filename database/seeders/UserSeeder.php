@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         $faker = Faker::create();
         $matricules = "089356";
         for ($i = 0; $i < 40; $i++) {
