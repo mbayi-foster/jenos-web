@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div>
-                <router-link to="/menus/create" title="Ajouter un menu">
+                <router-link to="/zones/create" title="Ajouter une zone">
                     <button type="button"
                         class="text-center rounded-full text-green-400 hover:text-white border border-green-400 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium text-sm w-12 h-12 me-2 mb-2 dark:border-green-300 dark:text-green-300 dark:hover:text-white dark:hover:bg-green-400 dark:focus:ring-green-900">
                         <i class="fa-solid fa-plus"></i>
@@ -32,6 +32,11 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                    <th class="px-6 py-3">
+                        #
+                    </th>
+
+
                     <th v-for="column in columns" :key="column.key" scope="col" class="px-6 py-3">
                         {{ column.label }}
                     </th>
@@ -39,12 +44,12 @@
                 </tr>
             </thead>
             <tbody v-if="hasData && !load">
-                <tr v-for="item in paginatedData" :key="item.id" scope="row" class="px-6 py-4">
+                <tr v-for="(item, index) in paginatedData" :key="item.id" scope="row" class="px-6 py-4">
+                    <td>
+                        {{ index + 1 }}
+                    </td>
                     <td v-for="column in columns" :key="column.key">
-                        <div v-if="column.key == 'photo'">
-                            <img class="h-20 max-w-lg rounded-lg" :src="item['photo']" alt="photo du plat">
-                        </div>
-                        <div class="flex items-center" v-else-if="column.key == 'status'">
+                        <div class="flex items-center" v-if="column.key == 'status'">
                             <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2" v-if="item['status'] == true"></div>
                             <div class="h-2.5 w-2.5 rounded-full bg-red-500 me-2" v-if="item['status'] == false"></div>
                             Status
@@ -55,8 +60,10 @@
                     </td>
                     <td class="text-center">
                         <div class="inline-flex rounded-md shadow-sm" role="group">
-                            <change-status msg-oui="Voulez vous vraiment activer ce menu" msg-non="Voulez vous vraiment désactiver ce menu" :id="item['id']" :status="item['status']" @change-status="change"/>
-                            <router-link type="button" :to="`menus/${item['id']}`" title="Voir plus..."
+                            <change-status msg-oui="Voulez vous vraiment activer cette zone"
+                                msg-non="Voulez vous vraiment désactiver cette zone" :id="item['id']"
+                                :status="item['status']" @change-status="change" />
+                            <router-link type="button" :to="`zones/${item['id']}`" title="Voir plus..."
                                 class="inline-flex items-center px-6 py-2.5 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                 <i class="fa-solid fa-circle-info text-base"></i>
                             </router-link>
@@ -202,7 +209,7 @@ const goToPage = (page) => {
 }
 
 const change = (id) => {
-    emit('change-status', id); 
+    emit('change-status', id);
 };
 </script>
 

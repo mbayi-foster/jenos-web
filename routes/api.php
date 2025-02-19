@@ -20,3 +20,6 @@ Route::get('menus/status/change/{id}', [MenuController::class, 'change_status'])
 
 Route::post('login', [AuthClientController::class, 'login'])->name('api-login');
 Route::post('register',[AuthClientController::class, 'store'])->name('api-register');
+
+Route::get('gerants', [UserController::class,'gerants'])->name('gerants');
+

@@ -6,6 +6,8 @@ import Plat from '@/views/admin/CreatePlat.vue'
 import Plats from '@/views/admin/Plats.vue'
 import Menus from '@/views/admin/Menus.vue'
 import CreateMenu from '@/views/admin/CreateMenu.vue'
+import Zones from '@/views/admin/Zones.vue'
+import CreateZones from '@/views/admin/CreateZones.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -17,33 +19,43 @@ const router = createRouter({
     },
     {
       path: '/login',
-      name:'Login',
-      component:Login
+      name: 'Login',
+      component: Login
     },
     {
       path: '/users',
-      name:'Utilisateurs',
-      component:Users
+      name: 'Utilisateurs',
+      component: Users
     },
     {
       path: '/plats/create',
-      name:'Nouveau plat',
-      component:Plat
+      name: 'Nouveau plat',
+      component: Plat
     },
     {
       path: '/menus',
-      name:'Menus',
-      component:Menus
+      name: 'Menus',
+      component: Menus
     },
     {
       path: '/menus/create',
-      name:'Nouveau menu',
-      component:CreateMenu
+      name: 'Nouveau menu',
+      component: CreateMenu
     },
     {
       path: '/plats',
-      name:'Plats',
-      component:Plats
+      name: 'Plats',
+      component: Plats
+    },
+    {
+      path: '/zones',
+      name: 'Zones',
+      component: Zones
+    },
+    {
+      path: '/zones/create',
+      name: 'Nouvel zone',
+      component: CreateZones
     },
     {
       path: '/about',

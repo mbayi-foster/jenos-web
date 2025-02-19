@@ -95,22 +95,29 @@
                 <li>
                     <router-link to="/plats"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fa-solid fa-cookie"></i>
+                        <i class="text-xl fa-solid fa-cookie"></i>
                         <span class="ms-3">Plats</span>
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/users"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                       <i class="fa-solid fa-users"></i>
+                       <i class="text-xl fa-solid fa-users"></i>
                         <span class="ms-3">Utilisateurs</span>
                     </router-link>
                 </li>
                 <li>
                     <router-link to="/menus"
                         class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="text-xl fa-solid fa-bars"></i>
                         <span class="ms-3">Menus</span>
+                    </router-link>
+                </li>
+                <li>
+                    <router-link to="/zones"
+                        class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                        <i class="text-xl fa-solid fa-map-pin"></i>
+                        <span class="ms-3">Zones</span>
                     </router-link>
                 </li>
             </ul>

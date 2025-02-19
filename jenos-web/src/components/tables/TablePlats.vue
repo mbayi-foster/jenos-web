@@ -32,6 +32,9 @@
         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                    <th class="px-6 py-3">
+                        #
+                    </th>
                     <th v-for="column in columns" :key="column.key" scope="col" class="px-6 py-3">
                         {{ column.label }}
                     </th>
@@ -39,7 +42,10 @@
                 </tr>
             </thead>
             <tbody v-if="hasData && !load">
-                <tr v-for="item in paginatedData" :key="item.id" scope="row" class="px-6 py-4">
+                <tr v-for="(item, index) in paginatedData" :key="item.id" scope="row" class="px-6 py-4">
+                    <td>
+                        {{ index+1 }}
+                    </td>
                     <td v-for="column in columns" :key="column.key">
                         <div v-if="column.key == 'photo'">
                             <img class="h-20 max-w-lg rounded-lg" :src="item['photo']" alt="photo du plat">

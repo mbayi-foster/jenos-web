@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        if($users){
+        if ($users) {
             return response()->json($users, 200);
         }
         return response()->json(null, 500);
@@ -43,17 +43,17 @@ class UserController extends Controller
     {
         $user = User::with('roles')->findOrFail($id);
         $roles = [];
-        foreach($user->roles as $role){
+        foreach ($user->roles as $role) {
             $roles[$role->id] = $role->nom;
         }
         return response()->json([
-            "nom"=>$user->nom,
-            "prenom"=>$user->prenom,
-            "email"=>$user->email,
-            "phone"=>$user->phone,
-            "roles"=>$roles,
-            "status"=>$user->status,
-            "id"=>$user->id,
+            "nom" => $user->nom,
+            "prenom" => $user->prenom,
+            "email" => $user->email,
+            "phone" => $user->phone,
+            "roles" => $roles,
+            "status" => $user->status,
+            "id" => $user->id,
         ]);
     }
 
@@ -81,16 +81,33 @@ class UserController extends Controller
         //
     }
 
-    public function change_status(string $id){
+    public function change_status(string $id)
+    {
         $user = User::find($id);
 
-        if($user->status == true){
+        if ($user->status == true) {
             $user->status = false;
-        }else{
+        } else {
             $user->status = true;
         }
 
         $user->save();
         return response()->json($user);
+    }
+
+    public function gerants()
+    {
+        $gerants = User::whereHas('roles', function ($query) {
+            $query->where('nom', 'admin');
+        })->get();
+
+        $nouveauGerants = [];
+        foreach($gerants as $gerant){
+            $nouveauGerants [] = [
+                'id'=>$gerant->id,
+                'nom'=>"$gerant->prenom $gerant->nom"
+            ];
+        }
+        return response()->json($nouveauGerants, 200);
     }
 }

@@ -13,13 +13,37 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        //
+        $zonesdB = Zone::with('chefs')->get();
+        $zones = [];
+        foreach ($zonesdB as $zone) {
+        $gerant = $zone->chefs->prenom . " ". $zone->chefs->nom;
+        $zones[]= [
+            'id'=> $zone->id,
+            'nom'=> $zone->nom,
+            "status"=> $zone->status,
+            "gerant"=> $gerant
+        ];
+        }
+        return response()->json($zones, 200);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {}
+    public function store(Request $request) {
+        $request->validate([
+            "nom"=> "required",
+            "gerant"=> "required",
+        ]);
+        $zones = Zone::create(
+            [
+                "nom" => $request->nom,
+                "chef"=> $request->gerant
+            ]
+        );
+
+        return response()->json(true, 201);
+    }
 
     /**
      * Display the specified resource.
