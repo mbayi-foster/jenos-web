@@ -132,7 +132,6 @@ import NavBar from './components/NavBar.vue';
           </p>
         </div>
       </div> -->
-      
       <RouterView />
     </div>
   </div>

@@ -2,13 +2,14 @@
     <div class="mb-5">
         <BreadCumb hote="Menus" lien="#" page="Menus" :principale="true" />
     </div>
-    <TablesMenus :data="menus" :columns="tablesColumn" :has-data="hasData" :load="load" :refresh="fetchItems" />
+    <TablesMenus @change-status="change" :data="menus" :columns="tablesColumn" :has-data="hasData" :load="load"
+        :refresh="fetchItems" />
 </template>
 <script setup>
 import BreadCumb from '@/components/BreadCumb.vue';
 import TablesMenus from '@/components/tables/TablesMenus.vue';
 import api from '@/api/api'
-import {ref, onMounted} from "vue"
+import { ref, onMounted, computed } from "vue"
 
 const menus = ref([])
 const tablesColumn = ref([
@@ -36,6 +37,14 @@ const fetchItems = async () => {
         hasData.value = false
         load.value = false
         console.log(error)
+    }
+}
+
+const change = async (id) => {
+    try {
+        await api.get(`/menus/status/change/${id}`)
+        fetchItems()
+    } catch (error) {
     }
 }
 

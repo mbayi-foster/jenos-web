@@ -22,6 +22,7 @@ class MenuController extends Controller
                 $url = str_replace('http://localhost', 'http://localhost:8000', $url); // Remplacez par le port approprié
             }
             $nouveauMenu[] = [
+                "id"=>$value->id,
                 "nom" => $value->nom,
                 'count' => $value->plats_count,
                 'photo'=> $url,
@@ -88,5 +89,15 @@ class MenuController extends Controller
         //
     }
 
+
+    public function change_status(string $id)
+    {
+        $menu = Menu::find($id);
+
+        $menu->status = ($menu->status == true) ? false : true ;
+
+        $menu->save();
+        return response()->json(true, 200);
+    }
 
 }
