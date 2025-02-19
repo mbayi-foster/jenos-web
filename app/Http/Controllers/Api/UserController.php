@@ -13,7 +13,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        if($users){
+            return response()->json($users, 200);
+        }
+        return response()->json(null, 500);
     }
 
     /**

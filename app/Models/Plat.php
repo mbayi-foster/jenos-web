@@ -16,4 +16,9 @@ class Plat extends Model
         'like',
         'status',
     ];
+
+    public function menus()
+    {
+        return $this->belongsToMany(Menu::class, 'plat_menu', 'plat_id', 'menu_id');
+    }
 }
