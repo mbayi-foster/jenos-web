@@ -2,7 +2,8 @@
     <div class="mb-5">
         <BreadCumb hote="Utilisateurs" lien="#" page="Utilisateurs" :principale="true" />
     </div>
-    <TableUsers :data="users" :columns="tablesColumn" :has-data="hasData" :load="load" :refresh="fetchItems" @modifier-user="showForm"/>
+    <TableUsers @change-status="change" :data="users" :columns="tablesColumn" :has-data="hasData" :load="load"
+        :refresh="fetchItems" @modifier-user="showForm" />
     <div v-if="show" id="authentication-modal" tabindex="-1" aria-hidden="true"
         class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-full md:inset-0">
         <div class="relative p-4 w-full max-w-md max-h-full">
@@ -107,8 +108,6 @@ const fetchItems = async () => {
         load.value = true
         hasData.value = false
         const data = await api.get('/users')
-        console.log("les users", data)
-
         if (Array.isArray(data) && data.length >= 1) {
             users.value = data
             load.value = false
@@ -121,12 +120,22 @@ const fetchItems = async () => {
     }
 }
 const showForm = (utilisateur) => {
-    if(utilisateur){
+    if (utilisateur) {
         user.value = utilisateur
         console.log(user.value)
     }
     show.value = (show.value == true) ? false : true
 }
+
+const change = async (id) => {
+    try {
+        await api.get(`/status/change/${id}`)
+        fetchItems()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 onMounted(fetchItems)
 
 </script>

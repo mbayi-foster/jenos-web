@@ -45,6 +45,7 @@ const change = async (id) => {
         await api.get(`/menus/status/change/${id}`)
         fetchItems()
     } catch (error) {
+        console.log(error)
     }
 }
 

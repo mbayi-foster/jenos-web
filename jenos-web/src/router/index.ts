@@ -8,6 +8,7 @@ import Menus from '@/views/admin/Menus.vue'
 import CreateMenu from '@/views/admin/CreateMenu.vue'
 import Zones from '@/views/admin/Zones.vue'
 import CreateZones from '@/views/admin/CreateZones.vue'
+import { useUserStore } from '@/stores/store.js'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,6 +16,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
+      meta: { requiresAuth: true },
       component: HomeView,
     },
     {
@@ -25,47 +27,58 @@ const router = createRouter({
     {
       path: '/users',
       name: 'Utilisateurs',
+      meta: { requiresAuth: true },
       component: Users
     },
     {
       path: '/plats/create',
       name: 'Nouveau plat',
+      meta: { requiresAuth: true },
       component: Plat
     },
     {
       path: '/menus',
       name: 'Menus',
+      meta: { requiresAuth: true },
       component: Menus
     },
     {
       path: '/menus/create',
       name: 'Nouveau menu',
+      meta: { requiresAuth: true },
       component: CreateMenu
     },
     {
       path: '/plats',
       name: 'Plats',
+      meta: { requiresAuth: true },
       component: Plats
     },
     {
       path: '/zones',
       name: 'Zones',
+      meta: { requiresAuth: true },
       component: Zones
     },
     {
       path: '/zones/create',
       name: 'Nouvel zone',
+      meta: { requiresAuth: true },
       component: CreateZones
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
     },
   ],
 })
+router.beforeEach((to, from, next) => {
+  const store = useUserStore();
+  store.loadUser();
 
+  if (to.path === '/login' && store.isAuthenticated) {
+    next('/'); // Rediriger vers la page d'accueil
+  }
+  if (to.meta.requiresAuth && !store.isAuthenticated) {
+    next('/login'); // Rediriger vers la page de connexion
+  } else {
+    next(); // Autoriser l'accès
+  }
+});
 export default router
