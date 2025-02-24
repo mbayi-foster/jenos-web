@@ -18,9 +18,14 @@ Route::get('plats/status/change/{id}', [PlatController::class, 'change_status'])
 Route::get('menus/status/change/{id}', [MenuController::class, 'change_status']);
 
 
-Route::post('login', [AuthClientController::class, 'login'])->name('api-login');
+
 Route::post('login/users', [UserController::class,'login']);
 Route::post('register',[AuthClientController::class, 'store'])->name('api-register');
 
 Route::get('gerants', [UserController::class,'gerants'])->name('gerants');
 
+
+// apis pour le mobile
+
+// authentfictions modules 
+Route::post('login', [AuthClientController::class, 'login'])->name('api-login');

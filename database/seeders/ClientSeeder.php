@@ -21,7 +21,7 @@ class ClientSeeder extends Seeder
             //'postnom' => $faker->name,
             'email' => $faker->email,
             'phone' => "998115482$i",
-            'password' => bcrypt(12345678)
+            'password' => bcrypt("123456")
         ]);
     }
     }

@@ -77,7 +77,7 @@ class AuthClientController extends Controller
         ]);
         $user = Client::where('email', $request->email)->first();
 
-        if ($user && Hash::check($request->password, $user->password)) {
+        if ($user && Hash::check($request->password, $user->password) && $user->status == true) {
             return response()->json([
                 "nom" => $user->nom,
                 "prenom" => $user->prenom,
