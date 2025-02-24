@@ -36,3 +36,4 @@ Route::post('login', [AuthClientController::class, 'login'])->name('api-login');
 //modules homes
 
 Route::get("mobile-home", [MobileHomeController::class,"home"]);
+Route::get("mobile-menu", [MobileHomeController::class,"menu"]);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Plat;
@@ -73,5 +74,26 @@ class MobileHomeController extends Controller
             "plat_most_pops" => $plat_most_pops
         ];
         return response()->json($res, 200);
+    }
+
+    public function menu(){
+        $menus = [];
+        $menu_befores = Menu::where('status', true)->orderBy('created_at', "desc")->get();
+
+        foreach($menu_befores as $menu){
+            $url = Storage::disk('public')->url($menu->photo);
+            if (strpos($url, 'http://localhost') !== false) {
+                $url = str_replace('http://localhost', 'http://localhost:8000', $url); // Remplacez par le port approprié
+            }
+            $menus[]=[
+                "id"=>$menu->id,
+                "nom"=>$menu->nom,
+                "details"=>$menu->details,
+                "photo"=>$menu->photo,
+                "created_at"=>$menu->created_at
+            ];
+        }
+
+    return response()->json($menus, 200);
     }
 }
