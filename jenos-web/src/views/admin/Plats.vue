@@ -2,7 +2,7 @@
     <div class="mb-5">
         <BreadCumb hote="Plats" lien="#" page="Plats" :principale="true" />
     </div>
-    <TablePlats :data="plats" :columns="tablesColumn" :has-data="hasData" :load="load" :refresh="fetchItems" />
+    <TablePlats @change-status="change" :data="plats" :columns="tablesColumn" :has-data="hasData" :load="load" :refresh="fetchItems" />
 
 </template>
 
@@ -42,6 +42,15 @@ const fetchItems = async () => {
         console.log(error)
     }
 }
+const change = async (id) => {
+    try {
+        await api.get(`/plats/status/change/${id}`)
+        fetchItems()
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 onMounted(fetchItems)
 </script>

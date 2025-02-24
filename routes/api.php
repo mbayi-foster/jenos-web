@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthClientController;
 use App\Http\Controllers\Api\MenuController;
+use App\Http\Controllers\Api\MobileHomeController;
 use App\Http\Controllers\Api\PlatController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ZoneController;
@@ -29,3 +30,9 @@ Route::get('gerants', [UserController::class,'gerants'])->name('gerants');
 
 // authentfictions modules 
 Route::post('login', [AuthClientController::class, 'login'])->name('api-login');
+
+
+
+//modules homes
+
+Route::get("mobile/home", [MobileHomeController::class,"home"]);

@@ -61,21 +61,12 @@
                     </td>
                     <td class="text-center">
                         <div class="inline-flex rounded-md shadow-sm" role="group">
-                            <button v-if="item['status'] == false" data-modal-target="popup-modal1"
-                                data-modal-toggle="popup-modal1" type="button" title="Activer"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                                <i class="fa-solid fa-toggle-on"></i>
-                            </button>
-                            <button v-if="item['status'] == true" data-modal-target="popup-modal2"
-                                data-modal-toggle="popup-modal2" type="button" title="Désactiver"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-s-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                                <i class="fa-solid fa-toggle-off"></i>
-                            </button>
-                            <button type="button" href="#" title="Modifier l'utilisateur"
-                                data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
-                                class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
-                                <i class="fa-solid fa-circle-info"></i>
-                            </button>
+                            <change-status msg-oui="Voulez vous vraiment activer ce plat"
+                            msg-non="Voulez vous vraiment désactiver ce plat"  :id="item['id']" :status="item['status']" @change-status="change" />
+                            <router-link type="button" :to="`menus/${item['id']}`" title="Voir plus..."
+                                class="inline-flex items-center px-6 py-2.5 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
+                                <i class="fa-solid fa-circle-info text-base"></i>
+                            </router-link>
                         </div>
                     </td>
                 </tr>
@@ -136,6 +127,7 @@
 </template>
 
 <script setup>
+import ChangeStatus from '../buttons/ChangeStatus.vue'
 import { ref, computed } from 'vue'
 const props = defineProps({
     refresh: {
@@ -214,6 +206,11 @@ const prevPage = () => {
 const goToPage = (page) => {
     currentPage.value = page
 }
+
+const emit = defineEmits()
+const change = (id) => {
+  emit('change-status', id);
+};
 </script>
 
 <style scoped>
