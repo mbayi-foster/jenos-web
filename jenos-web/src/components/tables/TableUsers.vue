@@ -58,6 +58,11 @@
               <div class="font-normal text-gray-500"> {{ item['email'] }}</div>
               <div class="font-normal text-gray-500"> {{ item['phone'] }}</div>
             </div>
+            <div v-if="column.key == 'roles'">
+              <ol>
+                <li v-for="(role, index) in item['roles']">{{ role.nom }}</li>
+              </ol>
+            </div>
             <div class="flex items-center" v-if="column.key == 'status'">
               <div class="h-2.5 w-2.5 rounded-full bg-green-500 me-2" v-if="item['status'] == true"></div>
               <div class="h-2.5 w-2.5 rounded-full bg-red-500 me-2" v-if="item['status'] == false"></div>

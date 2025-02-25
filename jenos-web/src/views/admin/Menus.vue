@@ -32,6 +32,8 @@ const fetchItems = async () => {
             menus.value = data
             load.value = false
             hasData.value = true
+        }else{
+            load.value = false
         }
     } catch (error) {
         hasData.value = false

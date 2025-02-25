@@ -72,6 +72,8 @@
 import api from '@/api/api'
 import BreadCumb from '@/components/BreadCumb.vue';
 import { onMounted, ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
 const menu = ref({
     nom: '',
     photo: '',

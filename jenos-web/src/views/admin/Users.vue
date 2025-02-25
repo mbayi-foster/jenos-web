@@ -4,7 +4,7 @@
     </div>
     <TableUsers @change-status="change" :data="users" :columns="tablesColumn" :has-data="hasData" :load="load"
         :refresh="fetchItems" @modifier-user="showForm" />
-    <div v-if="show" id="authentication-modal" tabindex="-1" aria-hidden="true"
+    <div v-if="show" tabindex="-1" aria-hidden="true"
         class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-full md:inset-0">
         <div class="relative p-4 w-full max-w-md max-h-full">
             <!-- Modal content -->
@@ -30,10 +30,11 @@
                         <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                             <div class="sm:col-span-2">
                                 <label for="email"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email</label>
-                                <input type="email" v-model="user['email']" id="email" disabled
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email : {{
+                                    user['email'] }} </label>
+                                <!-- <input type="email" v-model="user['email']" id="email" disabled
                                     class="bg-gray-200 text-gray-500 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                    placeholder="Veillez entrer l'adresse email de l'utilisateur" required="">
+                                    placeholder="Veillez entrer l'adresse email de l'utilisateur" required=""> -->
                             </div>
                             <div class="w-full">
                                 <label for="nom"
@@ -60,11 +61,11 @@
                                 <label for="countries_multiple"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Choisir les
                                     rôles</label>
-                                <div class="flex items-center mb-4">
+                                <div v-for="item in roles" class="flex items-center mb-4">
                                     <input id="" type="checkbox" name="roles[]" value=""
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="default-checkbox"
-                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Admin</label>
+                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{item['nom']}}</label>
                                 </div>
                             </div>
 
@@ -98,10 +99,12 @@ const users = ref([])
 const tablesColumn = ref([
     { key: 'nom', label: 'Utilisateur' },
     { key: 'email', label: 'Contact' },
+    { key: 'roles', label: 'Roles' },
     { key: 'status', label: 'Status' },
 ])
 const hasData = ref(false)
 const load = ref(true)
+const roles = ref([])
 
 const fetchItems = async () => {
     try {
@@ -135,7 +138,15 @@ const change = async (id) => {
         console.log(error)
     }
 }
+const getRoles = async () => {
+    try {
+       roles.value =  await api.get(`/roles`)
+       console.log("les roles sont : ", roles.value)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
-onMounted(fetchItems)
+onMounted(fetchItems, getRoles)
 
 </script>
