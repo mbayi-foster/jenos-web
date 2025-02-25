@@ -21,4 +21,8 @@ class Plat extends Model
     {
         return $this->belongsToMany(Menu::class, 'plat_menu', 'plat_id', 'menu_id');
     }
+
+    public function paniers(){
+        return $this->hasMany(Panier::class,);
+    }
 }
