@@ -117,7 +117,7 @@ class PlatController extends Controller
     }
 
     public function plats_status(){
-        $plats = Plat::where("status",0)->get();
+        $plats = Plat::where("status",1)->get();
         $nouveauPlats = [];
         foreach ($plats as $plat) {
            $nouveauPlats []=[
