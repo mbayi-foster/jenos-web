@@ -2,7 +2,7 @@
     <div class="mb-5">
         <BreadCumb hote="Menus" lien="#" page="Menus" :principale="true" />
     </div>
-    <TablesMenus @change-status="change" :data="menus" :columns="tablesColumn" :has-data="hasData" :load="load"
+    <TablesMenus @effacer="effacer" @change-status="change" :data="menus" :columns="tablesColumn" :has-data="hasData" :load="load"
         :refresh="fetchItems" />
 </template>
 <script setup>
@@ -26,14 +26,15 @@ const fetchItems = async () => {
         load.value = true
         hasData.value = false
         const data = await api.get('/menus')
-        console.log("les menus", data)
+       // console.log("les menus", data)
 
         if (Array.isArray(data) && data.length >= 1) {
             menus.value = data
             load.value = false
             hasData.value = true
-        }else{
+        } else {
             load.value = false
+            hasData.value = false
         }
     } catch (error) {
         hasData.value = false
@@ -51,6 +52,14 @@ const change = async (id) => {
     }
 }
 
+const effacer = async (id) => {
+    try {
+        await api.delete(`/menus/${id}`)
+        fetchItems()
+    } catch (error) {
+        console.log(error)
+    }
+}
 onMounted(fetchItems)
 
 </script>

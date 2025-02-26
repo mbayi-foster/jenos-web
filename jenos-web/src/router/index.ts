@@ -66,6 +66,12 @@ const router = createRouter({
       meta: { requiresAuth: true },
       component: CreateZones
     },
+    {
+      path: '/users/create',
+      name: 'Nouvel zone',
+      meta: { requiresAuth: true },
+      component: CreateZones
+    },
   ],
 })
 router.beforeEach((to, from, next) => {

@@ -2,7 +2,7 @@
     <div class="mb-5">
         <BreadCumb hote="Utilisateurs" lien="#" page="Utilisateurs" :principale="true" />
     </div>
-    <TableUsers @change-status="change" :data="users" :columns="tablesColumn" :has-data="hasData" :load="load"
+    <TableUsers @effacer="effacer" @change-status="change" :data="users" :columns="tablesColumn" :has-data="hasData" :load="load"
         :refresh="fetchItems" @modifier-user="showForm" />
     <div v-if="show" tabindex="-1" aria-hidden="true"
         class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-full md:inset-0">
@@ -115,6 +115,9 @@ const fetchItems = async () => {
             users.value = data
             load.value = false
             hasData.value = true
+        }else{
+            load.value = false
+            hasData.value = false
         }
     } catch (error) {
         hasData.value = false
@@ -142,6 +145,15 @@ const getRoles = async () => {
     try {
        roles.value =  await api.get(`/roles`)
        console.log("les roles sont : ", roles.value)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const effacer = async (id) => {
+    try {
+        await api.delete(`/users/${id}`)
+        fetchItems()
     } catch (error) {
         console.log(error)
     }

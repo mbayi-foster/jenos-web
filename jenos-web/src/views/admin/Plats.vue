@@ -2,7 +2,7 @@
     <div class="mb-5">
         <BreadCumb hote="Plats" lien="#" page="Plats" :principale="true" />
     </div>
-    <TablePlats @change-status="change" :data="plats" :columns="tablesColumn" :has-data="hasData" :load="load" :refresh="fetchItems" />
+    <TablePlats @effacer="effacer" @change-status="change" :data="plats" :columns="tablesColumn" :has-data="hasData" :load="load" :refresh="fetchItems" />
 
 </template>
 
@@ -17,6 +17,7 @@ const tablesColumn = ref([
     { key: 'nom', label: 'Nom' },
     { key: 'photo', label: 'Photo' },
     { key: 'prix', label: 'Prix' },
+    { key: 'qte', label: 'Quantité' },
     { key: 'like', label: 'Like' },
     { key: 'status', label: 'Status' },
 
@@ -29,12 +30,13 @@ const fetchItems = async () => {
         load.value = true
         hasData.value = false
         const data = await api.get('/plats')
-        console.log("les plats", data)
-
         if (Array.isArray(data) && data.length >= 1) {
             plats.value = data
             load.value = false
             hasData.value = true
+        }else{
+            load.value = false
+            hasData.value = false
         }
     } catch (error) {
         hasData.value = false
@@ -45,6 +47,14 @@ const fetchItems = async () => {
 const change = async (id) => {
     try {
         await api.get(`/plats/status/change/${id}`)
+        fetchItems()
+    } catch (error) {
+        console.log(error)
+    }
+}
+const effacer = async (id) => {
+    try {
+        await api.delete(`/plats/${id}`)
         fetchItems()
     } catch (error) {
         console.log(error)

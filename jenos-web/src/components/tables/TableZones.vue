@@ -63,7 +63,8 @@
                             <change-status msg-oui="Voulez vous vraiment activer cette zone"
                                 msg-non="Voulez vous vraiment désactiver cette zone" :id="item['id']"
                                 :status="item['status']" @change-status="change" />
-                            <router-link type="button" :to="`zones/${item['id']}`" title="Voir plus..."
+                                <supprimer  msg="Voulez vous vraiment supprimer cette zone" :id="item['id']" @effacer="effacer"/>
+                                <router-link type="button" :to="`zones/${item['id']}`" title="Voir plus..."
                                 class="inline-flex items-center px-6 py-2.5 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-e-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-800 dark:border-gray-700 dark:text-white dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-blue-500 dark:focus:text-white">
                                 <i class="fa-solid fa-circle-info text-base"></i>
                             </router-link>
@@ -129,6 +130,7 @@
 <script setup>
 import { ref, computed, defineEmits } from 'vue'
 import ChangeStatus from '../buttons/ChangeStatus.vue'
+import Supprimer from '../buttons/Supprimer.vue'
 const emit = defineEmits()
 const props = defineProps({
     refresh: {
@@ -210,6 +212,9 @@ const goToPage = (page) => {
 
 const change = (id) => {
     emit('change-status', id);
+};
+const effacer = (id) => {
+  emit('effacer', id);
 };
 </script>
 

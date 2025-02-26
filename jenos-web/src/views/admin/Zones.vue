@@ -1,9 +1,9 @@
 <template>
     <div class="mb-5">
-        <BreadCumb hote="Zones" lien="/zones" page="Zones" :principale="true"/>
+        <BreadCumb hote="Zones" lien="/zones" page="Zones" :principale="true" />
     </div>
-    <TableZones @change-status="change" :data="zones" :columns="tablesColumn" :has-data="hasData" :load="load"
-    :refresh="fetchItems" />
+    <TableZones @effacer="effacer" @change-status="change" :data="zones" :columns="tablesColumn" :has-data="hasData" :load="load"
+        :refresh="fetchItems" />
 </template>
 
 <script setup>
@@ -32,6 +32,9 @@ const fetchItems = async () => {
             zones.value = data
             load.value = false
             hasData.value = true
+        } else {
+            load.value = false
+            hasData.value = false
         }
     } catch (error) {
         hasData.value = false
@@ -47,7 +50,14 @@ const change = async (id) => {
     } catch (error) {
     }
 }
-
+const effacer = async (id) => {
+    try {
+        await api.delete(`/zones/${id}`)
+        fetchItems()
+    } catch (error) {
+        console.log(error)
+    }
+}
 onMounted(fetchItems)
 
 </script>

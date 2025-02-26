@@ -16,7 +16,13 @@
                     <input type="text" v-model="plat.prix" id="prix"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                         placeholder="Veillez nommer le plat" required>
-
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="qte" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantité
+                        initiale*</label>
+                    <input type="text" v-model="plat.qte" id="qte"
+                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        placeholder="Veillez nommer le plat" required>
                 </div>
                 <div class="sm:col-span-2">
 
@@ -79,6 +85,7 @@ const router = useRouter()
 const plat = ref({
     nom: '',
     prix: '',
+    qte: '',
     details: '',
     photo: null,
 });
@@ -105,6 +112,7 @@ const handleSubmit = async () => {
     const formData = new FormData();
     formData.append('nom', plat.value.nom);
     formData.append('prix', plat.value.prix);
+    formData.append('qte', plat.value.qte);
     formData.append('details', plat.value.details);
     if (plat.value.photo) {
         formData.append('photo', plat.value.photo);

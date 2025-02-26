@@ -11,7 +11,6 @@ const calcule = () => {
   store.loadUser()
   user.value = store.user
   isConnected.value = store.isAuthenticated
-  console.log("l'utilisateur connecté est : ", user.value)
 }
 const router = useRouter()
 onMounted(calcule)
