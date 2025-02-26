@@ -12,6 +12,8 @@ class Plat extends Model
         'details',
         'photo',
         'prix',
+        'qte', 
+        'commandes',
         'is_offre',
         'like',
         'status',
