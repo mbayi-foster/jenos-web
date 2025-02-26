@@ -72,7 +72,12 @@ class ZoneController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $zone = Zone::find($id);
+        if($zone){
+            $zone->delete();
+            return response()->json(true,200);
+        }
+        return response()->json(false,404);
     }
 
     public function change_status(string $id)

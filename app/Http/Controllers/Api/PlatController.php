@@ -28,6 +28,8 @@ class PlatController extends Controller
                 "photo" => $url,
                 "status" => $plat->status,
                 "prix" => $plat->prix,
+                "qte" => ($plat->qte - $plat->commandes),
+                "commandes" => $plat->commandes,
                 "like" => $plat->like
             ];
         }
@@ -42,6 +44,7 @@ class PlatController extends Controller
         $request->validate([
             'nom' => 'required',
             'prix' => 'required|numeric',
+            'qte' => 'required|numeric',
             'details' => 'required',
             'photo' => 'required|image',
         ]);
@@ -54,6 +57,7 @@ class PlatController extends Controller
             $plat = Plat::create([
                 "nom" => $request->nom,
                 "prix" => $request->prix,
+                "qte" => $request->qte,
                 "photo" => $path,
                 "details" => $request->details
             ]);
@@ -99,7 +103,14 @@ class PlatController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $plat = Plat::findOrFail($id);
+        if($plat){
+            $plat->delete();
+
+            return response()->json(true, 200);
+        }
+
+        return response()->json(["error"=> "non trouvé"], 400);
     }
 
     public function change_status(string $id)

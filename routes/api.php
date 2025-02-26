@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ZoneController;
 use Illuminate\Support\Facades\Route;
 
+/* api pour le web de vue js */
 Route::apiResource('users', UserController::class);
 Route::apiResource('zones', ZoneController::class);
 Route::apiResource('plats', PlatController::class);

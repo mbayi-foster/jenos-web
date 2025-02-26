@@ -85,7 +85,13 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user =  User::findOrFail($id);
+
+        if($user){
+            $user->delete();
+            return response()->json(true, 200);
+        }
+        return response()->json(false, 404);
     }
 
     /**

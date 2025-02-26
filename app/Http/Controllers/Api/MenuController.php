@@ -86,7 +86,12 @@ class MenuController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $menu = Menu::findOrFail($id);
+        if($menu){
+            $menu->delete();
+            return response()->json(true,200);
+        }
+        return response()->json(false,400);
     }
 
 
