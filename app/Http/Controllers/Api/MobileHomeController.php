@@ -19,7 +19,7 @@ class MobileHomeController extends Controller
         $plat_most_pops = [];
         $plat_recents_before = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get();
         $plat_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->take(5)->get();
-        $plat_most_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->take(5)->get();
+        $plat_most_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->orderBy('commandes', 'desc')->take(5)->get();
 
         foreach ($plat_recents_before as $plat) {
             $url = Storage::disk('public')->url($plat->photo);
@@ -125,7 +125,7 @@ class MobileHomeController extends Controller
     public function plats_pops()
     {
         $plat_pops = [];
-        $plat_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->take(5)->get();
+        $plat_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->get();
 
         foreach ($plat_pops_before as $plat) {
             $url = Storage::disk('public')->url($plat->photo);
@@ -148,7 +148,7 @@ class MobileHomeController extends Controller
     public function plats_most_pops()
     {
         $plat_most_pops = [];
-        $plat_most_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->take(5)->get();
+        $plat_most_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->get();
 
         foreach ($plat_most_pops_before as $plat) {
             $url = Storage::disk('public')->url($plat->photo);
