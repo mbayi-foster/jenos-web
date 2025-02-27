@@ -2,8 +2,8 @@
     <div class="mb-5">
         <BreadCumb hote="Utilisateurs" lien="#" page="Utilisateurs" :principale="true" />
     </div>
-    <TableUsers @effacer="effacer" @change-status="change" :data="users" :columns="tablesColumn" :has-data="hasData" :load="load"
-        :refresh="fetchItems" @modifier-user="showForm" />
+    <TableUsers @effacer="effacer" @change-status="change" :data="users" :columns="tablesColumn" :has-data="hasData"
+        :load="load" :refresh="fetchItems" @modifier-user="showForm" />
     <div v-if="show" tabindex="-1" aria-hidden="true"
         class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-full md:inset-0">
         <div class="relative p-4 w-full max-w-md max-h-full">
@@ -31,7 +31,7 @@
                             <div class="sm:col-span-2">
                                 <label for="email"
                                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email : {{
-                                    user['email'] }} </label>
+                                        user['email'] }} </label>
                                 <!-- <input type="email" v-model="user['email']" id="email" disabled
                                     class="bg-gray-200 text-gray-500 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                                     placeholder="Veillez entrer l'adresse email de l'utilisateur" required=""> -->
@@ -65,7 +65,7 @@
                                     <input id="" type="checkbox" name="roles[]" value=""
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                     <label for="default-checkbox"
-                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{item['nom']}}</label>
+                                        class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ item['nom'] }}</label>
                                 </div>
                             </div>
 
@@ -115,7 +115,7 @@ const fetchItems = async () => {
             users.value = data
             load.value = false
             hasData.value = true
-        }else{
+        } else {
             load.value = false
             hasData.value = false
         }
@@ -125,7 +125,18 @@ const fetchItems = async () => {
         console.log(error)
     }
 }
-const showForm = (utilisateur) => {
+
+const getRoles = async () => {
+    try {
+        roles.value = await api.get(`/roles`)
+        console.log("les roles sont : ", roles.value)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const showForm = async (utilisateur) => {
+    await getRoles()
     if (utilisateur) {
         user.value = utilisateur
         console.log(user.value)
@@ -141,15 +152,6 @@ const change = async (id) => {
         console.log(error)
     }
 }
-const getRoles = async () => {
-    try {
-       roles.value =  await api.get(`/roles`)
-       console.log("les roles sont : ", roles.value)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
 const effacer = async (id) => {
     try {
         await api.delete(`/users/${id}`)
@@ -159,6 +161,7 @@ const effacer = async (id) => {
     }
 }
 
-onMounted(fetchItems, getRoles)
+
+onMounted(fetchItems)
 
 </script>
