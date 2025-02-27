@@ -6,6 +6,8 @@ use App\Http\Controllers\PlatController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ZoneController;
+use App\Mail\MobileMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,3 +39,9 @@ Route::post('plats/change/{id}', [PlatController::class, 'change'])->name('plats
 
 Route::get('dashboard/', [AdminController::class, 'index'])->name('admin.dashboard');
 
+Route::get('/teste', function (){
+    $data = ['nom'=>"Kalala", 'code'=>'354683', 'sujet'=>"Confirmez son email"];
+    Mail::to('jfkfostermbayi2@gmail.com')->send(new MobileMail($data));
+
+    return view('email.mobile.create', compact('data'));
+});
