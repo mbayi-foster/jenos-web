@@ -26,6 +26,7 @@ class MobileDetailsController extends Controller
             'photo'=>$url,
             'qte'=>$plat->qte,
             'prix'=>$plat->prix,
+            'created_at'=>$plat->created_at
         ];
         return response()->json($plat, 200);
     }

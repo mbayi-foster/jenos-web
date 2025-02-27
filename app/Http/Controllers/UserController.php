@@ -109,4 +109,8 @@ class UserController extends Controller
         $user->save();
         return redirect()->back()->with('success', 'Mis à jour réussie !');
     }
+
+    public function teste(){
+        return view('email.auth.create');
+    }
 }
