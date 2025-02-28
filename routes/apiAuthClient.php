@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Api\AuthClientController;
-use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Route;
 
-Route::post('login', [AuthClientController::class, 'login'])->name('api-login');
+Route::post('login', [AuthClientController::class, 'login']);
+Route::apiResource('clients', AuthClientController::class);
+Route::post('new-client', [AuthClientController::class, 'newUser']);
