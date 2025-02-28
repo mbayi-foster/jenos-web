@@ -27,9 +27,7 @@ class AuthClientController extends Controller
      */
     public function store(Request $request)
     {
-       // $user = $request->session()->all();
-        dd(0);
-        return response()->json($user);
+        // $user = $request->session()->all();
         /* $request->validate([
             'email' => 'required|unique:clients|max:255',
             'nom' => 'required',
@@ -100,22 +98,20 @@ class AuthClientController extends Controller
 
     public function newUser(Request $request)
     {
-   /*      $request->validate([
+       /*  $request->validate([
             'email' => 'required|email',
-            'nom' => 'required|string|max:255',
-            'password' => 'required|string|min:8'
+            'nom' => 'required|string|max:255'
         ]); */
-
         $code = rand(100000, 999999);
         $user = Client::where('email', $request->email)->first(); // Correction ici
 
         if (!$user) {
-            Session::flash('user', [33,333,33,333]);
-           // Mail::to($request->email)->send(new MobileMail(['nom' => $request->nom, 'code' => $code, "sujet" => "Confirmer l'adresse email"]));
-            session()->put($request->email, $request->all());
-            return response()->json(['success' => false], 200); // Retourner un objet JSON
+            Mail::to($request->email)->send(new MobileMail(['nom' => $request->nom, 'code' => $code, "sujet" => "Confirmer l'adresse email"]));
+            return response()->json([
+                "code" => $code,
+            ], 200); // Retourner un objet JSON
         } else {
-            return response()->json(['success' => true], 200); // Retourner un objet JSON
+            return response()->json(['msg' => 'Cet utilisateur existe déjà en cas de mot de passe oublié veillez suivre la procedure'], 200); // Retourner un objet JSON
         }
 
     }
