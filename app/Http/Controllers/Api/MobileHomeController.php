@@ -11,6 +11,7 @@ use App\Models\Plat;
 class MobileHomeController extends Controller
 {
     private $url = "http://localhost:8000";
+    private $photo = "https://cdn.pixabay.com/photo/2024/09/15/13/03/cows-9049119_1280.jpg";
     public function home()
     {
         $offres = [];
@@ -30,7 +31,7 @@ class MobileHomeController extends Controller
                 'id' => (int) $plat->id,
                 'nom' => $plat->nom,
                 'details' => $plat->details,
-                'photo' => $url,
+                'photo' => $this->photo,
                 'prix' => $plat->prix,
                 'like' => $plat->like,
                 'created_at' => $plat->created_at

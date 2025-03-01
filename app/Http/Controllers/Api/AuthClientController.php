@@ -27,8 +27,8 @@ class AuthClientController extends Controller
      */
     public function store(Request $request)
     {
-        // $user = $request->session()->all();
-        /* $request->validate([
+        $user = $request->session()->all();
+        $request->validate([
             'email' => 'required|unique:clients|max:255',
             'nom' => 'required',
             'prenom' => 'required',
@@ -46,7 +46,7 @@ class AuthClientController extends Controller
         if ($user) {
             return response()->json(true, 200);
         }
-        return response()->json($request, 500); */
+        return response()->json($request, 500); 
     }
 
     /**
@@ -98,10 +98,10 @@ class AuthClientController extends Controller
 
     public function newUser(Request $request)
     {
-       /*  $request->validate([
+        $request->validate([
             'email' => 'required|email',
             'nom' => 'required|string|max:255'
-        ]); */
+        ]); 
         $code = rand(100000, 999999);
         $user = Client::where('email', $request->email)->first(); // Correction ici
 

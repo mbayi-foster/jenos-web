@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 class MobileDetailsController extends Controller
 {
     private $url = "http://localhost:8000";
-
+    private $photo = "https://cdn.pixabay.com/photo/2024/09/15/13/03/cows-9049119_1280.jpg";
     public function plat($id)
     {
         $plat = Plat::find($id);
@@ -23,7 +23,8 @@ class MobileDetailsController extends Controller
             "id"=>$plat->id,
             'nom'=>$plat->nom,
             'details'=>$plat->details,
-            'photo'=>$url,
+            "like"=>$plat->like,
+            'photo'=>$this->photo,
             'qte'=>$plat->qte,
             'prix'=>$plat->prix,
             'created_at'=>$plat->created_at
