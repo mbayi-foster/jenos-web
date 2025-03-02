@@ -9,6 +9,7 @@ import CreateMenu from '@/views/admin/CreateMenu.vue'
 import Zones from '@/views/admin/Zones.vue'
 import CreateZones from '@/views/admin/CreateZones.vue'
 import { useUserStore } from '@/stores/store.js'
+import Commandes from '@/views/gerant/Commandes.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,6 +66,12 @@ const router = createRouter({
       name: 'Nouvel zone',
       meta: { requiresAuth: true },
       component: CreateZones
+    },
+    {
+      path: '/commandes',
+      name: 'Liste des commandes',
+      meta: { requiresAuth: true },
+      component: Commandes
     },
     {
       path: '/users/create',
