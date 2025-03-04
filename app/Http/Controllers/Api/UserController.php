@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Mail\WebMail;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -35,20 +37,37 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'email' => 'required|unique:users|max:255',
-            'nom' => 'required',
-            'prenom' => 'required',
-            'phone' => 'required',
+            'email' => 'required|email|unique:users|max:255',
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'phone' => 'required|numeric|digits_between:9,15', // Exemple de validation
+            'roles' => 'required|array', // Assurez-vous que 'roles' est un tableau
+            'roles.*' => 'exists:roles,id',
         ]);
         $user = User::create([
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'email' => $request->email,
-            'password' => bcrypt('12345678'),
-            'phone' => $request->phone
+            'nom' => $validated['nom'],
+            'prenom' => $validated['prenom'],
+            'email' => $validated['email'],
+            'password' => bcrypt('123456'),
+            'phone' => $validated['phone']
         ]);
 
-        return response()->json($user, 200);
+        if ($user) {
+            $user->roles()->attach($validated['roles']);
+            $data = [
+                'nom' => $user->nom,
+                'prenom' => $user->prenom,
+                'phone' => $user->phone,
+                "email" => $user->email,
+                "password" => "123456",
+                'sujet' => "Confirmatiom du compte"
+            ];
+            Mail::to($user->email)->send(new WebMail($data));
+            return response()->json($user, 200);
+        } else {
+            return response()->json(false, 500);
+        }
+        // return response()->json($request->all(), 201);
     }
 
     /**
@@ -85,13 +104,26 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $user =  User::findOrFail($id);
+        $validated = $request->validate([
+            // 'email' => 'required|email|unique:users|max:255',
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'phone' => 'required|numeric|digits_between:9,15', // Exemple de validation
+            'roles' => 'required|array', // Assurez-vous que 'roles' est un tableau
+            'roles.*' => 'exists:roles,id',
+        ]);
+        $user = User::findOrFail($id);
 
-        if($user){
-            $user->delete();
+         if ($user) {
+            $user->phone = $validated['phone'];
+            $user->nom = $validated['nom'];
+            $user->prenom = $validated['prenom'];
+            $user->roles()->detach();
+            $user->roles()->attach($validated['roles']);
+            $user->save();
             return response()->json(true, 200);
-        }
-        return response()->json(false, 404);
+        } 
+        return response()->json($validated, 200);
     }
 
     /**
@@ -99,7 +131,14 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        if ($user) {
+            $user->delete();
+
+            return response()->json(true, 200);
+        }
+
+        return response()->json(["error" => "non trouvé"], 400);
     }
 
     public function change_status(string $id)

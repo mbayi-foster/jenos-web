@@ -13,7 +13,14 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $roles = Role::all();
+        $rolesDb = Role::all();
+        $roles = [];
+        foreach ($rolesDb as $role) {
+            $roles[] = [
+                'id' => $role->id,
+                'nom' => $role->nom
+            ];
+        }
         return response()->json($roles);
     }
 
