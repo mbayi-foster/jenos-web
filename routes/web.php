@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -41,7 +41,7 @@ Route::get('dashboard/', [AdminController::class, 'index'])->name('admin.dashboa
 
 Route::get('/teste', function (){
     $data = ['nom'=>"Kalala", 'code'=>'354683', 'sujet'=>"Confirmez son email"];
-    Mail::to('jfkfostermbayi2@gmail.com')->send(new MobileMail($data));
+   // Mail::to('jfkfostermbayi2@gmail.com')->send(new MobileMail($data));
 
-    return view('email.mobile.create', compact('data'));
+    return view('email.web.new_user', compact('data'));
 });

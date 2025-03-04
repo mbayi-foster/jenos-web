@@ -1,15 +1,16 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Login from '@/views/auth/Login.vue'
-import Users from '@/views/admin/Users.vue'
-import Plat from '@/views/admin/CreatePlat.vue'
+import Users from '@/views/admin/users/Users.vue'
+import Plat from '@/views/admin/users/CreatePlat.vue'
 import Plats from '@/views/admin/Plats.vue'
 import Menus from '@/views/admin/Menus.vue'
 import CreateMenu from '@/views/admin/CreateMenu.vue'
-import Zones from '@/views/admin/Zones.vue'
+import Zones from '@/views/admin/users/Zones.vue'
 import CreateZones from '@/views/admin/CreateZones.vue'
 import { useUserStore } from '@/stores/store.js'
 import Commandes from '@/views/gerant/Commandes.vue'
+import CreateUser from '@/views/admin/users/CreateUser.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -77,7 +78,7 @@ const router = createRouter({
       path: '/users/create',
       name: 'Nouvel zone',
       meta: { requiresAuth: true },
-      component: CreateZones
+      component: CreateUser
     },
   ],
 })
