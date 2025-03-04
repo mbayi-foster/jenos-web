@@ -1,6 +1,6 @@
 <template>
     <div class="mb-5">
-        <BreadCumb hote="Zones" lien="/zones" page="Nouvel zone" />
+        <BreadCumb hote="Zones" lien="/zones" page="Nouvelle zone" />
     </div>
     <div class="px-4 mx-auto max-w-2xl mt-4">
         <form method="post" enctype="multipart/form-data" @submit.prevent="handleSubmit">

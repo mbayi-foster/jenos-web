@@ -7,7 +7,7 @@ import Plats from '@/views/admin/Plats.vue'
 import Menus from '@/views/admin/Menus.vue'
 import CreateMenu from '@/views/admin/CreateMenu.vue'
 import Zones from '@/views/admin/users/Zones.vue'
-import CreateZones from '@/views/admin/CreateZones.vue'
+import CreateZones from '@/views/admin/users/CreateZones.vue'
 import { useUserStore } from '@/stores/store.js'
 import Commandes from '@/views/gerant/Commandes.vue'
 import CreateUser from '@/views/admin/users/CreateUser.vue'
@@ -64,7 +64,7 @@ const router = createRouter({
     },
     {
       path: '/zones/create',
-      name: 'Nouvel zone',
+      name: 'Nouvelle zone',
       meta: { requiresAuth: true },
       component: CreateZones
     },
@@ -76,7 +76,7 @@ const router = createRouter({
     },
     {
       path: '/users/create',
-      name: 'Nouvel zone',
+      name: 'Nouvel utilisateur',
       meta: { requiresAuth: true },
       component: CreateUser
     },

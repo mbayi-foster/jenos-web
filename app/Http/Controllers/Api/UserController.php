@@ -158,7 +158,7 @@ class UserController extends Controller
     public function gerants()
     {
         $gerants = User::whereHas('roles', function ($query) {
-            $query->where('nom', 'admin');
+            $query->where('nom', 'gérant');
         })->get();
 
         $nouveauGerants = [];

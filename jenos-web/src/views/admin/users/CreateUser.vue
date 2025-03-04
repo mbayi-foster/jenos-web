@@ -4,8 +4,6 @@
     </div>
 
     <div class="px-4 mx-auto max-w-2xl mt-4">
-        {{ user }}
-        {{ roles }}
         <form method="post" enctype="multipart/form-data" @submit.prevent="handleSubmit">
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
