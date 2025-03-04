@@ -32,7 +32,7 @@ class AuthClientController extends Controller
             'email' => 'required|unique:clients|max:255',
             'nom' => 'required',
             'prenom' => 'required',
-            'phone' => 'required|regex:/^[0-9]{10}$/', // Ajustez selon vos besoins
+            'phone' => 'required|regex:/^[0-9]{10}$/',
             'password' => 'required|min:6',
         ]);
         $user = Client::create([
@@ -44,9 +44,9 @@ class AuthClientController extends Controller
         ]);
 
         if ($user) {
-            return response()->json(true, 200);
+            return response()->json($user, 201);
         }
-        return response()->json($request, 500); 
+        return response()->json(false, 500); 
     }
 
     /**
