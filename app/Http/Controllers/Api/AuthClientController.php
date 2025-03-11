@@ -3,14 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Mail\MobileMail;
+use App\Jobs\MobileMailJob;
 use App\Models\Client;
-use App\Models\User;
-use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Mail;
 
 class AuthClientController extends Controller
 {
@@ -27,8 +23,7 @@ class AuthClientController extends Controller
      */
     public function store(Request $request)
     {
-        $user = $request->session()->all();
-        $request->validate([
+        $valide = $request->validate([
             'email' => 'required|unique:clients|max:255',
             'nom' => 'required',
             'prenom' => 'required',
@@ -36,17 +31,17 @@ class AuthClientController extends Controller
             'password' => 'required|min:6',
         ]);
         $user = Client::create([
-            'nom' => $request->nom,
-            'prenom' => $request->prenom,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'phone' => $request->phone
+            'nom' => $valide['nom'],
+            'prenom' => $valide['prenom'],
+            'email' => $valide['email'],
+            'password' => bcrypt($valide['password']),
+            'phone' => $valide['phone']
         ]);
 
         if ($user) {
             return response()->json($user, 201);
         }
-        return response()->json(false, 500); 
+        return response()->json(false, 500);
     }
 
     /**
@@ -101,12 +96,13 @@ class AuthClientController extends Controller
         $request->validate([
             'email' => 'required|email',
             'nom' => 'required|string|max:255'
-        ]); 
+        ]);
         $code = rand(100000, 999999);
         $user = Client::where('email', $request->email)->first(); // Correction ici
 
         if (!$user) {
-            Mail::to($request->email)->send(new MobileMail(['nom' => $request->nom, 'code' => $code, "sujet" => "Confirmer l'adresse email"]));
+            $data = ['nom' => $request->nom, 'code' => $code, "sujet" => "Confirmer l'adresse email"];
+            MobileMailJob::dispatch($request->email, $data);
             return response()->json([
                 "code" => $code,
             ], 200); // Retourner un objet JSON
