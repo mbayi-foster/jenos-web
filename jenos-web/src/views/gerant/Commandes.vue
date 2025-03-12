@@ -2,7 +2,7 @@
     <div class="mb-5">
         <BreadCumb hote="Commandes" lien="#" page="Commandes" :principale="true" />
     </div>
-    <TablePlats @effacer="effacer" @change-status="change" :data="plats" :columns="tablesColumn" :has-data="hasData"
+    <TableCommandes @effacer="effacer" @change-status="change" :data="plats" :columns="tablesColumn" :has-data="hasData"
         :load="load" :refresh="fetchItems" />
 
 </template>
@@ -11,6 +11,7 @@
 import { onMounted, ref } from 'vue';
 import BreadCumb from '@/components/BreadCumb.vue';
 import TablePlats from '@/components/tables/TablePlats.vue';
+import TableCommandes from '@/components/tables/TableCommandes.vue';
 import api from '@/api/api'
 
 const plats = ref([])

@@ -17,12 +17,12 @@
                 </div>
             </div>
             <div>
-                <router-link to="/plats/create" title="Ajouter un plat">
+                <!--  <router-link to="/plats/create" title="Ajouter un plat">
                     <button type="button"
                         class="text-center rounded-full text-green-400 hover:text-white border border-green-400 hover:bg-green-500 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium text-sm w-12 h-12 me-2 mb-2 dark:border-green-300 dark:text-green-300 dark:hover:text-white dark:hover:bg-green-400 dark:focus:ring-green-900">
                         <i class="fa-solid fa-plus"></i>
                     </button>
-                </router-link>
+                </router-link> -->
                 <button type="button" title="Actualiser" @click="refresh()"
                     class="me-5 text-center rounded-full text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium text-sm w-12 h-12 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
                     <i class="fa-solid fa-rotate"></i>
@@ -44,7 +44,7 @@
             <tbody v-if="hasData && !load">
                 <tr v-for="(item, index) in paginatedData" :key="item.id" scope="row" class="px-6 py-4">
                     <td>
-                        {{ index+1 }}
+                        {{ index + 1 }}
                     </td>
                     <td v-for="column in columns" :key="column.key">
                         <div v-if="column.key == 'photo'">
@@ -64,7 +64,7 @@
                         </div>
                     </td>
                     <td class="text-center">
-                       <!--  <div class="inline-flex rounded-md shadow-sm" role="group">
+                        <!--  <div class="inline-flex rounded-md shadow-sm" role="group">
                             <change-status msg-oui="Vous êtes sur le point d'accepter la commande cliqu"
                             msg-non="Voulez vous vraiment désactiver ce plat"  :id="item['id']" :status="item['status']" @change-status="change" />
                            <supprimer  msg="Voulez vous vraiment supprimer ce plat" :id="item['id']" @effacer="effacer"/>
@@ -215,10 +215,10 @@ const goToPage = (page) => {
 
 const emit = defineEmits()
 const change = (id) => {
-  emit('change-status', id); 
+    emit('change-status', id);
 };
 const effacer = (id) => {
-  emit('effacer', id);
+    emit('effacer', id);
 };
 </script>
 

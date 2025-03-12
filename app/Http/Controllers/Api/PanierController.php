@@ -21,7 +21,27 @@ class PanierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            "client_id" => "required|exists:clients,id",
+            "plat_id" => "required|exists:plats,id,status,1",
+            "qte" => "required",
+            "prix" => "required",
+        ]);
+
+        $panier = Panier::create(
+            [
+                "prix" => $validated["prix"],
+                "client_id" => $validated["client_id"],
+                "plat_id" => $validated["plat_id"],
+                "qte" => $validated["qte"],
+
+            ]
+        );
+
+        if ($panier) {
+            return response()->json($validated, 201);
+        }
+        return response()->json(false, 500);
     }
 
     /**
