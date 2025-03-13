@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Plat;
+use DateTime;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -82,6 +83,8 @@ class PlatController extends Controller
         if (strpos($url, 'http://localhost') !== false) {
             $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
         }
+        $date = new DateTime($plat->created_at);
+        setlocale(LC_TIME, 'fr_FR.UTF-8');
         return response()->json([
             "id" => $plat->id,
             "nom" => $plat->nom,
@@ -91,7 +94,7 @@ class PlatController extends Controller
             "status" => $plat->status,
             "like" => $plat->like,
             "commandes" => $plat->commandes,
-            "date"=>$plat->created_at
+            "date"=> strftime('%A, %d %B %Y à %Hh%M', $date->getTimestamp())
         ]);
     }
 
