@@ -17,7 +17,7 @@ const tablesColumn = ref([
     { key: 'nom', label: 'Nom' },
     { key: 'photo', label: 'Photo' },
     { key: 'prix', label: 'Prix' },
-    { key: 'qte', label: 'Quantité' },
+    { key: 'commandes', label: 'Commandes' },
     { key: 'like', label: 'Like' },
     { key: 'status', label: 'Status' },
 

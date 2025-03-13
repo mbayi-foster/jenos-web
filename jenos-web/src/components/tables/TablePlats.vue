@@ -55,10 +55,10 @@
                             <div class="h-2.5 w-2.5 rounded-full bg-red-500 me-2" v-if="item['status'] == false"></div>
                             Status
                         </div>
-                        <div v-else-if="column.key == 'qte'">
+                        <!-- <div v-else-if="column.key == 'qte'">
                             <p>Disponible : {{ item['qte'] }}</p>
                             <p>Commandées : {{ item['commandes'] }}</p>
-                        </div>
+                        </div> -->
                         <div v-else class="align-top text-start justify-start items-start flex">
                             {{ item[column.key] }}
                         </div>
