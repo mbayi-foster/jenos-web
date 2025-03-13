@@ -13,7 +13,7 @@ import { ref, onMounted, computed } from "vue"
 
 const menus = ref([])
 const tablesColumn = ref([
-    { key: 'nom', label: 'Menus' },
+    { key: 'nom', label: 'Nom' },
     { key: 'photo', label: 'Photo' },
     { key: 'count', label: 'Plats' },
     { key: 'status', label: 'Status' },

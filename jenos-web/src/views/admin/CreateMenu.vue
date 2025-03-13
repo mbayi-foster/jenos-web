@@ -4,6 +4,18 @@
     </div>
     <div class="px-4 mx-auto max-w-2xl mt-4">
         <form method="post" enctype="multipart/form-data" @submit.prevent="handleSubmit">
+            <div v-if="erreur.isError" class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800"
+                role="alert">
+                <svg class="shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
+                </svg>
+                <span class="sr-only">Info</span>
+                <div>
+                    <span class="font-medium">Erreur !</span> {{ erreur.msg }}
+                </div>
+            </div>
             <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
                 <div class="sm:col-span-2">
                     <label for="nom" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nom*</label>
@@ -82,6 +94,10 @@ const menu = ref({
 const plats = ref([])
 const load = ref(false)
 const imagePreview = ref(null);
+const erreur = ref({
+    isError: false,
+    msg: ""
+})
 
 const handleFileUpload = (event) => {
     const file = event.target.files[0];
@@ -107,6 +123,7 @@ const fetchPlats = async () => {
 
 
 const handleSubmit = async () => {
+    erreur.value.isError = false
     load.value = true
     const formData = new FormData();
     formData.append('nom', menu.value.nom);
@@ -114,23 +131,33 @@ const handleSubmit = async () => {
     if (menu.value.photo) {
         formData.append('photo', menu.value.photo);
     } else {
-        console.error('Aucun fichier photo trouvé.');
+        erreur.value.isError = true;
+        erreur.value.msg = "Veillez choisir une photo"
         return; // Arrêtez l'exécution si aucun fichier
     }
 
-    formData.forEach((e) => {
-        console.log(e)
-    })
-    try {
-        console.log('Plat avant envoi:', menu.value);
-        const data = await api.post('/menus', formData);
-        console.log("Données après soumission : ", data);
-        load.value = false
-        router.push('/menus'); // Décommenter si vous souhaitez rediriger
-    } catch (error) {
-        load.value = false
-        console.error('Erreur lors du chargement des éléments:', error.response ? error.response.data : error.message);
+    if (menu.value.plats.length < 1) {
+        erreur.value.isError = true
+        erreur.value.msg = "Veillez choisir au moins un plat pour le menu"
+        load.value= false
+        return
     }
+
+      formData.forEach((e) => {
+         console.log(e)
+     })
+     try {
+         console.log('Plat avant envoi:', menu.value);
+         const data = await api.post('/menus', formData);
+         console.log("Données après soumission : ", data);
+         load.value = false
+         router.push('/menus'); // Décommenter si vous souhaitez rediriger
+     } catch (error) {
+         load.value = false
+         erreur.value.isError = true
+         erreur.value.msg="Une erreur s'est produite veillez réessayer"
+         console.error('Erreur lors du chargement des éléments:', error.response ? error.response.data : error.message);
+     } 
 };
 
 onMounted(fetchPlats)
