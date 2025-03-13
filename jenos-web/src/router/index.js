@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Login from '@/views/auth/Login.vue'
 import Users from '@/views/admin/users/Users.vue'
-import Plat from '@/views/admin/CreatePlat.vue'
+import CreatePlat from '@/views/admin/CreatePlat.vue'
 import Plats from '@/views/admin/Plats.vue'
+import Plat from '@/views/admin/details/Plat.vue'
 import Menus from '@/views/admin/Menus.vue'
 import CreateMenu from '@/views/admin/CreateMenu.vue'
 import Zones from '@/views/admin/users/Zones.vue'
@@ -36,7 +37,7 @@ const router = createRouter({
       path: '/plats/create',
       name: 'Nouveau plat',
       meta: { requiresAuth: true },
-      component: Plat
+      component: CreatePlat
     },
     {
       path: '/menus',
@@ -80,6 +81,17 @@ const router = createRouter({
       meta: { requiresAuth: true },
       component: CreateUser
     },
+
+    //routes details
+
+    {
+      path: '/plat/:id', // :id est un paramètre dynamique
+      name: 'Plat',
+      component: Plat,
+      props: true,
+      meta: { requiresAuth: true }, // permet de passer le paramètre comme prop au composant
+    }
+
   ],
 })
 router.beforeEach((to, from, next) => {

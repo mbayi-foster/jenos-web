@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class PlatController extends Controller
 {
+    private $url = "http://localhost:8000";
     /**
      * Display a listing of the resource.
      */
@@ -77,13 +78,20 @@ class PlatController extends Controller
     public function show(string $id)
     {
         $plat = Plat::find($id);
+        $url = Storage::disk('public')->url($plat->photo);
+        if (strpos($url, 'http://localhost') !== false) {
+            $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
+        }
         return response()->json([
             "id" => $plat->id,
             "nom" => $plat->nom,
             "prix" => $plat->prix,
-            "photo" => $plat->photo,
+            "photo" => $url,
             "details" => $plat->details,
             "status" => $plat->status,
+            "like" => $plat->like,
+            "commandes" => $plat->commandes,
+            "date"=>$plat->created_at
         ]);
     }
 
