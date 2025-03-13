@@ -23,6 +23,10 @@
                     <h2 class="text-2xl font-bold mb-6">Connectez vous</h2>
 
                     <form method="POST" @submit.prevent="submitForm">
+                        <div v-if="hasError" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                            role="alert">
+                            <span class="font-medium">Erreur !</span> Adresse email ou mot de passe incorrecte !
+                        </div>
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-700" for="email">Email</label>
                             <input type="email" id="email" v-model="data.email"
@@ -33,7 +37,7 @@
                             <input type="password" id="password" v-model="data.password"
                                 class="mt-1 block w-full border border-gray-300 p-2 rounded-full" required>
                         </div>
-                        <!--    <div class="flex items-center mb-4">
+                        <!-- <div class="flex items-center mb-4">
                             <input type="checkbox" id="remember" class="mr-2 rounded-full" name="remember">
                             <label for="remember" class="text-sm text-gray-600">Rester connecté</label>
                         </div> -->
