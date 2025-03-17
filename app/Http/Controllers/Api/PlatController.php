@@ -10,7 +10,12 @@ use Illuminate\Http\Request;
 
 class PlatController extends Controller
 {
-    private $url = "http://localhost:8000";
+    private $url;
+
+    public function __construct()
+    {
+        $this->url = env("APP_URL");
+    }
     /**
      * Display a listing of the resource.
      */
@@ -81,7 +86,7 @@ class PlatController extends Controller
         $plat = Plat::find($id);
         $url = Storage::disk('public')->url($plat->photo);
         if (strpos($url, 'http://localhost') !== false) {
-            $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
+            $url = str_replace('http://localhost', $this->url.":8000", $url); // Remplacez par le port approprié
         }
         $date = new DateTime($plat->created_at);
         setlocale(LC_TIME, 'fr_FR.UTF-8');
@@ -94,7 +99,7 @@ class PlatController extends Controller
             "status" => $plat->status,
             "like" => $plat->like,
             "commandes" => $plat->commandes,
-            "date"=> strftime('%A, %d %B %Y à %Hh%M', $date->getTimestamp())
+            "date" => strftime('%A, %d %B %Y à %Hh%M', $date->getTimestamp())
         ]);
     }
 

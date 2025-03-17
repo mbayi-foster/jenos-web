@@ -10,8 +10,13 @@ use App\Models\Plat;
 
 class MobileHomeController extends Controller
 {
-    private $url = "http://localhost:8000";
     private $photo = "https://cdn.pixabay.com/photo/2024/09/15/13/03/cows-9049119_1280.jpg";
+    private $url;
+
+    public function __construct()
+    {
+        $this->url = env("APP_URL");
+    }
     public function home()
     {
         $offres = [];
@@ -47,7 +52,7 @@ class MobileHomeController extends Controller
                 'id' => (int) $plat->id,
                 'nom' => $plat->nom,
                 'details' => $plat->details,
-                'photo' => $url,
+                'photo' => $this->photo,
                 'prix' => $plat->prix,
                 'like' => $plat->like,
                 'created_at' => $plat->created_at
@@ -62,7 +67,7 @@ class MobileHomeController extends Controller
                 'id' => (int) $plat->id,
                 'nom' => $plat->nom,
                 'details' => $plat->details,
-                'photo' => $url,
+                'photo' => $this->photo,
                 'prix' => $plat->prix,
                 'like' => $plat->like,
                 'created_at' => $plat->created_at
@@ -92,7 +97,7 @@ class MobileHomeController extends Controller
                 "id" => $menu->id,
                 "nom" => $menu->nom,
                 "details" => $menu->details,
-                "photo" => $menu->photo,
+                "photo" => $url,
                 "created_at" => $menu->created_at
             ];
         }

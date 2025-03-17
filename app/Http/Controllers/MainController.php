@@ -26,15 +26,15 @@ class MainController
                 ]);
             }
         }
-        $rootUser = User::where('email', 'root@jenos-food.top')->first();
+        $rootUser = User::where('email', 'admin@jenos-food.top')->first();
 
         if(!$rootUser){
             $roles = [1,2,3];
             $user = User::create([
                 'nom' => "Root",
                 'prenom' => "Adiminstrateur",
-                'email' => "root@jenos-food.top",
-                'password' => bcrypt('123456'),
+                'email' => "admin@jenos-food.top",
+                'password' => bcrypt('admin'),
             ]);
     
             if ($user) {
