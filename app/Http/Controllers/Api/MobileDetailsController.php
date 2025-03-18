@@ -37,4 +37,8 @@ class MobileDetailsController extends Controller
         ];
         return response()->json($plat, 200);
     }
+
+    public function plat_menu($id){
+
+    }
 }
