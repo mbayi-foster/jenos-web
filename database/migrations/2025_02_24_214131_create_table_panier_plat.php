@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('panier_plat', function (Blueprint $table) {
+            $table->bigIncrements('id'); 
             $table->foreignId('panier_id')->constrained()->onDelete('cascade');
             $table->foreignId('plat_id')->constrained()->onDelete('cascade');
         });

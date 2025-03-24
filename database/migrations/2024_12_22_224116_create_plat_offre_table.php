@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('plat_offre', function (Blueprint $table) {
+            $table->bigIncrements('id'); 
             $table->foreignId('offre_id')->constrained()->onDelete('cascade');
             $table->foreignId('plat_id')->constrained()->onDelete('cascade');
         });

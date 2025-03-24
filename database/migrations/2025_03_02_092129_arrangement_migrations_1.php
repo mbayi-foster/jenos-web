@@ -13,6 +13,7 @@ return new class extends Migration
     {
         //
         Schema::create("commande_panier", function (Blueprint $table) {
+            $table->bigIncrements('id'); 
         $table->foreignId("commande_id")->constrained()->cascadeOnDelete();
         $table->foreignId("panier_id")->constrained()->cascadeOnDelete();
         });
