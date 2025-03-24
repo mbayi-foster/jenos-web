@@ -67,7 +67,7 @@
             <p>
                 Mot de passe : <b>{{$data['password']}}</b>
             </p>
-            <p>Votre compte a été créé avec succès veillez vous cliquer <a href="{{route('home')}}">ici</a> pour accèder et commencer à gérer !</p>
+            <p>Votre compte a été créé avec succès veillez vous cliquer <a href="{{url('/')}}">ici</a> pour accèder et commencer à gérer !</p>
         </div>
         <div class="footer">
             <p>&copy; 2025 Jenos-Food. All rights reserved.</p>

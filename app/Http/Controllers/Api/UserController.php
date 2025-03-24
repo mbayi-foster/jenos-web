@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Mail\WebMail;
+use App\Jobs\SendEmailJob;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -62,7 +63,8 @@ class UserController extends Controller
                 "password" => "123456",
                 'sujet' => "Confirmatiom du compte"
             ];
-            Mail::to($user->email)->send(new WebMail($data));
+         //  SendEmailJob::dispatch($user->email, $data);
+             Mail::to($user->email)->send(new WebMail($data));
             return response()->json($user, 200);
         } else {
             return response()->json(false, 500);
@@ -114,7 +116,7 @@ class UserController extends Controller
         ]);
         $user = User::findOrFail($id);
 
-         if ($user) {
+        if ($user) {
             $user->phone = $validated['phone'];
             $user->nom = $validated['nom'];
             $user->prenom = $validated['prenom'];
@@ -122,7 +124,7 @@ class UserController extends Controller
             $user->roles()->attach($validated['roles']);
             $user->save();
             return response()->json(true, 200);
-        } 
+        }
         return response()->json($validated, 200);
     }
 

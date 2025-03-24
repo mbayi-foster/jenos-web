@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\MobileMailJob;
+use App\Mail\MobileMail;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class AuthClientController extends Controller
 {
@@ -102,7 +104,8 @@ class AuthClientController extends Controller
 
         if (!$user) {
             $data = ['nom' => $request->nom, 'code' => $code, "sujet" => "Confirmer l'adresse email"];
-            MobileMailJob::dispatch($request->email, $data);
+            Mail::to($request->email)->send(new MobileMail($data));
+            // MobileMailJob::dispatch($request->email, $data);
             return response()->json([
                 "code" => $code,
             ], 200); // Retourner un objet JSON
