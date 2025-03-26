@@ -15,6 +15,6 @@ class Panier extends Model
     }
 
     public function plats(){
-        return $this->belongsTo(Plat::class);
+        return $this->belongsTo(Plat::class, "plat_id");
     }
 }

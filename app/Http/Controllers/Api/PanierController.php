@@ -29,28 +29,42 @@ class PanierController extends Controller
             "prix" => "required",
         ]);
 
-        $panier = Panier::create(
-            [
-                "prix" => $validated["prix"],
-                "client_id" => $validated["client_id"],
-                "plat_id" => $validated["plat_id"],
-                "qte" => $validated["qte"],
-
-            ]
-        );
-
+        $panier = Panier::where("client_id", $validated['client_id'])->where("plat_id", $validated["plat_id"])->first();
         if ($panier) {
+            $panier->prix += $validated["prix"];
+            $panier->qte += $validated["qte"];
+            $panier->save();
             return response()->json($panier, 201);
+        } else if(!$panier) {
+            $panier = Panier::create(
+                [
+                    "prix" => $validated["prix"],
+                    "client_id" => $validated["client_id"],
+                    "plat_id" => $validated["plat_id"],
+                    "qte" => $validated["qte"],
+
+                ]
+            );
+            return response()->json(true, 201);
         }
+
+
         return response()->json(false, 500);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Panier $panier)
+    public function show(string $id)
     {
-        //
+        $panier_before = Panier::where("client_id", $id)->with("plats")->get();
+
+        foreach ($panier_before as $panier) {
+            $panier[]= [
+                
+            ];
+        }
+        return response()->json($panier_before, 200);
     }
 
     /**
@@ -64,8 +78,15 @@ class PanierController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Panier $panier)
+    public function destroy(String $id)
     {
-        //
+        $panier = Panier::where("id", $id)->first();
+
+        if($panier){
+            $panier->delete();
+            return response()->json(true, 200);
+        }else{
+            return response()->json(false, 500);
+        }
     }
 }
