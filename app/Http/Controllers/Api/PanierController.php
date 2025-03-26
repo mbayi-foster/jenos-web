@@ -13,7 +13,8 @@ class PanierController extends Controller
      */
     public function index()
     {
-        //
+        $paniers = Panier::all();
+        return response()->json($paniers, 200);
     }
 
     /**
@@ -39,7 +40,7 @@ class PanierController extends Controller
         );
 
         if ($panier) {
-            return response()->json($validated, 201);
+            return response()->json($panier, 201);
         }
         return response()->json(false, 500);
     }
