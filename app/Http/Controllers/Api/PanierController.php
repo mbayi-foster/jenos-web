@@ -76,7 +76,7 @@ class PanierController extends Controller
             }
             $paniers[] = [
                 "id"=>$panier->id,
-                "client_id"=>$panier->id,
+                "client_id"=>$panier->client_id,
                 "status"=>$panier->status,
                 "prix"=>$panier->prix,
                 "qte"=>$panier->qte,
