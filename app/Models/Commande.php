@@ -6,7 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
 {
-    protected $fillable = [];
+    protected $fillable = [
+        "ticket",
+        "prix",
+        "status",
+        "adresse",
+        "localisation",
+        "facture",
+        "mois",
+        "livreur",
+        "client_id",
+        "zone_id",
+        "livraison",
+        "confirm"
+    ];
 
     public function client(){
         return $this->belongsTo(User::class, 'client_id');
