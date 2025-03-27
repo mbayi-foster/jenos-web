@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Commande;
+use App\Models\Panier;
 use Illuminate\Http\Request;
 use DateTime;
 class CommandeController extends Controller
@@ -23,7 +24,7 @@ class CommandeController extends Controller
     {
         $validated = $request->validate(
             [
-                "prix"=>"required|numeric",
+                "prix" => "required|numeric",
                 'paniers' => 'required|array', // Assurez-vous que 'roles' est un tableau
                 'paniers.*' => 'exists:paniers,id',
                 'client_id' => 'required|exists:clients,id'
@@ -51,13 +52,20 @@ class CommandeController extends Controller
         $ticket = strtoupper($ticket);
 
         $commande = Commande::create([
-            "prix"=>$validated["prix"],
+            "prix" => $validated["prix"],
             "ticket" => $ticket,
-            "mois"=>"$mois-$annee",
+            "mois" => "$mois-$annee",
             "client_id" => $validated['client_id']
         ]);
 
         if ($commande) {
+            foreach ($validated["paniers"] as $panier_id) {
+                $panier = Panier::find($panier_id);
+                if ($panier) {
+                    $panier->status = true;
+                    $panier->save();
+                }
+            }
             $commande->paniers()->attach($validated['paniers']);
             return response()->json(true, 201);
         }
