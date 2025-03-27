@@ -66,7 +66,7 @@ class PanierController extends Controller
      */
     public function show(string $id)
     {
-        $panier_before = Panier::where("client_id", $id)->with("plats")->get();
+        $panier_before = Panier::where("client_id", $id)->where("status", false)->with("plats")->get();
         $paniers = [];
         foreach ($panier_before as $panier) {
             $plat = $panier->plats;
