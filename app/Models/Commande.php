@@ -18,7 +18,9 @@ class Commande extends Model
         "client_id",
         "zone_id",
         "livraison",
-        "confirm"
+        "confirm",
+        "note",
+        "classer"
     ];
 
     public function client(){
@@ -31,5 +33,9 @@ class Commande extends Model
 
     public function plat(){
         return $this->belongsToMany(Plat::class, 'commande_plat');
+    }
+
+    public function paniers(){
+     return   $this->belongsToMany(Panier::class, "commande_panier");
     }
 }
