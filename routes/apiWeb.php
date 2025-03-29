@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Api\AuthClientController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\PlatController;
 use App\Http\Controllers\Api\RoleController;
@@ -26,3 +27,6 @@ Route::post('login/users', [UserController::class, 'login']);
 Route::post('register', [AuthClientController::class, 'store'])->name('api-register');
 
 Route::get('gerants', [UserController::class, 'gerants'])->name('gerants');
+
+/* tablea de bord */
+Route::apiResource("dashboard", DashboardController::class);
