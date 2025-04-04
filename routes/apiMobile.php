@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Api\AuthClientController;
 use App\Http\Controllers\Api\CommandeController;
+use App\Http\Controllers\Api\MapController;
 use App\Http\Controllers\Api\MenuMobileController;
 use App\Http\Controllers\Api\MobileDetailsController;
 use App\Http\Controllers\Api\MobileHomeController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\Api\PanierController;
 use Illuminate\Support\Facades\Route;
 
 Route::apiResource("paniers", PanierController::class);
+Route::apiResource("map", MapController::class);
 Route::apiResource("commandes", CommandeController::class);
 Route::get("mobile-home", [MobileHomeController::class, "home"]);
 //Route::get("mobile-menu", [MobileHomeController::class, "menu"]);
