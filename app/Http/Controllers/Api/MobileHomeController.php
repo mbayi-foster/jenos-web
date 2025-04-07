@@ -19,63 +19,19 @@ class MobileHomeController extends Controller
     }
     public function home()
     {
-        $offres = [];
-        $plat_recents = [];
-        $plat_pops = [];
-        $plat_most_pops = [];
+        /* les plats reçents */
         $plat_recents_before = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get();
+        $plat_recents = $plat_recents_before->map(fn($plat) => $plat->toArray());
+
+        /* plats populaires */
         $plat_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->take(5)->get();
+        $plat_pops = $plat_pops_before->map(fn($plat) => $plat->toArray());
+
+        /* plats très populaire */
         $plat_most_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->orderBy('commandes', 'desc')->take(5)->get();
-
-        foreach ($plat_recents_before as $plat) {
-            $url = Storage::disk('public')->url($plat->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-            }
-            $plat_recents[] = [
-                'id' => (int) $plat->id,
-                'nom' => $plat->nom,
-                'details' => $plat->details,
-                'photo' => $this->photo,
-                'prix' => $plat->prix,
-                'like' => $plat->like,
-                'created_at' => $plat->created_at
-            ];
-        }
-
-        foreach ($plat_most_pops_before as $plat) {
-            $url = Storage::disk('public')->url($plat->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-            }
-            $plat_most_pops[] = [
-                'id' => (int) $plat->id,
-                'nom' => $plat->nom,
-                'details' => $plat->details,
-                'photo' => $this->photo,
-                'prix' => $plat->prix,
-                'like' => $plat->like,
-                'created_at' => $plat->created_at
-            ];
-        }
-        foreach ($plat_pops_before as $plat) {
-            $url = Storage::disk('public')->url($plat->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-            }
-            $plat_pops[] = [
-                'id' => (int) $plat->id,
-                'nom' => $plat->nom,
-                'details' => $plat->details,
-                'photo' => $this->photo,
-                'prix' => $plat->prix,
-                'like' => $plat->like,
-                'created_at' => $plat->created_at
-            ];
-        }
+        $plat_most_pops = $plat_most_pops_before->map(fn($plat) => $plat->toArray());
 
         $res = [
-            'offres' => $offres,
             "plat_recents" => $plat_recents,
             "plat_pops" => $plat_pops,
             "plat_most_pops" => $plat_most_pops
@@ -178,30 +134,16 @@ class MobileHomeController extends Controller
     public function plats_by_menu($id)
     {
         $plats = [];
-        $plat_by_menu = Menu::with([
+        $plat_by_menu = Menu::where('id', $id)->with([
             'plats' => function ($query) {
                 $query->where('status', true);
             }
         ])
-            ->where('id', $id)
+
             ->where('status', true)
             ->first();
 
-        foreach ($plat_by_menu['plats'] as $plat) {
-            $url = Storage::disk('public')->url($plat->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-            }
-            $plats[] = [
-                'id' => (int) $plat->id,
-                'nom' => $plat->nom,
-                'details' => $plat->details,
-                'photo' => $url,
-                'prix' => $plat->prix,
-                'like' => $plat->like,
-                'created_at' => $plat->created_at
-            ];
-        }
+        $plats = $plat_by_menu->map(fn($plat) => $plat->toArray());
 
         return response()->json($plats, 200);
     }

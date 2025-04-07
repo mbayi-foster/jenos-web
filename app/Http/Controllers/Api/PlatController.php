@@ -18,32 +18,19 @@ class PlatController extends Controller
     }
     /**
      * Display a listing of the resource.
+     * Recuperer tous les plats
      */
     public function index()
     {
         $platsDb = Plat::all();
-        $plats = [];
+        $plats = $platsDb->map(fn($plat) => $plat->toArray());
 
-        foreach ($platsDb as $plat) {
-            $url = Storage::disk('public')->url($plat->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', 'http://localhost:8000', $url); // Remplacez par le port approprié
-            }
-            $plats[] = [
-                "id" => $plat->id,
-                "nom" => $plat->nom,
-                "photo" => $url,
-                "status" => $plat->status,
-                "prix" => $plat->prix,
-                "commandes" => $plat->commandes,
-                "like" => $plat->like
-            ];
-        }
         return response()->json($plats);
     }
 
     /**
      * Store a newly created resource in storage.
+     * Creer un plat
      */
     public function store(Request $request)
     {
@@ -80,27 +67,12 @@ class PlatController extends Controller
 
     /**
      * Display the specified resource.
+     * Recuperer un plat par son id
      */
     public function show(string $id)
     {
         $plat = Plat::find($id);
-        $url = Storage::disk('public')->url($plat->photo);
-        if (strpos($url, 'http://localhost') !== false) {
-            $url = str_replace('http://localhost', $this->url.":8000", $url); // Remplacez par le port approprié
-        }
-        $date = new DateTime($plat->created_at);
-        setlocale(LC_TIME, 'fr_FR.UTF-8');
-        return response()->json([
-            "id" => $plat->id,
-            "nom" => $plat->nom,
-            "prix" => $plat->prix,
-            "photo" => $url,
-            "details" => $plat->details,
-            "status" => $plat->status,
-            "like" => $plat->like,
-            "commandes" => $plat->commandes,
-            "date" => strftime('%A, %d %B %Y à %Hh%M', $date->getTimestamp())
-        ]);
+        return response()->json($plat, 200);
     }
 
     /**
@@ -113,6 +85,7 @@ class PlatController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * Supprimer le plat
      */
     public function destroy(string $id)
     {
@@ -126,20 +99,17 @@ class PlatController extends Controller
         return response()->json(["error" => "non trouvé"], 400);
     }
 
+    /* changement du status du plat */
     public function change_status(string $id)
     {
         $plat = Plat::find($id);
 
-        if ($plat->status == true) {
-            $plat->status = false;
-        } else {
-            $plat->status = true;
-        }
-
+        $plat->status = $plat->status == true ? false : true;
         $plat->save();
         return response()->json($plat);
     }
 
+    
     public function plats_status()
     {
         $plats = Plat::where("status", 1)->get();
