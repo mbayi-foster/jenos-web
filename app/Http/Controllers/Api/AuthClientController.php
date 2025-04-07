@@ -88,7 +88,10 @@ class AuthClientController extends Controller
                 "created_at" => $user->created_at,
                 "photo" => $user->photo,
                 "phone" => $user->phone,
-                "status" => $user->status
+                "status" => $user->status,
+                "adresse" => $user->adresse,
+                "lat" => $user->location_lat,
+                "lon" => $user->location_lon,
             ], 200);
         }
         return response()->json(null, 500);

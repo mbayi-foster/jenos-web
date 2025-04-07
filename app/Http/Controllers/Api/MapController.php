@@ -25,7 +25,20 @@ class MapController extends Controller
 
             $client->save();
         }
-        return response()->json($client, 201);
+        return response()->json([
+            'id' => $client->id,
+            'prenom' => $client->prenom,
+            'nom' => $client->nom,
+            'email' => $client->email,
+            'phone' => $client->phone,
+            'status' => $client->status,
+            'created_at' => $client->created_at,
+            'adresse' => [
+                'adresse' => $client->adresse,
+                'lat' => $client->location_lat,
+                'lon' => $client->location_lon
+            ]
+        ], 201);
 
     }
 }
