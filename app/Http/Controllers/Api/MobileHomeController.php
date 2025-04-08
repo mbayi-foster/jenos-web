@@ -134,17 +134,15 @@ class MobileHomeController extends Controller
     public function plats_by_menu($id)
     {
         $plats = [];
-        $plat_by_menu = Menu::where('id', $id)->with([
-            'plats' => function ($query) {
-                $query->where('status', true);
-            }
-        ])
-
+        $plat_by_menu = Menu::where('id', $id)
             ->where('status', true)
+            ->with([
+                'plats' => function ($query) {
+                    $query->where('status', true);
+                }
+            ])
             ->first();
-
-        $plats = $plat_by_menu->map(fn($plat) => $plat->toArray());
-
+        $plats = $plat_by_menu['plats']->map(fn($plat) => $plat->toArray());
         return response()->json($plats, 200);
     }
 }

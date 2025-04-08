@@ -20,22 +20,8 @@ class MobileDetailsController extends Controller
     public function plat($id)
     {
         $plat = Plat::find($id);
-        $url = Storage::disk('public')->url($plat->photo);
-        if (strpos($url, 'http://localhost') !== false) {
-            $url = str_replace('http://localhost', $this->url.":8000", $url); // Remplacez par le port approprié
-        }
-
-        $plat = [
-            "id" => $plat->id,
-            'nom' => $plat->nom,
-            'details' => $plat->details,
-            "like" => $plat->like,
-            'photo' => $this->photo,
-            'qte' => $plat->qte,
-            'prix' => $plat->prix,
-            'created_at' => $plat->created_at
-        ];
-        return response()->json($plat, 200);
+        
+        return response()->json($plat->toArray(), 200);
     }
 
     public function plat_menu($id){
