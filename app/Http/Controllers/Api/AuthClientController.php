@@ -60,7 +60,25 @@ class AuthClientController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            "nom" => "required",
+            "prenom" => "required",
+            "phone" => "required"
+        ]);
+
+        $user = Client::find($id);
+
+        if ($user) {
+            $user->nom = $validated['nom'];
+            $user->prenom = $validated['prenom'];
+            $user->phone = $validated['phone'];
+
+            $user->save();
+
+            return response()->json($user->toArray(), 201);
+        }
+
+        return response()->json(false, 500);
     }
 
     /**
@@ -106,4 +124,5 @@ class AuthClientController extends Controller
         }
 
     }
+
 }
