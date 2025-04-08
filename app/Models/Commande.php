@@ -11,7 +11,8 @@ class Commande extends Model
         "prix",
         "status",
         "adresse",
-        "localisation",
+        "lat",
+        "long",
         "facture",
         "mois",
         "livreur",
@@ -23,19 +24,23 @@ class Commande extends Model
         "classer"
     ];
 
-    public function client(){
+    public function client()
+    {
         return $this->belongsTo(User::class, 'client_id');
     }
 
-    public function livraison(){
+    public function livraison()
+    {
         return $this->hasOne(Livraison::class);
     }
 
-    public function plat(){
+    public function plat()
+    {
         return $this->belongsToMany(Plat::class, 'commande_plat');
     }
 
-    public function paniers(){
-     return   $this->belongsToMany(Panier::class, "commande_panier");
+    public function paniers()
+    {
+        return $this->belongsToMany(Panier::class, "commande_panier");
     }
 }

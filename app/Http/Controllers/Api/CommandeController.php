@@ -19,14 +19,18 @@ class CommandeController extends Controller
 
     /**
      * Store a newly created resource in storage.
+     * creation de la commande
      */
     public function store(Request $request)
     {
         $validated = $request->validate(
             [
                 "prix" => "required|numeric",
-                'paniers' => 'required|array', // Assurez-vous que 'roles' est un tableau
+                "paiement" => "required|in:cash,carte,bank,mobile,paypal",
+                "facture" => "required|bool",
+                'paniers' => 'required|array',
                 'paniers.*' => 'exists:paniers,id',
+                'adresse' => 'require|array',
                 'client_id' => 'required|exists:clients,id'
             ]
         );
@@ -53,8 +57,13 @@ class CommandeController extends Controller
 
         $commande = Commande::create([
             "prix" => $validated["prix"],
+            "facture" => $validated['facture'],
+            "paiement" => $validated['paiement'],
             "ticket" => $ticket,
             "mois" => "$mois-$annee",
+            "adresse" => $validated['adresse']['adresse'],
+            "location_lat" => $validated['adresse']['lat'],
+            "location_lon" => $validated['adresse']['lon'],
             "client_id" => $validated['client_id']
         ]);
 
