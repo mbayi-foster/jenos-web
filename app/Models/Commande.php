@@ -26,21 +26,17 @@ class Commande extends Model
 
     public function client()
     {
-        return $this->belongsTo(User::class, 'client_id');
+        return $this->belongsTo(Client::class, 'client_id');
     }
 
-    public function livraison()
-    {
-        return $this->hasOne(Livraison::class);
-    }
-
-    public function plat()
-    {
-        return $this->belongsToMany(Plat::class, 'commande_plat');
-    }
 
     public function paniers()
     {
         return $this->belongsToMany(Panier::class, "commande_panier");
+    }
+
+    public function livreur()
+    {
+        return $this->belongsTo(Livreur::class, 'livreur');
     }
 }
