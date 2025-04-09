@@ -24,6 +24,10 @@ class Livreur extends Model
         return $this->hasMany(Commande::class, 'commandes', 'id');
     }
 
+    public function zone(){
+        return $this->belongsToMany(Zone::class, "zone_livreur", "livreur_id", "zone_id");
+    }
+
     public function toArray()
     {
         $url = Storage::disk('public')->url($this->photo);
