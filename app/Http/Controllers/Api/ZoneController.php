@@ -13,17 +13,8 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        $zonesdB = Zone::with('chefs')->get();
-        $zones = [];
-        foreach ($zonesdB as $zone) {
-        $gerant = $zone->chefs->prenom . " ". $zone->chefs->nom;
-        $zones[]= [
-            'id'=> $zone->id,
-            'nom'=> $zone->nom,
-            "status"=> $zone->status,
-            "gerant"=> $gerant
-        ];
-        }
+        $zonesDB = Zone::all();
+        $zones = $zonesDB->map(fn($zone)=>$zone->toArray());
         return response()->json($zones, 200);
     }
 

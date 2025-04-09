@@ -39,6 +39,7 @@ class LivreurController extends Controller
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'phone' => 'required|numeric|digits_between:9,15', // Exemple de validation
+            'zone' => 'required'
         ]);
 
         $livreur = Livreur::create([
@@ -46,11 +47,11 @@ class LivreurController extends Controller
             'prenom' => $validated['prenom'],
             'email' => $validated['email'],
             'password' => bcrypt('123456'),
-            'phone' => $validated['phone']
+            'phone' => $validated['phone'],
+            'zone_id'=>$validated['zone']
         ]);
 
         if ($livreur) {
-            $livreur->roles()->attach($validated['roles']);
             $data = [
                 'nom' => $livreur->nom,
                 'prenom' => $livreur->prenom,
