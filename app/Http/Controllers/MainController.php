@@ -14,34 +14,35 @@ class MainController
 
         if ($roles->count() == 0) {
             $roles = [
-                "Adiminstrateur",
-                "Gérant",
-                "Livreur"
+                "Administrateur",
+                "Gérant"
             ];
 
             foreach ($roles as $role) {
                 Role::create([
                     "nom" => $role,
-                    "status"=>true,
+                    "status" => true,
                 ]);
             }
         }
+
         $rootUser = User::where('email', 'admin@jenos-food.top')->first();
 
-        if(!$rootUser){
-            $roles = [1,2,3];
+        if (!$rootUser) {
+            $roles = Role::all();
+            $roles = $roles->map(fn($role) => $role->id);
             $user = User::create([
                 'nom' => "Root",
                 'prenom' => "Adiminstrateur",
                 'email' => "admin@jenos-food.top",
                 'password' => bcrypt('admin'),
             ]);
-    
+
             if ($user) {
                 $user->roles()->attach($roles);
+            }
         }
-    }
 
-    return view("welcome");
-}
+        return view("welcome");
+    }
 }
