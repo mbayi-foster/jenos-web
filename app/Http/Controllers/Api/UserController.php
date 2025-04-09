@@ -17,11 +17,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::with("roles")->get();
-        if ($users) {
-            return response()->json($users, 200);
-        }
-        return response()->json(null, 500);
+        $useDB = User::all();
+        $users = $useDB->map(fn($user) => $user->toArray());
+        return response()->json($users, 200);
     }
 
     /**
@@ -63,8 +61,8 @@ class UserController extends Controller
                 "password" => "123456",
                 'sujet' => "Confirmatiom du compte"
             ];
-         //  SendEmailJob::dispatch($user->email, $data);
-             Mail::to($user->email)->send(new WebMail($data));
+            //  SendEmailJob::dispatch($user->email, $data);
+            Mail::to($user->email)->send(new WebMail($data));
             return response()->json($user, 200);
         } else {
             return response()->json(false, 500);
@@ -183,16 +181,7 @@ class UserController extends Controller
         $user = User::where("email", $request->email)->first();
 
         if ($user && Hash::check($password, $user->password)) {
-            return response()->json([
-                "nom" => $user->nom,
-                "prenom" => $user->prenom,
-                "email" => $user->email,
-                "id" => $user->id,
-                "created_at" => $user->created_at,
-                "photo" => $user->photo,
-                "phone" => $user->phone,
-                "status" => $user->status
-            ], 201);
+            return response()->json($user->toArray(), 201);
         }
         return response()->json(false, 500);
     }

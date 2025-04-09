@@ -50,25 +50,45 @@ class User extends Authenticatable
         ];
     }
 
-    public function suggestion(){
-       return $this->hasMany(Suggestion::class);
+    public function suggestion()
+    {
+        return $this->hasMany(Suggestion::class);
     }
 
-    public function commande(){
-      return  $this->hasMany(Commande::class);
+    public function commande()
+    {
+        return $this->hasMany(Commande::class);
     }
 
-    public function message(){
-       return  $this->hasMany(Message::class);
+    public function message()
+    {
+        return $this->hasMany(Message::class);
     }
 
-    public function roles(){
-        return $this->belongsToMany(Role::class, 'role_user', 'user_id','role_id');
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
     }
 
-    public function zones(){
+    public function zones()
+    {
         return $this->hasMany(Zone::class);
     }
 
+    public function toArray()
+    {
+        return [
+            "id" => $this->id,
+            "prenom" => $this->prenom,
+            "nom" => $this->nom,
+            "email" => $this->email,
+            "phone" => $this->phone,
+            "photo" => $this->photo,
+            "status" => $this->status,
+            "created_at" => $this->created_at,
+            "roles"=>$this->roles
+        ];
+
+    }
 
 }
