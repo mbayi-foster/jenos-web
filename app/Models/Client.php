@@ -25,6 +25,12 @@ class Client extends Model
         return $this->hasMany(Panier::class);
     }
 
+    public function commandes(){
+        return $this->hasMany(Commande::class);
+    }
+    public function paiements(){
+        return $this->hasMany(Paiement::class);
+    }
     public function toArray()
     {
         $url = Storage::disk('public')->url($this->photo);
@@ -43,6 +49,7 @@ class Client extends Model
             "status" => $this->status,
             'adresse' => [
                 'adresse' => $this->adresse,
+                'commune'=>$this->commune->id,
                 'lat' => $this->location_lat,
                 'lon' => $this->location_lon
             ]

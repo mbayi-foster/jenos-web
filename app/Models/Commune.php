@@ -4,11 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Message extends Model
+class Commune extends Model
 {
-    //
     protected $fillable = [
-        'contenue', 'commande_id', 'get', 'type', 'src'
+        "nom", "status", "zone_id"
     ];
-
 }

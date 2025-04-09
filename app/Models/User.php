@@ -50,20 +50,6 @@ class User extends Authenticatable
         ];
     }
 
-    public function suggestion()
-    {
-        return $this->hasMany(Suggestion::class);
-    }
-
-    public function commande()
-    {
-        return $this->hasMany(Commande::class);
-    }
-
-    public function message()
-    {
-        return $this->hasMany(Message::class);
-    }
 
     public function roles()
     {

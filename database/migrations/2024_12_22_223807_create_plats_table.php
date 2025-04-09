@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->longText('details')->nullable();
-            $table->longText('photo');
+            $table->string('photo');
             $table->float('prix');
-            $table->boolean('is_offre')->default(false);
             $table->integer('like')->default(0);
+            $table->integer('commandes')->default(0);
             $table->boolean('status')->default(false);
             $table->timestamps();
         });

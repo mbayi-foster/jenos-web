@@ -15,13 +15,15 @@ return new class extends Migration {
             $table->String("prenom");
             $table->String("nom")->nullable();
             $table->string('email')->unique();
-            $table->integer('phone')->nullable();
-            $table->longText('photo')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('photo')->nullable();
             $table->string('password');
+            $table->string('adresse')->nullable();
             $table->double("location_lat")->default(0.0);
             $table->double("location_lon")->default(0.0);
             $table->boolean('status')->default(false);
             $table->boolean('busy')->default(true);
+            $table->foreignId('zone_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

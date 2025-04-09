@@ -11,32 +11,14 @@ class Commande extends Model
         "prix",
         "status",
         "adresse",
-        "lat",
-        "long",
+        'commune_id',
+        "location_lat",
+        "location_lon",
         "facture",
-        "mois",
-        "livreur",
+        "livreur_id",
         "client_id",
         "zone_id",
-        "livraison",
         "confirm",
-        "note",
-        "classer"
+        "note"
     ];
-
-    public function client()
-    {
-        return $this->belongsTo(Client::class, 'client_id');
-    }
-
-
-    public function paniers()
-    {
-        return $this->belongsToMany(Panier::class, "commande_panier");
-    }
-
-    public function livreur()
-    {
-        return $this->belongsTo(Livreur::class, 'livreur');
-    }
 }

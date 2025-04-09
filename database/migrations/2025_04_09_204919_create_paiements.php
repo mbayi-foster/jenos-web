@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('offres', function (Blueprint $table) {
+        Schema::create('paiements', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->longText('details')->nullable();
-            $table->longText('photo');
-            $table->integer('taux')->nullable();
-            $table->boolean('status')->default(false);
+            $table->foreignId("client_id")->constrained()->cascadeOnDelete();
+            $table->enum('type', ["visa", "mastercard"]);
+            $table->string("numero");
+            $table->string("date")->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('offres');
+        Schema::dropIfExists('paiements');
     }
 };

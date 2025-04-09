@@ -11,6 +11,7 @@ class Menu extends Model
         "nom",
         "details",
         "photo",
+        "status"
     ];
 
     public function plats()

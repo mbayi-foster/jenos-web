@@ -20,6 +20,9 @@ return new class extends Migration
             $table->longText('photo')->nullable();
             $table->string('password');
             $table->boolean('status')->default(true);
+            $table->string('adresse')->nullable();
+            $table->float("location_lat")->nullable();
+            $table->float('location_lon')->nullable();
             $table->timestamps();
         });
     }

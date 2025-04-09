@@ -16,7 +16,6 @@ class Plat extends Model
         'prix',
         'qte',
         'commandes',
-        'is_offre',
         'like',
         'status',
     ];

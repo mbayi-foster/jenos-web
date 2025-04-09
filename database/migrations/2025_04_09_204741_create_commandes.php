@@ -15,11 +15,18 @@ return new class extends Migration
             $table->id();
             $table->string('ticket');
             $table->float('prix');
-            $table->string('status')->default('en_cours');
+            $table->string("note")->nullable();
+            $table->boolean('status')->default(false);
             $table->string('adresse');
-            $table->json('localisation')->nullable();
+            $table->float("location_lat")->nullable();
+            $table->float('location_lon')->nullable();
+            $table->enum('livraison', ['null', 'progress', 'finish'])->default("null");
+            $table->enum('paiement', ['cash', 'carte', 'bank', 'mobile', 'paypal'])->nullable();
             $table->boolean('facture')->default(false);
-            $table->string('mois');
+            $table->boolean('confirm')->default(false);
+            $table->foreignId("client_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("livreur_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("zone_id")->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }

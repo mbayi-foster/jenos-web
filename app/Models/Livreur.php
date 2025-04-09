@@ -16,17 +16,11 @@ class Livreur extends Model
         'photo',
         'status',
         'busy',
+        'adresse',
         'location_lat',
-        'location_lon'
+        'location_lon',
+        'zone_id'
     ];
-
-    public function commandes(){
-        return $this->hasMany(Commande::class, 'commandes', 'id');
-    }
-
-    public function zone(){
-        return $this->belongsToMany(Zone::class, "zone_livreur", "livreur_id", "zone_id");
-    }
 
     public function toArray()
     {
