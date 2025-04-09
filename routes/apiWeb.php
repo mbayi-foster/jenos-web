@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\Api\AuthClientController;
+use App\Http\Controllers\Api\CommuneController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\PlatController;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 /* api pour le web de vue js */
 Route::apiResource('users', UserController::class);
+Route::apiResource('communes', CommuneController::class);
 Route::apiResource('zones', ZoneController::class);
 Route::apiResource('plats', PlatController::class);
 Route::apiResource('menus', MenuController::class);

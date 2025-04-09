@@ -34,7 +34,9 @@ class Zone extends Model
             "nom"=>$this->nom,
             "status"=>$this->status,
             "chef"=>"$chef->prenom $chef->nom",
-            "created_at"=>$this->created_at
+            "created_at"=>$this->created_at,
+            "count_commune"=>$this->communes->count(),
+            "communes"=>$this->communes
         ];
     }
 }
