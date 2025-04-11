@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class Client extends Model
 {
+    use HasApiTokens;
     protected $fillable = [
         'nom',
         'prenom',
@@ -25,12 +27,15 @@ class Client extends Model
         return $this->hasMany(Panier::class);
     }
 
-    public function commandes(){
+    public function commandes()
+    {
         return $this->hasMany(Commande::class);
     }
-    public function paiements(){
+    public function paiements()
+    {
         return $this->hasMany(Paiement::class);
     }
+   
     public function toArray()
     {
         $url = Storage::disk('public')->url($this->photo);
@@ -49,7 +54,7 @@ class Client extends Model
             "status" => $this->status,
             'adresse' => [
                 'adresse' => $this->adresse,
-                'commune'=>$this->commune->id,
+                'commune' => $this->commune->id ?? 0,
                 'lat' => $this->location_lat,
                 'lon' => $this->location_lon
             ]

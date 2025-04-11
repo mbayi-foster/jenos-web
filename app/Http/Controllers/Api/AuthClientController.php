@@ -98,7 +98,10 @@ class AuthClientController extends Controller
         $user = Client::where('email', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password) && $user->status == true) {
-            return response()->json($user->toArray(), 200);
+            $token = $user->createToken('client-'.$user->email)->plainTextToken;
+            $client = $user->toArray();
+            $client["token"]=$token;
+            return response()->json($client, 200);
         }
         return response()->json(null, 500);
     }

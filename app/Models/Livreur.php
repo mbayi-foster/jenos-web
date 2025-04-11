@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Laravel\Sanctum\HasApiTokens;
 
 class Livreur extends Model
 {
+    use HasApiTokens;
     protected $fillable = [
         'nom',
         'prenom',
