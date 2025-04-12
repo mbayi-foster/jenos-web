@@ -12,3 +12,4 @@ Route::get("livreurs/status/{id}", [LivreurController::class, "change_status"]);
 require __DIR__ . '/apiMobile.php';
 require __DIR__ . '/apiWeb.php';
 require __DIR__ . '/apiAuthClient.php';
+require __DIR__ . '/apiLivreur.php';
