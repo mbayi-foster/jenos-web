@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('nom')->nullable();
             $table->string('email')->unique();
-            $table->integer('phone')->nullable();
+            $table->string('phone')->nullable();
             $table->longText('photo')->nullable();
             $table->string('password');
             $table->boolean('status')->default(true);
