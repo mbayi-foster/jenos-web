@@ -42,7 +42,11 @@ class AuthClientController extends Controller
         ]);
 
         if ($user) {
-            return response()->json($user, 201);
+            $token = $user->createToken("client-$user->email")->plainTextToken;
+            $client = $user->toArray();
+            $client["token"]=$token;
+            return response()->json($client, 201);
+            
         }
         return response()->json(false, 500);
     }

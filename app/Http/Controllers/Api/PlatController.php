@@ -122,4 +122,8 @@ class PlatController extends Controller
         }
         return response()->json($nouveauPlats, 200);
     }
+
+    public function search(string $mot, Request $request){
+        
+    }
 }

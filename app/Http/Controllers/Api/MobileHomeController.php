@@ -28,7 +28,7 @@ class MobileHomeController extends Controller
         $plat_pops = $plat_pops_before->map(fn($plat) => $plat->toArray());
 
         /* plats très populaire */
-        $plat_most_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->orderBy('commandes', 'desc')->take(5)->get();
+        $plat_most_pops_before = Plat::where('status', true)->orderBy('commandes', 'desc')->take(5)->get();
         $plat_most_pops = $plat_most_pops_before->map(fn($plat) => $plat->toArray());
 
         $res = [

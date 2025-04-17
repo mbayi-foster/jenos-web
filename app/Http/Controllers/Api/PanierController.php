@@ -81,16 +81,7 @@ class PanierController extends Controller
                 "prix"=>$panier->prix,
                 "qte"=>$panier->qte,
                 "created_at"=>$panier->created_at,
-                "plat" => [
-                    "id" => $plat->id,
-                    'nom' => $plat->nom,
-                    'details' => $plat->details,
-                    "like" => $plat->like,
-                    'photo' => $this->photo, //$url,
-                    'qte' => $plat->qte,
-                    'prix' => $plat->prix,
-                    'created_at' => $plat->created_at
-                ],
+                "plat" => $plat->toArray(),
 
             ];
         }
