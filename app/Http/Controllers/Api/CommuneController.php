@@ -13,7 +13,9 @@ class CommuneController extends Controller
      */
     public function index()
     {
-        //
+        $communesdB = Commune::all();
+        $communes = $communesdB->map(fn($commune) => $commune->toArray());
+        return response()->json($communes, 200);
     }
 
     /**
@@ -23,17 +25,18 @@ class CommuneController extends Controller
     {
         $validated = $request->validate([
             "nom" => "required",
-            "zone" => "required"
+            "zone" => "required",
+            "frais" => 'required'
         ]);
 
         $commune = Commune::create(
             [
                 "nom" => $validated['nom'],
                 "zone_id" => $validated["zone"],
+                "frais" => $validated['frais']
             ]
         );
         return response()->json(true, 201);
-
     }
 
     /**
@@ -57,6 +60,11 @@ class CommuneController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $commune = Commune::find($id);
+        if ($commune) {
+           $commune->delete();
+        } 
+        return response()->json('supprimé', 200);
+        
     }
 }
