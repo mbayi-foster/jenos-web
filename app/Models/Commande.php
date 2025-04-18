@@ -19,6 +19,7 @@ class Commande extends Model
         "client_id",
         "zone_id",
         "confirm",
-        "note"
+        "note",
+        "delivery_coast"
     ];
 }
