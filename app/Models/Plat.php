@@ -38,6 +38,8 @@ class Plat extends Model
             $url = str_replace('http://localhost', 'http://localhost:8000', $url);
         }
 
+        $commandes = $this->paniers->count();
+
         return [
             "id" => $this->id,
             "nom" => $this->nom,
@@ -45,7 +47,7 @@ class Plat extends Model
             "photo" => $url,
             "status" => $this->status,
             "prix" => $this->prix,
-            "commandes" => $this->commandes,
+            "commandes" => $commandes,
             "like" => $this->like,
             "created_at"=>$this->created_at,
             "date" => strftime('%A, %d %B %Y à %Hh%M', $date->getTimestamp())

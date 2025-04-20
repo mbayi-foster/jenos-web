@@ -57,12 +57,6 @@ class PlatController extends Controller
         } else {
             return response()->json(['error' => 'Aucune photo téléchargée.'], 400);
         }
-
-
-
-
-
-
     }
 
     /**
@@ -80,7 +74,34 @@ class PlatController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $plat = Plat::find($id);
+        $request->validate([
+            'nom' => 'required',
+            'prix' => 'required|numeric',
+            'details' => 'required',
+         //   'photo' => 'image'
+        ]);
+
+        /* if ($plat) {
+            if ($request->file('photo')) {
+                $timestamp = time();
+                $newName = $request->nom . '_' . $timestamp . '.' . $request->file('photo')->getClientOriginalExtension();
+                $path = $request->file('photo')->storeAs('images/plats', $newName, 'public');
+                $plat->nom = $request->nom;
+                $plat->prix = $request->prix;
+                $plat->photo = $path;
+                $plat->details = $request->details;
+                $plat->save();
+                return response()->json($plat, 201);
+            } else {
+                $plat->nom = $request->nom;
+                $plat->prix = $request->prix;
+                $plat->details = $request->details;
+                $plat->save();
+        }
+ } */
+        return response()->json($request, 201);
+    
     }
 
     /**
@@ -109,7 +130,7 @@ class PlatController extends Controller
         return response()->json($plat);
     }
 
-    
+
     public function plats_status()
     {
         $plats = Plat::where("status", 1)->get();
@@ -123,7 +144,5 @@ class PlatController extends Controller
         return response()->json($nouveauPlats, 200);
     }
 
-    public function search(string $mot, Request $request){
-        
-    }
+    public function search(string $mot, Request $request) {}
 }
