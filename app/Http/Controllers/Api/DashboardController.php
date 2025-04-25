@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
+use App\Models\Commande;
+use App\Models\Livreur;
+use App\Models\Plat;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,7 +16,18 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        //
+        $clients = Client::count();
+        $plats = Plat::count();
+        $commandes = Commande::count();
+        $livreurs = Livreur::count();
+
+        $data = [
+            'users'=>$clients,
+            'livreurs'=>$livreurs,
+            'plats'=>$plats,
+            'commandes'=>$commandes
+        ];
+        return response()->json($data, 200);
     }
 
     /**
