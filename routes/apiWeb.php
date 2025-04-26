@@ -28,7 +28,12 @@ Route::get('menus/status/change/{id}', [MenuController::class, 'change_status'])
 Route::post('login/users', [UserController::class, 'login']);
 Route::post('register', [AuthClientController::class, 'store'])->name('api-register');
 
+Route::post('/logout/users', [UserController::class, 'logout']);
 Route::get('gerants', [UserController::class, 'gerants'])->name('gerants');
 
 /* tablea de bord */
 Route::apiResource("dashboard", DashboardController::class);
+
+/* gerant*/
+
+Route::get("/zones-id/{id}", [ZoneController::class, 'zone_by_id']);

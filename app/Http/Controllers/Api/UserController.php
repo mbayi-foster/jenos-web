@@ -188,4 +188,8 @@ class UserController extends Controller
         }
         return response()->json(false, 500);
     }
+
+    public function logout (Request $request){
+        
+    }
 }

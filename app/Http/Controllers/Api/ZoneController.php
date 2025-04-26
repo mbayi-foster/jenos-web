@@ -14,26 +14,27 @@ class ZoneController extends Controller
     public function index()
     {
         $zonesDB = Zone::all();
-        $zones = $zonesDB->map(fn($zone)=>$zone->toArray());
+        $zones = $zonesDB->map(fn($zone) => $zone->toArray());
         return response()->json($zones, 200);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
-            "nom"=> "required",
-            "gerant"=> "required",
+            "nom" => "required",
+            "gerant" => "required",
         ]);
         $zones = Zone::create(
             [
                 "nom" => $request->nom,
-                "chef"=> $request->gerant
+                "chef" => $request->gerant
             ]
         );
 
-        return response()->json(true, 201);
+        return response()->json($request, 201);
     }
 
     /**
@@ -64,11 +65,11 @@ class ZoneController extends Controller
     public function destroy(string $id)
     {
         $zone = Zone::find($id);
-        if($zone){
+        if ($zone) {
             $zone->delete();
-            return response()->json(true,200);
+            return response()->json(true, 200);
         }
-        return response()->json(false,404);
+        return response()->json(false, 404);
     }
 
     public function change_status(string $id)
@@ -83,5 +84,19 @@ class ZoneController extends Controller
 
         $zone->save();
         return response()->json($zone);
+    }
+
+    public function zone_by_id(string $id)
+    {
+        $zonesDb = Zone::where('chef', $id)->get();
+        $zones = $zonesDb->map(
+            fn($zone) =>
+            [
+                'id' => $zone->id,
+                'nom' => $zone->nom
+            ]
+        );
+
+        return response()->json($zones, 200);
     }
 }

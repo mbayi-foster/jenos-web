@@ -88,7 +88,9 @@ class CommandeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $commandesDb = Commande::where('zone_id', $id)->get();
+        $commandes = $commandesDb->map(fn($commande) => $commande->toArray());
+        return response()->json($commandes, 200);
     }
 
     /**

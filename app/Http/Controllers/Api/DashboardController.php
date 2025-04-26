@@ -18,17 +18,17 @@ class DashboardController extends Controller
     public function index()
     {
         $clients = Client::count();
-        $plats = Plat::count();
+        $plats = Plat::where('status', true)->count();
         $commandes = Commande::count();
         $livreurs = Livreur::count();
-
+        $top_plats = CLient::with('commandes')->get();
         $ordersByMonth = DB::select("
         SELECT 
             COUNT(*) as count, 
              MONTHNAME(created_at) as month, 
             YEAR(created_at) as year 
         FROM 
-            users 
+            commandes 
         WHERE 
             created_at IS NOT NULL 
         GROUP BY 
@@ -36,12 +36,31 @@ class DashboardController extends Controller
         ORDER BY 
             year ASC, month ASC
     ");
+    $statsClients =  DB::select("
+    SELECT 
+        COUNT(*) as count, 
+         MONTHNAME(created_at) as month, 
+        YEAR(created_at) as year 
+    FROM 
+        clients 
+    WHERE 
+        created_at IS NOT NULL 
+    GROUP BY 
+        year, month 
+    ORDER BY 
+        year ASC, month ASC
+");
         $data = [
             'users' => $clients,
             'livreurs' => $livreurs,
             'plats' => $plats,
             'commandes' => $commandes,
-            'stats' => $ordersByMonth
+            'stats' => [
+                'commandes'=>$ordersByMonth,
+                'clients'=>$statsClients,
+                'plats'=>$top_plats
+            ],
+
         ];
         return response()->json($data, 200);
     }
