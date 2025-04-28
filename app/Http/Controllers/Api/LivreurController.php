@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Mail\WebMail;
 use App\Models\Livreur;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -18,7 +19,7 @@ class LivreurController extends Controller
         $livreursDb = Livreur::all();
         $livreurs = $livreursDb->map(fn($livreur) => $livreur->toArray());
 
-        return response()->json($livreurs->toArray(), 200);
+        return response()->json($livreurs, 200);
     }
 
     /**
@@ -35,34 +36,40 @@ class LivreurController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'email' => 'required|email|unique:livreurs|max:255',
+            'email' => 'required|email|unique:users|max:255',
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'phone' => 'required|numeric|digits_between:9,15', // Exemple de validation
             'zone' => 'required'
         ]);
 
-        $livreur = Livreur::create([
-            'nom' => $validated['nom'],
-            'prenom' => $validated['prenom'],
+        $user = User::create([
             'email' => $validated['email'],
             'password' => bcrypt('123456'),
-            'phone' => $validated['phone'],
-            'zone_id'=>$validated['zone']
         ]);
 
-        if ($livreur) {
-            $data = [
-                'nom' => $livreur->nom,
-                'prenom' => $livreur->prenom,
-                'phone' => $livreur->phone,
-                "email" => $livreur->email,
-                "password" => "123456",
-                'sujet' => "Confirmatiom du compte"
-            ];
-            //  SendEmailJob::dispatch($livreur->email, $data);
-            Mail::to($livreur->email)->send(new WebMail($data));
-            return response()->json(true, 200);
+        if ($user) {
+            $livreur = Livreur::create([
+                'nom' => $validated['nom'],
+                'prenom' => $validated['prenom'],
+                'phone' => $validated['phone'],
+                'user_id' => $user->id,
+                'zone_id' => $validated['zone']
+            ]);
+            if ($livreur) {
+                $data = [
+                    'nom' => $livreur->nom,
+                    'prenom' => $livreur->prenom,
+                    'phone' => $livreur->phone,
+                    "email" => $livreur->email,
+                    "password" => "123456",
+                    'sujet' => "Confirmatiom du compte"
+                ];
+                //  SendEmailJob::dispatch($livreur->email, $data);
+                Mail::to($livreur->email)->send(new WebMail($data));
+                return response()->json(true, 201);
+            }
+            return response()->json(false, 500);
         } else {
             return response()->json(false, 500);
         }
@@ -99,11 +106,12 @@ class LivreurController extends Controller
     {
         $livreur = Livreur::findOrFail($id);
         if ($livreur) {
+            $user = User::find($livreur->users->id);
+            if ($user)
+                $user->delete();
             $livreur->delete();
-
             return response()->json(true, 200);
         }
-
         return response()->json(["error" => "non trouvé"], 400);
     }
 
@@ -111,9 +119,14 @@ class LivreurController extends Controller
     {
         $livreur = Livreur::find($id);
 
-        $livreur->status = ($livreur->status == true) ? false : true;
 
-        $livreur->save();
-        return response()->json($livreur);
+        if ($livreur) {
+            $user = User::find($livreur->users->id);
+            $user->status = $user->status ? false : true;
+            $livreur->status = $livreur->status ? false : true;
+            $user->save();
+            $livreur->save();
+        }
+        return response()->json(true, 200);
     }
 }

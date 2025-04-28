@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -32,14 +33,18 @@ class MainController
             $roles = Role::all();
             $roles = $roles->map(fn($role) => $role->id);
             $user = User::create([
-                'nom' => "Root",
-                'prenom' => "Adiminstrateur",
+                // 
                 'email' => "admin@jenos-food.top",
                 'password' => bcrypt('admin'),
             ]);
 
             if ($user) {
-                $user->roles()->attach($roles);
+                $admin = Admin::create([
+                    'nom' => "Root",
+                    'prenom' => "Adiminstrateur",
+                    'user_id'=>$user->id,
+                ]);
+                if($admin) $admin->roles()->attach($roles);
             }
         }
 

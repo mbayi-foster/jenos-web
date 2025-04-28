@@ -19,9 +19,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'nom',
-        'prenom',
-        'phone',
         'email',
         'password',
         'status',
@@ -62,20 +59,8 @@ class User extends Authenticatable
         return $this->hasMany(Zone::class);
     }
 
-    public function toArray()
-    {
-        return [
-            "id" => $this->id,
-            "prenom" => $this->prenom,
-            "nom" => $this->nom,
-            "email" => $this->email,
-            "phone" => $this->phone,
-            "photo" => $this->photo,
-            "status" => $this->status,
-            "created_at" => $this->created_at,
-            "roles"=>$this->roles
-        ];
-
+    public function notifications(){
+        return $this->hasMany(Notification::class, 'user_id', 'id');
     }
 
 }

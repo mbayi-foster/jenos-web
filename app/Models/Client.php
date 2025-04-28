@@ -12,14 +12,14 @@ class Client extends Model
     protected $fillable = [
         'nom',
         'prenom',
-        'email',
-        'password',
+        'user_id',
         'phone',
         'photo',
         'status',
         'adresse',
+        'commune',
         'location_lat',
-        'location_lon'
+        'location_lon',
     ];
 
     public function paniers()
@@ -35,6 +35,11 @@ class Client extends Model
     {
         return $this->hasMany(Paiement::class);
     }
+
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
    
     public function toArray()
     {
@@ -44,17 +49,19 @@ class Client extends Model
         }
 
         return [
+            "id" => $this->id,
+            "uid"=>$this->user_id,
             "nom" => $this->nom,
             "prenom" => $this->prenom,
-            "email" => $this->email,
-            "id" => $this->id,
+            "email" => $this->users->email,
+            
             "created_at" => $this->created_at,
             "photo" => $this->photo,
             "phone" => $this->phone,
             "status" => $this->status,
             'adresse' => [
                 'adresse' => $this->adresse,
-                'commune' => $this->commune->id ?? 0,
+                'commune' => $this->commune,
                 'lat' => $this->location_lat,
                 'lon' => $this->location_lon
             ]

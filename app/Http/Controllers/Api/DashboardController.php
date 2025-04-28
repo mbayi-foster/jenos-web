@@ -21,7 +21,6 @@ class DashboardController extends Controller
         $plats = Plat::where('status', true)->count();
         $commandes = Commande::count();
         $livreurs = Livreur::count();
-        $top_plats = CLient::with('commandes')->get();
         $ordersByMonth = DB::select("
         SELECT 
             COUNT(*) as count, 
@@ -48,7 +47,7 @@ class DashboardController extends Controller
     GROUP BY 
         year, month 
     ORDER BY 
-        year ASC, month ASC
+        created_at ASC
 ");
         $data = [
             'users' => $clients,
@@ -58,7 +57,6 @@ class DashboardController extends Controller
             'stats' => [
                 'commandes'=>$ordersByMonth,
                 'clients'=>$statsClients,
-                'plats'=>$top_plats
             ],
 
         ];

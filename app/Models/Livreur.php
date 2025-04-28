@@ -12,18 +12,22 @@ class Livreur extends Model
     protected $fillable = [
         'nom',
         'prenom',
-        'email',
-        'password',
+        'user_id',
         'phone',
         'photo',
         'status',
         'busy',
         'adresse',
+        'commune',
         'location_lat',
         'location_lon',
         'zone_id'
     ];
 
+    public function users()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
     public function toArray()
     {
         $url = Storage::disk('public')->url($this->photo);
@@ -32,16 +36,20 @@ class Livreur extends Model
         }
 
         return [
+            "id" => $this->id,
+            "uid" => $this->user_id,
             "nom" => $this->nom,
             "prenom" => $this->prenom,
-            "email" => $this->email,
-            "id" => $this->id,
+            "email" => $this->users->email,
+
             "created_at" => $this->created_at,
             "photo" => $this->photo,
             "phone" => $this->phone,
             "status" => $this->status,
-            "busy"=>$this->busy,
+            "busy" => $this->busy,
             'adresse' => [
+                'adresse' => $this->adresse,
+                'commune' => $this->commune,
                 'lat' => $this->location_lat,
                 'lon' => $this->location_lon
             ]

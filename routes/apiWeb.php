@@ -3,6 +3,7 @@ use App\Http\Controllers\Api\AuthClientController;
 use App\Http\Controllers\Api\CommuneController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\MenuController;
+use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PlatController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
@@ -37,3 +38,5 @@ Route::apiResource("dashboard", DashboardController::class);
 /* gerant*/
 
 Route::get("/zones-id/{id}", [ZoneController::class, 'zone_by_id']);
+
+Route::post("/plats-update/{id}", [PlatController::class, "update"]);

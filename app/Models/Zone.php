@@ -15,7 +15,7 @@ class Zone extends Model
     ];
 
     public function chefs(){
-        return $this->belongsTo(User::class, "zone_id", "chef");
+        return $this->belongsTo(Admin::class, "chef", "id" );
     }
 
     public function livreurs(){
@@ -28,12 +28,11 @@ class Zone extends Model
     
 
     public function toArray(){
-        $chef = User::find($this->chef);
         return [
             "id"=>$this->id,
             "nom"=>$this->nom,
             "status"=>$this->status,
-            "chef"=>"$chef->prenom $chef->nom",
+            "chef"=>$this->chefs->nom. " ". $this->chefs->prenom,
             "created_at"=>$this->created_at,
             "count_commune"=>$this->communes->count(),
             "communes"=>$this->communes

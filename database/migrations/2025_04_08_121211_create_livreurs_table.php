@@ -12,17 +12,17 @@ return new class extends Migration {
     {
         Schema::create('livreurs', function (Blueprint $table) {
             $table->id();
-            $table->String("prenom");
-            $table->String("nom")->nullable();
-            $table->string('email')->unique();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->string('prenom');
+            $table->string('nom')->nullable();
             $table->string('phone')->nullable();
-            $table->string('photo')->nullable();
-            $table->string('password');
+            $table->longText('photo')->nullable();
+            $table->boolean('status')->default(true);
             $table->string('adresse')->nullable();
-            $table->double("location_lat")->default(0.0);
-            $table->double("location_lon")->default(0.0);
-            $table->boolean('status')->default(false);
-            $table->boolean('busy')->default(true);
+            $table->string('commune')->nullable();
+            $table->float("location_lat")->nullable();
+            $table->float('location_lon')->nullable();
+            $table->boolean('busy')->default(false);
             $table->foreignId('zone_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });

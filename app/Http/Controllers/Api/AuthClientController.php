@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Jobs\MobileMailJob;
 use App\Mail\MobileMail;
 use App\Models\Client;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
@@ -27,26 +28,29 @@ class AuthClientController extends Controller
     public function store(Request $request)
     {
         $valide = $request->validate([
-            'email' => 'required|unique:clients|max:255',
+            'email' => 'required|unique:users|max:255',
             'nom' => 'required',
             'prenom' => 'required',
             'phone' => 'required|regex:/^[0-9]{10}$/',
             'password' => 'required|min:6',
         ]);
-        $user = Client::create([
-            'nom' => $valide['nom'],
-            'prenom' => $valide['prenom'],
+        $user = User::create([
             'email' => $valide['email'],
             'password' => bcrypt($valide['password']),
-            'phone' => $valide['phone']
         ]);
 
         if ($user) {
+            $client = Client::create([
+                'nom' => $valide['nom'],
+                'prenom' => $valide['prenom'],
+                'phone' => $valide['phone'],
+                'user_id'=>$user->id
+            ]);
             $token = $user->createToken("client-$user->email")->plainTextToken;
-            $client = $user->toArray();
-            $client["token"]=$token;
+            $client = $client->toArray();
+            $client["token"] = $token;
             return response()->json($client, 201);
-            
+
         }
         return response()->json(false, 500);
     }
@@ -70,16 +74,14 @@ class AuthClientController extends Controller
             "phone" => "required"
         ]);
 
-        $user = Client::find($id);
+        $client = Client::find($id);
 
-        if ($user) {
-            $user->nom = $validated['nom'];
-            $user->prenom = $validated['prenom'];
-            $user->phone = $validated['phone'];
-
-            $user->save();
-
-            return response()->json($user->toArray(), 201);
+        if ($client) {
+            $client->nom = $validated['nom'];
+            $client->prenom = $validated['prenom'];
+            $client->phone = $validated['phone'];
+            $client->save();
+            return response()->json($client->toArray(), 201);
         }
 
         return response()->json(false, 500);
@@ -99,13 +101,14 @@ class AuthClientController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-        $user = Client::where('email', $request->email)->first();
+        $user = User::where('email', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password) && $user->status == true) {
             $token = $user->createToken("client-$user->email")->plainTextToken;
-            $client = $user->toArray();
-            $client["token"]=$token;
-            return response()->json($client, 200);
+            $client = Client::where('user_id', $user->id)->first();
+            $client_login = $client->toArray();
+            $client_login["token"] = $token;
+            return response()->json($client_login, 200);
         }
         return response()->json(null, 500);
     }
@@ -117,7 +120,7 @@ class AuthClientController extends Controller
             'nom' => 'required|string|max:255'
         ]);
         $code = rand(100000, 999999);
-        $user = Client::where('email', $request->email)->first(); // Correction ici
+        $user = User::where('email', $request->email)->first(); // Correction ici
 
         if (!$user) {
             $data = ['nom' => $request->nom, 'code' => $code, "sujet" => "Confirmer l'adresse email"];

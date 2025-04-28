@@ -74,15 +74,14 @@ class PlatController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $plat = Plat::find($id);
         $request->validate([
             'nom' => 'required',
             'prix' => 'required|numeric',
             'details' => 'required',
-         //   'photo' => 'image'
+            'photo' => 'image'
         ]);
-
-        /* if ($plat) {
+        $plat = Plat::find($id);
+        if ($plat) {
             if ($request->file('photo')) {
                 $timestamp = time();
                 $newName = $request->nom . '_' . $timestamp . '.' . $request->file('photo')->getClientOriginalExtension();
@@ -98,10 +97,10 @@ class PlatController extends Controller
                 $plat->prix = $request->prix;
                 $plat->details = $request->details;
                 $plat->save();
+            }
         }
- } */
-        return response()->json($request, 201);
-    
+        return response()->json($plat, 201);
+
     }
 
     /**
@@ -144,5 +143,7 @@ class PlatController extends Controller
         return response()->json($nouveauPlats, 200);
     }
 
-    public function search(string $mot, Request $request) {}
+    public function search(string $mot, Request $request)
+    {
+    }
 }

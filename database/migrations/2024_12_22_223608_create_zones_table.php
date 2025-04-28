@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->bigInteger('chef')->unsigned();
-            $table->foreign('chef')->references('id')->on('zones');
+            $table->foreign('chef')->references('id')->on('admins');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
