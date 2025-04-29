@@ -7,16 +7,10 @@ use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Plat;
+use Illuminate\Support\Facades\DB;
 
 class MobileHomeController extends Controller
 {
-    private $photo = "https://cdn.pixabay.com/photo/2024/09/15/13/03/cows-9049119_1280.jpg";
-    private $url;
-
-    public function __construct()
-    {
-        $this->url = env("APP_URL");
-    }
     public function home()
     {
         /* les plats reçents */
@@ -24,10 +18,13 @@ class MobileHomeController extends Controller
         $plat_recents = $plat_recents_before->map(fn($plat) => $plat->toArray());
 
         /* plats populaires */
-        $plat_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->take(5)->get();
-        $plat_pops = $plat_pops_before->map(fn($plat) => $plat->toArray());
-
-        /* plats très populaire */
+        $plat_pops = DB::select("SELECT p.id, p.nom, p.prix, COUNT(pp.plat_id) AS nombre_ajouts
+                                            FROM plats p
+                                            JOIN panier_plat pp ON p.id = pp.plat_id
+                                            JOIN paniers pa ON pp.panier_id = pa.id
+                                            WHERE pa.status = true
+                                            GROUP BY p.id, p.nom, p.prix
+                                            ORDER BY nombre_ajouts DESC");
         $plat_most_pops_before = Plat::where('status', true)->orderBy('commandes', 'desc')->take(5)->get();
         $plat_most_pops = $plat_most_pops_before->map(fn($plat) => $plat->toArray());
 
@@ -43,94 +40,10 @@ class MobileHomeController extends Controller
     {
         $menus = [];
         $menu_befores = Menu::where('status', true)->orderBy('created_at', "desc")->get();
-
-        foreach ($menu_befores as $menu) {
-            $url = Storage::disk('public')->url($menu->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-            }
-            $menus[] = [
-                "id" => $menu->id,
-                "nom" => $menu->nom,
-                "details" => $menu->details,
-                "photo" => $url,
-                "created_at" => $menu->created_at
-            ];
-        }
+        $menus = $menu_befores->map(fn($val) => $val->toArray());
 
         return response()->json($menus, 200);
     }
-
-    public function plats_recents()
-    {
-        $plat_recents = [];
-        $plat_recents_before = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get();
-
-        foreach ($plat_recents_before as $plat) {
-            $url = Storage::disk('public')->url($plat->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-            }
-            $plat_recents[] = [
-                'id' => (int) $plat->id,
-                'nom' => $plat->nom,
-                'details' => $plat->details,
-                'photo' => $url,
-                'prix' => $plat->prix,
-                'like' => $plat->like,
-                'created_at' => $plat->created_at
-            ];
-        }
-
-        return response()->json($plat_recents, 200);
-    }
-    public function plats_pops()
-    {
-        $plat_pops = [];
-        $plat_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->get();
-
-        foreach ($plat_pops_before as $plat) {
-            $url = Storage::disk('public')->url($plat->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-            }
-            $plat_pops[] = [
-                'id' => (int) $plat->id,
-                'nom' => $plat->nom,
-                'details' => $plat->details,
-                'photo' => $url,
-                'prix' => $plat->prix,
-                'like' => $plat->like,
-                'created_at' => $plat->created_at
-            ];
-        }
-
-        return response()->json($plat_pops, 200);
-    }
-    public function plats_most_pops()
-    {
-        $plat_most_pops = [];
-        $plat_most_pops_before = Plat::where('status', true)->orderBy('like', 'desc')->get();
-
-        foreach ($plat_most_pops_before as $plat) {
-            $url = Storage::disk('public')->url($plat->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-            }
-            $plat_most_pops[] = [
-                'id' => (int) $plat->id,
-                'nom' => $plat->nom,
-                'details' => $plat->details,
-                'photo' => $url,
-                'prix' => $plat->prix,
-                'like' => $plat->like,
-                'created_at' => $plat->created_at
-            ];
-        }
-
-        return response()->json($plat_most_pops, 200);
-    }
-
     public function plats_by_menu($id)
     {
         $plats = [];

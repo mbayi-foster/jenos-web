@@ -15,20 +15,20 @@ class MenuController extends Controller
     public function index()
     {
         $menu = Menu::withCount('plats')->get();
-        $nouveauMenu = [];
-        foreach ($menu as $value) {
-            $url = Storage::disk('public')->url($value->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', 'http://localhost:8000', $url); // Remplacez par le port approprié
-            }
-            $nouveauMenu[] = [
-                "id"=>$value->id,
-                "nom" => $value->nom,
-                'count' => $value->plats_count,
-                'photo'=> $url,
-                'status'=> $value->status
-            ];
-        }
+        $nouveauMenu = $menu->map(fn($val)=>$val->toArray());
+        // foreach ($menu as $value) {
+        //     $url = Storage::disk('public')->url($value->photo);
+        //     if (strpos($url, 'http://localhost') !== false) {
+        //         $url = str_replace('http://localhost', 'http://localhost:8000', $url); // Remplacez par le port approprié
+        //     }
+        //     $nouveauMenu[] = [
+        //         "id"=>$value->id,
+        //         "nom" => $value->nom,
+        //         'count' => $value->plats_count,
+        //         'photo'=> $url,
+        //         'status'=> $value->status
+        //     ];
+        // }
 
         return response()->json($nouveauMenu);
     }

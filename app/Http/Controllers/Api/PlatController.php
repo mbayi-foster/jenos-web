@@ -7,6 +7,7 @@ use App\Models\Plat;
 use DateTime;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlatController extends Controller
 {
@@ -145,5 +146,44 @@ class PlatController extends Controller
 
     public function search(string $mot, Request $request)
     {
+        $request->validate([
+            "order" => 'string'
+        ]);
+        $query = "SELECT * FROM plats ORDER BY created_at DESC";
+        if ($request->order)
+            match ($request->order) {
+                "nouveau" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC",
+                "ancien" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at ASC",
+                "chers" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix DESC",
+                "moins" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix ASC",
+            };
+        //   switch ($request->order) {
+        //       case "nouveau":
+        //           $query = " SELECT * FROM plats WHERE nom LIKE '%$mot%' ORDER BY created_at DESC";
+        //           break;
+        //       case "ancien":
+        //           $query = " SELECT * FROM plats WHERE nom LIKE '%$mot%' ORDER BY created_at ASC";
+        //           break;
+        //       default:
+        //           $query = "SELECT * FROM plats ORDER BY created_at DESC";
+        //           break;
+        //   } 
+        $plats = DB::select(
+            $query
+        );
+        return response()->json($plats);
+    }
+
+    public function all(Request $request)
+    {
+        $request->validate([
+            "order" => 'required|string'
+        ]);
+        $plats = [];
+        match ($request->order) {
+            "chers"=>$plats = Plat::orderByDesc('prix')->get(),
+            "moins"=>$plats = Plat::orderBy('prix', 'ASC')->get(),
+        };
+        return response()->json($plats);
     }
 }
