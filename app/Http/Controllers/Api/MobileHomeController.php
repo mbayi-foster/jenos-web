@@ -18,20 +18,19 @@ class MobileHomeController extends Controller
         $plat_recents = $plat_recents_before->map(fn($plat) => $plat->toArray());
 
         /* plats populaires */
-        $plat_pops = DB::select("SELECT p.id, p.nom, p.prix, COUNT(pp.plat_id) AS nombre_ajouts
-                                            FROM plats p
-                                            JOIN panier_plat pp ON p.id = pp.plat_id
-                                            JOIN paniers pa ON pp.panier_id = pa.id
-                                            WHERE pa.status = true
-                                            GROUP BY p.id, p.nom, p.prix
-                                            ORDER BY nombre_ajouts DESC");
-        $plat_most_pops_before = Plat::where('status', true)->orderBy('commandes', 'desc')->take(5)->get();
-        $plat_most_pops = $plat_most_pops_before->map(fn($plat) => $plat->toArray());
+        $plat_pops = Plat::withCount('paniers') // Assurez-vous que la relation 'paniers' est définie dans le modèle Plat
+            ->orderBy('paniers_count', 'desc')
+            ->limit(5)
+            ->get();
+        $plats_pas_chers = Plat::where('status', true)->orderBy('prix', 'asc')->take(5)->get();
+        $plat_most_pops = $plats_pas_chers->map(fn($plat) => $plat->toArray());
 
+        $menus = Menu::where("status", true)->orderBy('created_at', 'asc')->take(5)->get();
         $res = [
             "plat_recents" => $plat_recents,
             "plat_pops" => $plat_pops,
-            "plat_most_pops" => $plat_most_pops
+            "plat_most_pops" => $plat_most_pops,
+            "menus"=>$menus
         ];
         return response()->json($res, 200);
     }

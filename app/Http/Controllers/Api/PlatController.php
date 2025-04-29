@@ -152,22 +152,11 @@ class PlatController extends Controller
         $query = "SELECT * FROM plats ORDER BY created_at DESC";
         if ($request->order)
             match ($request->order) {
-                "nouveau" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC",
-                "ancien" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at ASC",
+                "new" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC",
                 "chers" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix DESC",
                 "moins" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix ASC",
             };
-        //   switch ($request->order) {
-        //       case "nouveau":
-        //           $query = " SELECT * FROM plats WHERE nom LIKE '%$mot%' ORDER BY created_at DESC";
-        //           break;
-        //       case "ancien":
-        //           $query = " SELECT * FROM plats WHERE nom LIKE '%$mot%' ORDER BY created_at ASC";
-        //           break;
-        //       default:
-        //           $query = "SELECT * FROM plats ORDER BY created_at DESC";
-        //           break;
-        //   } 
+      
         $plats = DB::select(
             $query
         );
@@ -183,6 +172,11 @@ class PlatController extends Controller
         match ($request->order) {
             "chers"=>$plats = Plat::orderByDesc('prix')->get(),
             "moins"=>$plats = Plat::orderBy('prix', 'ASC')->get(),
+            "new"=>$plats = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get(),
+            "desirs"=> $plats= Plat::withCount('paniers') // Assurez-vous que la relation 'paniers' est définie dans le modèle Plat
+            ->orderBy('paniers_count', 'desc')
+            ->limit(5)
+            ->get()
         };
         return response()->json($plats);
     }

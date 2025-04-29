@@ -26,11 +26,13 @@ class CommandeController extends Controller
         $validated = $request->validate(
             [
                 "prix" => "required|numeric",
+                "delivery_coast" => "required|numeric",
                 "paiement" => "required|in:cash,carte,bank,mobile,paypal",
                 "facture" => "required|bool",
                 'paniers' => 'required|array',
                 'paniers.*' => 'exists:paniers,id',
                 'adresse' => 'require|array',
+                'zone_id'=> 'require',
                 'client_id' => 'required|exists:clients,id'
             ]
         );
@@ -64,7 +66,8 @@ class CommandeController extends Controller
             "adresse" => $validated['adresse']['adresse'],
             "location_lat" => $validated['adresse']['lat'],
             "location_lon" => $validated['adresse']['lon'],
-            "client_id" => $validated['client_id']
+            "client_id" => $validated['client_id'],
+            "zone_id" => $validated['zone_id']
         ]);
 
         if ($commande) {

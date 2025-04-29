@@ -63,23 +63,8 @@ class MenuMobileController extends Controller
 
         if ($menu) {
             $plats_before = $menu->plats;
-            foreach ($plats_before as $plat) {
-                if ($plat->status == true) {
-                    $url = Storage::disk('public')->url($plat->photo);
-                    if (strpos($url, 'http://localhost') !== false) {
-                        $url = str_replace('http://localhost', $this->url, $url); // Remplacez par le port approprié
-                    }
-                    $plats[] = [
-                        'id' => (int) $plat->id,
-                        'nom' => $plat->nom,
-                        'details' => $plat->details,
-                        'photo' => $this->photo,
-                        'prix' => $plat->prix,
-                        'like' => $plat->like,
-                        'created_at' => $plat->created_at
-                    ];
-                }
-            }
+            $plats = $plats_before->map(fn($val) => $val->toArray());
+        }
 
             $url_menu = Storage::disk('public')->url($menu->photo);
             if (strpos($url_menu, 'http://localhost') !== false) {
@@ -89,17 +74,14 @@ class MenuMobileController extends Controller
                 "id" => $menu->id,
                 "nom" => $menu->nom,
                 "details" => $menu->details,
-                "photo" => $url_menu,
+                "photo" => $menu->toArray()['photo'],
                 "created_at" => $menu->created_at,
                 "nbre_plats" => $menu->plats->count(),
                 "plats" => $plats
             ];
-           if(count($plats)>= 1){
-            return response()->json($data, 200);
-           }
-        }
-
-        return response()->json(false, 500);
+            
+                return response()->json($data, 200);
+     
     }
 
     /**

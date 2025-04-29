@@ -54,7 +54,6 @@ class Client extends Model
             "nom" => $this->nom,
             "prenom" => $this->prenom,
             "email" => $this->users->email,
-            
             "created_at" => $this->created_at,
             "photo" => $this->photo,
             "phone" => $this->phone,
