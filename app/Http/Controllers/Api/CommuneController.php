@@ -13,7 +13,7 @@ class CommuneController extends Controller
      */
     public function index()
     {
-        $communesdB = Commune::all();
+        $communesdB = Commune::orderBy("nom", "asc")->get();
         $communes = $communesdB->map(fn($commune) => $commune->toArray());
         return response()->json($communes, 200);
     }

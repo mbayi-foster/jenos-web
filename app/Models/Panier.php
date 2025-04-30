@@ -13,7 +13,8 @@ class Panier extends Model
         "qte",
         "commander",
         "prix",
-        'status'
+        'status',
+        "commande_id",
     ];
 
     public function clients()

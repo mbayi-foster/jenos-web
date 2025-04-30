@@ -20,6 +20,12 @@ class Commande extends Model
         "zone_id",
         "confirm",
         "note",
-        "delivery_coast"
+        "delivery_coast",
+        "commune"
     ];
+
+    public function paniers()
+    {
+        return $this->hasMany(Panier::class, 'commande_id', 'id');
+    }
 }

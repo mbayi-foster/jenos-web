@@ -39,12 +39,12 @@ class PanierController extends Controller
         ]);
 
         $panier = Panier::where("client_id", $validated['client_id'])->where("plat_id", $validated["plat_id"])->first();
-        if ($panier) {
+        if ($panier && $panier->status == false) {
             $panier->prix += $validated["prix"];
             $panier->qte += $validated["qte"];
             $panier->save();
             return response()->json($panier, 201);
-        } else if (!$panier) {
+        } else {
             $panier = Panier::create(
                 [
                     "prix" => $validated["prix"],
@@ -75,12 +75,12 @@ class PanierController extends Controller
                 $url = str_replace('http://localhost', 'http://localhost:8000', $url); // Remplacez par le port approprié
             }
             $paniers[] = [
-                "id"=>$panier->id,
-                "client_id"=>$panier->client_id,
-                "status"=>$panier->status,
-                "prix"=>$panier->prix,
-                "qte"=>$panier->qte,
-                "created_at"=>$panier->created_at,
+                "id" => $panier->id,
+                "client_id" => $panier->client_id,
+                "status" => $panier->status,
+                "prix" => $panier->prix,
+                "qte" => $panier->qte,
+                "created_at" => $panier->created_at,
                 "plat" => $plat->toArray(),
 
             ];

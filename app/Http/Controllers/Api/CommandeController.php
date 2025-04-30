@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Commande;
+use App\Models\Commune;
 use App\Models\Panier;
 use Illuminate\Http\Request;
 use DateTime;
@@ -25,18 +26,17 @@ class CommandeController extends Controller
     {
         $validated = $request->validate(
             [
-                "prix" => "required|numeric",
-                "delivery_coast" => "required|numeric",
+                "prix" => "required",
+                "delivery_coast" => "required",
                 "paiement" => "required|in:cash,carte,bank,mobile,paypal",
                 "facture" => "required|bool",
                 'paniers' => 'required|array',
                 'paniers.*' => 'exists:paniers,id',
-                'adresse' => 'require|array',
-                'zone_id'=> 'require',
+                'adresse' => 'required',
                 'client_id' => 'required|exists:clients,id'
             ]
         );
-
+        $commune = Commune::whereRaw('LOWER(nom) = ?', [strtolower($validated['adresse']['commune'])])->first();
         // Générer un préfixe de 10 caractères aléatoires
         $prefix = '';
         $caracteres = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
@@ -59,15 +59,18 @@ class CommandeController extends Controller
 
         $commande = Commande::create([
             "prix" => $validated["prix"],
+            "note"=>$request->note,
             "facture" => $validated['facture'],
-            "paiement" => $validated['paiement'],
+            "paiement" =>$request->paiement ?? "cash",
             "ticket" => $ticket,
             "mois" => "$mois-$annee",
             "adresse" => $validated['adresse']['adresse'],
+            "commune" => $validated['adresse']['commune'],
             "location_lat" => $validated['adresse']['lat'],
             "location_lon" => $validated['adresse']['lon'],
             "client_id" => $validated['client_id'],
-            "zone_id" => $validated['zone_id']
+            "zone_id" => ($commune != null) ? $commune->id : 1,
+            "delivery_coast"=>$validated['delivery_coast'],
         ]);
 
         if ($commande) {
@@ -75,13 +78,12 @@ class CommandeController extends Controller
                 $panier = Panier::find($panier_id);
                 if ($panier) {
                     $panier->status = true;
+                    $panier->commande_id=$commande->id;
                     $panier->save();
                 }
             }
-            $commande->paniers()->attach($validated['paniers']);
             return response()->json(true, 201);
         }
-
         return response()->json(false, 500);
 
     }

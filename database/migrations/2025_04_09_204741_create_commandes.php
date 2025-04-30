@@ -20,11 +20,11 @@ return new class extends Migration
             $table->string('adresse');
             $table->float("location_lat")->nullable();
             $table->float('location_lon')->nullable();
-            $table->enum('livraison', ['null', 'progress', 'finish'])->default("null");
-            $table->enum('paiement', ['cash', 'carte', 'bank', 'mobile', 'paypal'])->nullable();
+            $table->string('livraison')->default("null"); // ['null', 'progress', 'finish']
+            $table->string('paiement')->nullable(); //['cash', 'carte', 'bank', 'mobile', 'paypal']
             $table->boolean('facture')->default(false);
             $table->boolean('confirm')->default(false);
-            $table->foreignId("client_id")->constrained()->cascadeOnDelete();
+            $table->foreignId("client_id")->nullable()->constrained()->cascadeOnDelete();
             $table->foreignId("livreur_id")->constrained()->cascadeOnDelete();
             $table->foreignId("zone_id")->constrained()->cascadeOnDelete();
             $table->timestamps();
