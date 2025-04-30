@@ -26,4 +26,17 @@ class Panier extends Model
     {
         return $this->belongsTo(Plat::class, "plat_id");
     }
+
+    public function toArray()
+    {
+        return [
+            "id" => $this->id,
+            "client_id" => $this->client_id,
+            "status" => $this->status,
+            "prix" => $this->prix,
+            "qte" => $this->qte,
+            "created_at" => $this->created_at,
+            "plat" => $this->plats,
+        ];
+    }
 }

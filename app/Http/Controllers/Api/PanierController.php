@@ -38,8 +38,9 @@ class PanierController extends Controller
             "prix" => "required",
         ]);
 
-        $panier = Panier::where("client_id", $validated['client_id'])->where("plat_id", $validated["plat_id"])->first();
-        if ($panier && $panier->status == false) {
+        $panier = Panier::where("client_id", $validated['client_id'])->where("plat_id", $validated["plat_id"])->where("status", false)->first();
+        // return response()->json($panier->status);
+        if ($panier && $panier->status == 0) {
             $panier->prix += $validated["prix"];
             $panier->qte += $validated["qte"];
             $panier->save();

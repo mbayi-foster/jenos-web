@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Models\Commande;
 use App\Models\Commune;
+use App\Models\Notification;
 use App\Models\Panier;
 use Illuminate\Http\Request;
 use DateTime;
@@ -59,9 +61,9 @@ class CommandeController extends Controller
 
         $commande = Commande::create([
             "prix" => $validated["prix"],
-            "note"=>$request->note,
+            "note" => $request->note,
             "facture" => $validated['facture'],
-            "paiement" =>$request->paiement ?? "cash",
+            "paiement" => $validated['paiement'],
             "ticket" => $ticket,
             "mois" => "$mois-$annee",
             "adresse" => $validated['adresse']['adresse'],
@@ -70,7 +72,7 @@ class CommandeController extends Controller
             "location_lon" => $validated['adresse']['lon'],
             "client_id" => $validated['client_id'],
             "zone_id" => ($commune != null) ? $commune->id : 1,
-            "delivery_coast"=>$validated['delivery_coast'],
+            "delivery_coast" => $validated['delivery_coast'],
         ]);
 
         if ($commande) {
@@ -78,10 +80,16 @@ class CommandeController extends Controller
                 $panier = Panier::find($panier_id);
                 if ($panier) {
                     $panier->status = true;
-                    $panier->commande_id=$commande->id;
+                    $panier->commande_id = $commande->id;
                     $panier->save();
                 }
             }
+            $client = Client::find($commande->client_id);
+
+            $notification = Notification::create([
+                'user_id' => $client->toArray()['uid'],
+                'message' => "Nous avons bien reçu votre commande veillez patientez le traitement et la livraison! \nMerci d'utiliser nos services"
+            ]);
             return response()->json(true, 201);
         }
         return response()->json(false, 500);
