@@ -39,7 +39,7 @@ class NotificationController extends Controller
      */
     public function show(string $id)
     {
-        $notifications = Notification::where('user_id', $id)->get();
+        $notifications = Notification::where('user_id', $id)->orderBy("created_at", "desc")->get();
         return response()->json($notifications);
     }
 

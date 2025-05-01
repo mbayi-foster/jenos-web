@@ -149,35 +149,33 @@ class PlatController extends Controller
         $request->validate([
             "order" => 'string'
         ]);
-        $query = "SELECT * FROM plats ORDER BY created_at DESC";
-        if ($request->order)
-            match ($request->order) {
-                "new" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC",
-                "chers" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix DESC",
-                "moins" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix ASC",
-            };
+         $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC";
+        // if ($request->order)
+        //     match ($request->order) {
+        //         "new" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC",
+        //         "chers" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix DESC",
+        //         "moins" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix ASC",
+        //     };
       
-        $plats = DB::select(
-            $query
-        );
+        $plats = Plat::where("status", true)->where('nom', 'LIKE', "%$mot%")->get();
         return response()->json($plats);
     }
 
     public function all(Request $request)
     {
-        $request->validate([
-            "order" => 'required|string'
-        ]);
-        $plats = [];
-        match ($request->order) {
-            "chers"=>$plats = Plat::orderByDesc('prix')->get(),
-            "moins"=>$plats = Plat::orderBy('prix', 'ASC')->get(),
-            "new"=>$plats = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get(),
-            "desirs"=> $plats= Plat::withCount('paniers') // Assurez-vous que la relation 'paniers' est définie dans le modèle Plat
-            ->orderBy('paniers_count', 'desc')
-            ->limit(5)
-            ->get()
-        };
+        // $request->validate([
+        //     "order" => 'required|string'
+        // ]);
+        $plats = Plat::where('status', true)->inRandomOrder()->get();
+        // match ($request->order) {
+        //     "chers"=>$plats = Plat::orderByDesc('prix')->get(),
+        //     "moins"=>$plats = Plat::orderBy('prix', 'ASC')->get(),
+        //     "new"=>$plats = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get(),
+        //     "desirs"=> $plats= Plat::withCount('paniers') // Assurez-vous que la relation 'paniers' est définie dans le modèle Plat
+        //     ->orderBy('paniers_count', 'desc')
+        //     ->limit(5)
+        //     ->get()
+        // };
         return response()->json($plats);
     }
 }

@@ -101,7 +101,7 @@ class CommandeController extends Controller
      */
     public function show(string $id)
     {
-        $commandesDb = Commande::where('zone_id', $id)->get();
+        $commandesDb = Commande::where('zone_id', $id)->orderBy("created_at", "desc")->get();
         $commandes = $commandesDb->map(fn($commande) => $commande->toArray());
         return response()->json($commandes, 200);
     }
