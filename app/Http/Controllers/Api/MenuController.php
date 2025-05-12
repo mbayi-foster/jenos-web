@@ -37,7 +37,7 @@ class MenuController extends Controller
             $clean_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $clean_name); // Remplace les caractères spéciaux
             $clean_name = str_replace(' ', '_', $clean_name); // Remplace les espaces par des underscores
             $uniqueId = uniqid();
-            $keyname = 'menus/' . $uniqueId . '_' . $clean_name . $file->getClientOriginalExtension();
+            $keyname = 'menus/' . $uniqueId . '_' . $clean_name .'.'. $file->getClientOriginalExtension();
 
 
             $s3 = new S3Client([
