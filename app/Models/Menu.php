@@ -22,16 +22,12 @@ class Menu extends Model
 
     public function toArray()
     {
-        $url = Storage::disk('public')->url($this->photo);
-        if (strpos($url, 'http://localhost') !== false) {
-            $url = str_replace('http://localhost', 'http://localhost:8000', $url);
-        }
         return [
             "id" => $this->id,
             "nom" => $this->nom,
             "details" => $this->details,
-            "photo" => $url,
-            "status"=>$this->status,
+            "photo" => $this->photo,
+            "status" => $this->status,
             'count' => $this->plats->count(),
             "created_at" => $this->created_at
         ];

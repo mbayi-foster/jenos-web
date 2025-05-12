@@ -4,10 +4,9 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Plat;
-use DateTime;
-use Illuminate\Support\Facades\Storage;
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PlatController extends Controller
 {
@@ -43,21 +42,46 @@ class PlatController extends Controller
         ]);
 
         if ($request->file('photo')) {
-
-            $timestamp = time();
-            $newName = $request->nom . '_' . $timestamp . '.' . $request->file('photo')->getClientOriginalExtension();
-            $path = $request->file('photo')->storeAs('images/plats', $newName, 'public');
-            $plat = Plat::create([
-                "nom" => $request->nom,
-                "prix" => $request->prix,
-                "photo" => $path,
-                "details" => $request->details
+            $file = $request->file('photo');
+            $clean_name = strtolower($request->nom);
+            $clean_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $clean_name); // Remplace les caractères spéciaux
+            $clean_name = str_replace(' ', '_', $clean_name); // Remplace les espaces par des underscores
+            $uniqueId = uniqid();
+            $keyname = 'plats/' . $uniqueId . '_' . $clean_name . $file->getClientOriginalExtension();
+            // $keyname = 'plats/' . $file->getClientOriginalName();
+            $s3 = new S3Client([
+                'version' => 'latest',
+                'region' => env('AWS_DEFAULT_REGION'),
+                'credentials' => [
+                    'key' => env('AWS_ACCESS_KEY_ID'),
+                    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                ],
             ]);
-
-            return response()->json($plat, 201);
-        } else {
-            return response()->json(['error' => 'Aucune photo téléchargée.'], 400);
+            try {
+                $result = $s3->putObject([
+                    'Bucket' => env('AWS_BUCKET'),
+                    'Key' => $keyname,
+                    'Body' => fopen($file, 'r'),
+                    // 'ACL' => 'public-read'  
+                ]);
+                Plat::create([
+                    "nom" => $request->nom,
+                    "prix" => $request->prix,
+                    "photo" => $result['ObjectURL'],
+                    "details" => $request->details
+                ]);
+                return response()->json([
+                    'message' => 'succès',
+                ], 201);
+            } catch (S3Exception $e) {
+                return response()->json([
+                    'Upload Failed' => $e->getMessage()
+                ], 500);
+            }
         }
+        return response()->json([
+            'error' => "échec"
+        ], 500);
     }
 
     /**
@@ -84,23 +108,52 @@ class PlatController extends Controller
         $plat = Plat::find($id);
         if ($plat) {
             if ($request->file('photo')) {
-                $timestamp = time();
-                $newName = $request->nom . '_' . $timestamp . '.' . $request->file('photo')->getClientOriginalExtension();
-                $path = $request->file('photo')->storeAs('images/plats', $newName, 'public');
-                $plat->nom = $request->nom;
-                $plat->prix = $request->prix;
-                $plat->photo = $path;
-                $plat->details = $request->details;
-                $plat->save();
-                return response()->json($plat, 201);
+                $file = $request->file('photo');
+                $clean_name = strtolower($request->nom);
+                $clean_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $clean_name); // Remplace les caractères spéciaux
+                $clean_name = str_replace(' ', '_', $clean_name); // Remplace les espaces par des underscores
+                $uniqueId = uniqid();
+                $keyname = 'plats/' . $uniqueId . '_' . $clean_name . $file->getClientOriginalExtension();
+                // $keyname = 'plats/' . $file->getClientOriginalName();
+                $s3 = new S3Client([
+                    'version' => 'latest',
+                    'region' => env('AWS_DEFAULT_REGION'),
+                    'credentials' => [
+                        'key' => env('AWS_ACCESS_KEY_ID'),
+                        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                    ],
+                ]);
+                try {
+                    $result = $s3->putObject([
+                        'Bucket' => env('AWS_BUCKET'),
+                        'Key' => $keyname,
+                        'Body' => fopen($file, 'r'),
+                        // 'ACL' => 'public-read'  
+                    ]);
+                    $plat->nom = $request->nom;
+                    $plat->prix = $request->prix;
+                    $plat->photo = $result['ObjectURL'];
+                    $plat->details = $request->details;
+                    $plat->save();
+                    return response()->json([
+                        'message' => 'succès',
+                    ], 201);
+                } catch (S3Exception $e) {
+                    return response()->json([
+                        'Upload Failed' => $e->getMessage()
+                    ], 500);
+                }
             } else {
                 $plat->nom = $request->nom;
                 $plat->prix = $request->prix;
                 $plat->details = $request->details;
                 $plat->save();
+                return response()->json([
+                    'message' => 'succès',
+                ], 201);
             }
         }
-        return response()->json($plat, 201);
+        return response()->json(["une erreur s'est produite"], 500);
 
     }
 
@@ -149,14 +202,14 @@ class PlatController extends Controller
         $request->validate([
             "order" => 'string'
         ]);
-         $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC";
+        $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC";
         // if ($request->order)
         //     match ($request->order) {
         //         "new" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC",
         //         "chers" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix DESC",
         //         "moins" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix ASC",
         //     };
-      
+
         $plats = Plat::where("status", true)->where('nom', 'LIKE', "%$mot%")->get();
         return response()->json($plats);
     }

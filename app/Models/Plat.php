@@ -33,18 +33,18 @@ class Plat extends Model
     public function toArray()
     {
         $date = new DateTime($this->created_at);
-        $url = Storage::disk('public')->url($this->photo);
+        /* $url = Storage::disk('public')->url($this->photo);
         if (strpos($url, 'http://localhost') !== false) {
             $url = str_replace('http://localhost', 'http://localhost:8000', $url);
         }
-
+ */
         $commandes = $this->paniers->count();
 
         return [
             "id" => $this->id,
             "nom" => $this->nom,
             "details"=>$this->details,
-            "photo" => $url,
+            "photo" => $this->photo,
             "status" => $this->status,
             "prix" => $this->prix,
             "commandes" => $commandes,

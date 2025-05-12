@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Aws\S3\S3Client;
+use Aws\S3\Exception\S3Exception;
 
 class MenuController extends Controller
 {
@@ -15,21 +16,7 @@ class MenuController extends Controller
     public function index()
     {
         $menu = Menu::withCount('plats')->get();
-        $nouveauMenu = $menu->map(fn($val)=>$val->toArray());
-        // foreach ($menu as $value) {
-        //     $url = Storage::disk('public')->url($value->photo);
-        //     if (strpos($url, 'http://localhost') !== false) {
-        //         $url = str_replace('http://localhost', 'http://localhost:8000', $url); // Remplacez par le port approprié
-        //     }
-        //     $nouveauMenu[] = [
-        //         "id"=>$value->id,
-        //         "nom" => $value->nom,
-        //         'count' => $value->plats_count,
-        //         'photo'=> $url,
-        //         'status'=> $value->status
-        //     ];
-        // }
-
+        $nouveauMenu = $menu->map(fn($val) => $val->toArray());
         return response()->json($nouveauMenu);
     }
 
@@ -45,24 +32,47 @@ class MenuController extends Controller
         ]);
 
         if ($request->file('photo')) {
+            $file = $request->file('photo');
+            $clean_name = strtolower($request->nom);
+            $clean_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $clean_name); // Remplace les caractères spéciaux
+            $clean_name = str_replace(' ', '_', $clean_name); // Remplace les espaces par des underscores
+            $uniqueId = uniqid();
+            $keyname = 'menus/' . $uniqueId . '_' . $clean_name . $file->getClientOriginalExtension();
 
-            $timestamp = time();
-            $newName = $request->nom . '_' . $timestamp . '.' . $request->file('photo')->getClientOriginalExtension();
-            $path = $request->file('photo')->storeAs('images/menus', $newName, 'public');
-            $menu = Menu::create([
-                "nom" => $request->nom,
-                "photo" => $path
+
+            $s3 = new S3Client([
+                'version' => 'latest',
+                'region' => env('AWS_DEFAULT_REGION'),
+                'credentials' => [
+                    'key' => env('AWS_ACCESS_KEY_ID'),
+                    'secret' => env('AWS_SECRET_ACCESS_KEY'),
+                ],
             ]);
-            $platIds = explode(',', $request->plats);
 
-            $menu->plats()->attach($platIds);
-            return response()->json(true, 201);
-        } else {
-            return response()->json(['error' => 'Aucune photo téléchargée.'], 400);
+            try {
+                $result = $s3->putObject([
+                    'Bucket' => env('AWS_BUCKET'),
+                    'Key' => $keyname,
+                    'Body' => fopen($file, 'r'),
+                    // 'ACL' => 'public-read'  
+                ]);
+                $menu = Menu::create([
+                    "nom" => $request->nom,
+                    "photo" => $result['ObjectURL']
+                ]);
+                $platIds = explode(',', $request->plats);
+                $menu->plats()->attach($platIds);
+                return response()->json([
+                    'message' => 'succès',
+                ], 201);
+            } catch (S3Exception $e) {
+                return response()->json([
+                    'Upload Failed' => $e->getMessage()
+                ], 500);
+            }
         }
 
-
-
+        return response()->json(['error' => "Une erreur s'est produite veillez réessayer"], status: 500);
     }
 
     /**
@@ -70,7 +80,7 @@ class MenuController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -87,11 +97,11 @@ class MenuController extends Controller
     public function destroy(string $id)
     {
         $menu = Menu::findOrFail($id);
-        if($menu){
+        if ($menu) {
             $menu->delete();
-            return response()->json(true,200);
+            return response()->json(true, 200);
         }
-        return response()->json(false,400);
+        return response()->json(false, 400);
     }
 
 
@@ -99,7 +109,7 @@ class MenuController extends Controller
     {
         $menu = Menu::find($id);
 
-        $menu->status = ($menu->status == true) ? false : true ;
+        $menu->status = ($menu->status == true) ? false : true;
 
         $menu->save();
         return response()->json(true, 200);
