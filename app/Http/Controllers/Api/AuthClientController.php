@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\MobileMailJob;
+use App\Mail\CheckMail;
 use App\Mail\MobileMail;
 use App\Models\Client;
 use App\Models\User;
@@ -44,13 +45,12 @@ class AuthClientController extends Controller
                 'nom' => $valide['nom'],
                 'prenom' => $valide['prenom'],
                 'phone' => $valide['phone'],
-                'user_id'=>$user->id
+                'user_id' => $user->id
             ]);
             $token = $user->createToken("client-$user->email")->plainTextToken;
             $client = $client->toArray();
             $client["token"] = $token;
             return response()->json($client, 201);
-
         }
         return response()->json(false, 500);
     }
@@ -132,7 +132,7 @@ class AuthClientController extends Controller
         } else {
             return response()->json(['msg' => 'Cet utilisateur existe déjà en cas de mot de passe oublié veillez suivre la procedure'], 200); // Retourner un objet JSON
         }
-
     }
 
+    
 }
