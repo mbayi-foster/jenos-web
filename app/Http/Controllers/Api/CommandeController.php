@@ -71,7 +71,7 @@ class CommandeController extends Controller
             "location_lat" => $validated['adresse']['lat'],
             "location_lon" => $validated['adresse']['lon'],
             "client_id" => $validated['client_id'],
-            "zone_id" => ($commune != null) ? $commune->id : 1,
+            "zone_id" => ($commune != null) ? $commune->zone_id : 1,
             "delivery_coast" => $validated['delivery_coast'],
         ]);
 
@@ -101,7 +101,7 @@ class CommandeController extends Controller
      */
     public function show(string $id)
     {
-        $commandesDb = Commande::where('zone_id', $id)->orderBy("created_at", "desc")->get();
+        $commandesDb = Commande::where('client_id', $id)->orderBy("created_at", "desc")->get();
         $commandes = $commandesDb->map(fn($commande) => $commande->toArray());
         return response()->json($commandes, 200);
     }

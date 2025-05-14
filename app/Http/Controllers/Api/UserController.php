@@ -191,14 +191,16 @@ class UserController extends Controller
         if ($user && Hash::check($password, $user->password) && $user->status == true) {
             $token = $user->createToken("admin-$user->email")->plainTextToken;
             $admin = Admin::where('user_id', $user->id)->first();
-            $admin_login =  $admin->toArray();
+            $admin_login = $admin->toArray();
             $admin_login["token"] = $token;
             return response()->json($admin_login, 201);
         }
         return response()->json(false, 500);
     }
 
-    public function logout(Request $request) {}
+    public function logout(Request $request)
+    {
+    }
 
     public function check_mail(Request $request)
     {
@@ -210,7 +212,6 @@ class UserController extends Controller
         if ($user) {
             $data = ['code' => $code, "sujet" => "Confirmer l'adresse email"];
             Mail::to($request->email)->send(new CheckMail($data));
-            // MobileMailJob::dispatch($request->email, $data);
             return response()->json([
                 "code" => $code,
             ], 200); // Retourner un objet JSON
@@ -227,12 +228,12 @@ class UserController extends Controller
         ]);
 
         $user = User::where('email', $request->email)->first();
-        if($user){
+        if ($user) {
             $user->password = bcrypt($request->password);
             $user->save();
 
-            return response()->json("succès",201);
+            return response()->json("succès", 201);
         }
-         return response()->json("echec",500);
+        return response()->json("echec", 500);
     }
 }

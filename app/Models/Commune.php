@@ -22,6 +22,7 @@ class Commune extends Model
             'id'=>$this->id,
             'nom'=>$this->nom,
             'zone'=>$this->zone->nom,
+            'zone_id'=>$this->zone->id,
             'frais'=>$this->frais,
         ];
     }
