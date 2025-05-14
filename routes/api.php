@@ -11,7 +11,7 @@ Route::apiResource('livreurs', LivreurController::class);
 Route::get("livreurs/status/{id}", [LivreurController::class, "change_status"]);
 Route::apiResource('notifications', NotificationController::class);
 Route::post("check-mail", [UserController::class, 'check_mail']);
-Route::post("update-password", [UserController::class, 'update-password']);
+Route::post("update-password", [UserController::class, 'update_password']);
 
 require __DIR__ . '/apiMobile.php';
 require __DIR__ . '/apiWeb.php';
