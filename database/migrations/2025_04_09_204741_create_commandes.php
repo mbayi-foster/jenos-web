@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('adresse');
             $table->float("location_lat")->nullable();
             $table->float('location_lon')->nullable();
-            $table->string('livraison')->default("null"); // ['null', 'progress', 'finish']
+            $table->string('livraison')->default("null"); // ['null', 'progress', 'field', 'finish']
             $table->string('paiement')->nullable(); //['cash', 'carte', 'bank', 'mobile', 'paypal']
             $table->boolean('facture')->default(false);
             $table->boolean('confirm')->default(false);

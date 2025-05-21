@@ -71,6 +71,7 @@ class CommandeController extends Controller
             "location_lat" => $validated['adresse']['lat'],
             "location_lon" => $validated['adresse']['lon'],
             "client_id" => $validated['client_id'],
+            "status"=>true,
             "zone_id" => ($commune != null) ? $commune->zone_id : 1,
             "delivery_coast" => $validated['delivery_coast'],
         ]);
