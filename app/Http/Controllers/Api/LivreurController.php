@@ -129,4 +129,11 @@ class LivreurController extends Controller
         }
         return response()->json(true, 200);
     }
+
+    public function livreurs_by_zone($id)
+    {
+        $livreursDb = Livreur::where('zone_id', $id)->where('status', true)->orderBy('busy', 'asc')->get();
+        $livreurs = $livreursDb->map(fn($livreur) => $livreur->toArray());
+        return response()->json($livreurs, 200);
+    }
 }

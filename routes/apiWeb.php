@@ -2,6 +2,7 @@
 use App\Http\Controllers\Api\AuthClientController;
 use App\Http\Controllers\Api\CommuneController;
 use App\Http\Controllers\Api\DashboardController;
+use App\Http\Controllers\Api\LivreurController;
 use App\Http\Controllers\Api\MenuController;
 use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PlatController;
@@ -46,3 +47,7 @@ Route::post("/plats-update/{id}", [PlatController::class, "update"]);
 
 Route::get("commandes-gerant/{id}", [CommandeController::class, 'commandes_gerant'])->name('commandes.gerant');
 Route::get("commandes-gerant/zone/{id}", [CommandeController::class, 'commandes_gerant_by_zone'])->name('commandes.gerant.by.zone');
+Route::post("commandes-gerant/valider/{id}", [CommandeController::class, 'valider_commande'])->name('commandes.gerant.valider');
+
+// livreur
+Route::get("livreurs-by-zone/{id}", [LivreurController::class, 'livreurs_by_zone'])->name('livreurs.by.zone');

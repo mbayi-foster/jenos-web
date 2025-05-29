@@ -134,4 +134,19 @@ class CommandeController extends Controller
         $commandes = $commandesDb->map(fn($commande) => $commande->toArray());
         return response()->json($commandes, 200);
     }
+
+    public function valider_commande(Request $request, string $id)
+    {
+        $validated = $request->validate([
+            'livreur_id' => 'required|exists:users,id',
+        ]);
+        $commande = Commande::findOrFail($id);
+        $commande->status = true;
+        $commande->confirm = true;
+        $commande->livreur_id = $request->livreur_id;
+        $commande->save();
+
+        return response()->json(true, 200);
+    }
+       
 }
