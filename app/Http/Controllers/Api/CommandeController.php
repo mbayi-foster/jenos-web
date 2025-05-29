@@ -138,7 +138,7 @@ class CommandeController extends Controller
     public function valider_commande(Request $request, string $id)
     {
         $validated = $request->validate([
-            'livreur_id' => 'required|exists:users,id',
+            'livreur_id' => 'required|exists:livreurs,id',
         ]);
         $commande = Commande::findOrFail($id);
         $commande->status = true;
