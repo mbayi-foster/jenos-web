@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ZoneController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\CommandeController;
 
 
 /* api pour le web de vue js */
@@ -40,3 +41,8 @@ Route::apiResource("dashboard", DashboardController::class);
 Route::get("/zones-id/{id}", [ZoneController::class, 'zone_by_id']);
 
 Route::post("/plats-update/{id}", [PlatController::class, "update"]);
+
+// commandes
+
+Route::get("commandes-gerant", [CommandeController::class, 'commandes_gerant'])->name('commandes.gerant');
+Route::get("commandes-gerant/zone/{id}", [CommandeController::class, 'commandes_gerant_by_zone'])->name('commandes.gerant.by.zone');

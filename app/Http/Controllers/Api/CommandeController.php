@@ -122,4 +122,15 @@ class CommandeController extends Controller
     {
         //
     }
+
+    public function commandes_gerant()
+    {
+        $commandes = Commande::where('status', true)->orderBy("created_at", "desc")->get();
+        return response()->json($commandes, 200);
+    }
+    public function commandes_gerant_by_zone($id)
+    {
+        $commandes = Commande::where('status', true)->where('zone_id', $id)->orderBy("created_at", "desc")->get();
+        return response()->json($commandes, 200);
+    }
 }
