@@ -51,6 +51,7 @@ class Commande extends Model
                 'lat' => $this->location_lat,
                 'lon' => $this->location_lon
             ],
+            "zone" => $this->zone_id,
             "livreur" => $this->livreur != null ? [
                 "nom" => $this->livreur->nom,
                 "prenom" => $this->livreur->prenom,
