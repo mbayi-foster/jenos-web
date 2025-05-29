@@ -10,6 +10,7 @@ use App\Models\Notification;
 use App\Models\Panier;
 use Illuminate\Http\Request;
 use DateTime;
+
 class CommandeController extends Controller
 {
     /**
@@ -71,7 +72,7 @@ class CommandeController extends Controller
             "location_lat" => $validated['adresse']['lat'],
             "location_lon" => $validated['adresse']['lon'],
             "client_id" => $validated['client_id'],
-            "status"=>true,
+            "status" => true,
             "zone_id" => ($commune != null) ? $commune->zone_id : 1,
             "delivery_coast" => $validated['delivery_coast'],
         ]);
@@ -94,7 +95,6 @@ class CommandeController extends Controller
             return response()->json(true, 201);
         }
         return response()->json(false, 500);
-
     }
 
     /**
@@ -130,7 +130,8 @@ class CommandeController extends Controller
     }
     public function commandes_gerant_by_zone($id)
     {
-        $commandes = Commande::where('status', true)->where('zone_id', $id)->orderBy("created_at", "desc")->get();
+        $commandesDb = Commande::where('zone_id', $id)->orderBy("created_at", "desc")->get();
+        $commandes = $commandesDb->map(fn($commande) => $commande->toArray());
         return response()->json($commandes, 200);
     }
 }
