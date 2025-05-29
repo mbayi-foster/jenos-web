@@ -123,10 +123,10 @@ class CommandeController extends Controller
         //
     }
 
-    public function commandes_gerant()
+    public function commandes_gerant($id)
     {
-        $commandes = Commande::where('status', true)->orderBy("created_at", "desc")->get();
-        return response()->json($commandes, 200);
+        $commandesDb = Commande::findOrFail($id);
+        return response()->json($commandesDb->toArray(), 200);
     }
     public function commandes_gerant_by_zone($id)
     {

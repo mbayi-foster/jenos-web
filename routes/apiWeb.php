@@ -44,5 +44,5 @@ Route::post("/plats-update/{id}", [PlatController::class, "update"]);
 
 // commandes
 
-Route::get("commandes-gerant", [CommandeController::class, 'commandes_gerant'])->name('commandes.gerant');
+Route::get("commandes-gerant/{id}", [CommandeController::class, 'commandes_gerant'])->name('commandes.gerant');
 Route::get("commandes-gerant/zone/{id}", [CommandeController::class, 'commandes_gerant_by_zone'])->name('commandes.gerant.by.zone');
