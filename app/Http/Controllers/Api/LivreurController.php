@@ -136,4 +136,16 @@ class LivreurController extends Controller
         $livreurs = $livreursDb->map(fn($livreur) => $livreur->toArray());
         return response()->json($livreurs, 200);
     }
+
+    public function login(Request $request)
+    {
+        $user = User::where('email', $request->email)->first();
+      if ($user && Hash::check($request->password, $user->password) && $user->status == true) {
+            $livreur = Livreur::where('user_id', $user->id)->first();
+            if ($livreur) {
+                return response()->json($livreur->toArray(), 200);
+            }
+        }
+        return response()->json(false, 400);
+    }
 }
