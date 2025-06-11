@@ -28,6 +28,11 @@ class Livreur extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+     public function commandes()
+    {
+        return $this->hasMany(Commande::class, 'livreur_id', 'id');
+    }
     public function toArray()
     {
         $url = Storage::disk('public')->url($this->photo);
