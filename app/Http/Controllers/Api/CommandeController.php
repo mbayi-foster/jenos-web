@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Commande;
+use App\Models\Livreur;
 use App\Models\Commune;
 use App\Models\Notification;
 use App\Models\Panier;
