@@ -94,10 +94,7 @@ class LivreurController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-
-    }
+    public function update(Request $request, string $id) {}
 
     /**
      * Remove the specified resource from storage.
@@ -139,8 +136,12 @@ class LivreurController extends Controller
 
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
         $user = User::where('email', $request->email)->first();
-      if ($user && Hash::check($request->password, $user->password) && $user->status == true) {
+        if ($user && Hash::check($request->password, $user->password) && $user->status == true) {
             $livreur = Livreur::where('user_id', $user->id)->first();
             if ($livreur) {
                 return response()->json($livreur->toArray(), 200);
