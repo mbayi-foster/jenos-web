@@ -61,12 +61,12 @@ class LivreurController extends Controller
                     'nom' => $livreur->nom,
                     'prenom' => $livreur->prenom,
                     'phone' => $livreur->phone,
-                    "email" => $livreur->email,
+                    "email" => $user->email,
                     "password" => "123456",
                     'sujet' => "Confirmatiom du compte"
                 ];
                 //  SendEmailJob::dispatch($livreur->email, $data);
-                Mail::to($livreur->email)->send(new WebMail($data));
+                Mail::to($user->email)->send(new WebMail($data));
                 return response()->json(true, 201);
             }
             return response()->json(false, 500);
