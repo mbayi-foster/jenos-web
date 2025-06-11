@@ -60,6 +60,13 @@ class CommandeController extends Controller
         // Convertir en majuscules (bien que ce soit déjà le cas)
         $ticket = strtoupper($ticket);
 
+        // trouver le livreur
+        $livreur = Livreur::withCount(['commandes as pending_count' => function($query) {
+    $query->where('livraison', 'pending');
+}])
+->orderBy('pending_count', 'asc')
+->first();
+
         $commande = Commande::create([
             "prix" => $validated["prix"],
             "note" => $request->note,
@@ -75,7 +82,10 @@ class CommandeController extends Controller
             "status" => true,
             "zone_id" => ($commune != null) ? $commune->zone_id : 1,
             "delivery_coast" => $validated['delivery_coast'],
+            "livreur_id" => $livreur ? $livreur->id : null,
         ]);
+
+
 
         if ($commande) {
             foreach ($validated["paniers"] as $panier_id) {
@@ -148,5 +158,5 @@ class CommandeController extends Controller
 
         return response()->json(true, 200);
     }
-       
+
 }
