@@ -146,6 +146,6 @@ class LivreurController extends Controller
                 return response()->json($livreur->toArray(), 200);
             }
         }
-        return response()->json($request, 400);
+        return response()->json(['sa passeword ou email est incorrect'], 400);
     }
 }
