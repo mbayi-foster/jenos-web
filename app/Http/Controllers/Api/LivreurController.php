@@ -8,6 +8,7 @@ use App\Models\Livreur;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Hash;
 
 class LivreurController extends Controller
 {
@@ -80,7 +81,7 @@ class LivreurController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -136,6 +137,7 @@ class LivreurController extends Controller
 
     public function login(Request $request)
     {
+       
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
