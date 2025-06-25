@@ -45,37 +45,38 @@ class UserController extends Controller
             'roles' => 'required|array', // Assurez-vous que 'roles' est un tableau
             'roles.*' => 'exists:roles,id',
         ]);
-        $user = User::create([
-            'email' => $validated['email'],
-            'password' => bcrypt('123456'),
-        ]);
-
-        if ($user) {
-            $admin = Admin::create([
-                'nom' => $validated['nom'],
-                'prenom' => $validated['prenom'],
-                'phone' => $validated['phone'],
-                'user_id' => $user->id,
+        $data = [
+            'nom' => $validated['nom'],
+            'prenom' => $validated['prenom'],
+            'phone' => $validated['phone'],
+            "email" => $validated['email'],
+            "password" => "@jenos$",
+            'sujet' => "Confirmatiom du compte"
+        ];
+        $sendMail = Mail::to($request->email)->send(new WebMail($data));
+        if ($sendMail) {
+            $user = User::create([
+                'email' => $validated['email'],
+                'password' => bcrypt('@jenos$'),
             ]);
-            if ($admin) {
-                $admin->roles()->attach($validated['roles']);
-                $data = [
-                    'nom' => $admin->nom,
-                    'prenom' => $admin->prenom,
-                    'phone' => $admin->phone,
-                    "email" => $admin->users->email,
-                    "password" => "123456",
-                    'sujet' => "Confirmatiom du compte"
-                ];
-                //  SendEmailJob::dispatch($user->email, $data);
-                Mail::to($user->email)->send(new WebMail($data));
-                return response()->json($admin, 200);
+            if ($user) {
+                $admin = Admin::create([
+                    'nom' => $validated['nom'],
+                    'prenom' => $validated['prenom'],
+                    'phone' => $validated['phone'],
+                    'user_id' => $user->id,
+                ]);
+                if ($admin) {
+                    $admin->roles()->attach($validated['roles']);
+                    return response()->json($admin, 200);
+                }
+                return response()->json(false, 500);
+            } else {
+                return response()->json(false, 500);
             }
-            return response()->json(false, 500);
-        } else {
-            return response()->json(false, 500);
         }
-        // return response()->json($request->all(), 201);
+
+
     }
 
     /**

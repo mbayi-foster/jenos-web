@@ -43,11 +43,6 @@ class Client extends Model
    
     public function toArray()
     {
-        $url = Storage::disk('public')->url($this->photo);
-        if (strpos($url, 'http://localhost') !== false) {
-            $url = str_replace('http://localhost', 'http://localhost:8000', $url);
-        }
-
         return [
             "id" => $this->id,
             "uid"=>$this->user_id,

@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\FactureStatus;
+use App\OrderStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
@@ -18,10 +20,14 @@ class Commande extends Model
         "livreur_id",
         "client_id",
         "zone_id",
-        "confirm",
         "note",
         "delivery_coast",
         "commune"
+    ];
+
+    protected $casts = [
+        'status' => OrderStatus::class,
+        'facture' => FactureStatus::class
     ];
 
     public function paniers()
@@ -33,6 +39,15 @@ class Commande extends Model
     {
         return $this->belongsTo(Livreur::class, "livreur_id", "id");
     }
+
+    public function generateOrderTicketCode(): string
+    {
+        $date = new \DateTime();
+        $datePart = $date->format('d-m-y');
+        $randomPart = str_pad(random_int(0, 999999), 6, '0', STR_PAD_LEFT);
+        return "ORDER-{$datePart}-{$randomPart}";
+    }
+
     public function toArray()
     {
         return [

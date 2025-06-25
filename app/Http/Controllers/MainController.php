@@ -27,21 +27,21 @@ class MainController
             }
         }
 
-        $rootUser = User::where('email', 'admin@jenos-food.top')->first();
+        $rootUser = User::where('email', 'admin@jenos-food.store')->first();
 
         if (!$rootUser) {
             $roles = Role::all();
             $roles = $roles->map(fn($role) => $role->id);
             $user = User::create([
                 // 
-                'email' => "admin@jenos-food.top",
-                'password' => bcrypt('admin'),
+                'email' => "admin@jenos-food.store",
+                'password' => bcrypt('@jenos$'),
             ]);
 
             if ($user) {
                 $admin = Admin::create([
                     'nom' => "Root",
-                    'prenom' => "Adiminstrateur",
+                    'prenom' => "Utilisateur",
                     'user_id'=>$user->id,
                 ]);
                 if($admin) $admin->roles()->attach($roles);
