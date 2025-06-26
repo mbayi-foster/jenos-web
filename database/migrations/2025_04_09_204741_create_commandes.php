@@ -18,14 +18,12 @@ return new class extends Migration {
             $table->string("note")->nullable();
             $table->string('status')->default(OrderStatus::PENDING->value);
             $table->string('adresse');
-            $table->float("location_lat")->nullable();
-            $table->float('location_lon')->nullable();
-            $table->string('livraison')->default("null"); // ['null', 'progress', 'field', 'finish']
-            $table->string('paiement')->nullable(); //['cash', 'carte', 'bank', 'mobile', 'paypal']
+            $table->float("latitude")->nullable();
+            $table->float('longitude')->nullable();
             $table->string('facture')->default(FactureStatus::PENDING->value);
-            $table->foreignId("client_id")->constrained()->cascadeOnDelete();
-            $table->foreignId("livreur_id")->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId("zone_id")->constrained()->cascadeOnDelete();
+            $table->foreignUuid('client_id')->references('id')->on('users');
+            $table->foreignId("livreur_id")->nullable()->constrained('livreurs');
+            $table->foreignId("zone_id")->constrained('zones');
             $table->timestamps();
         });
     }

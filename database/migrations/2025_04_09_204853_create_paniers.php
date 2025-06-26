@@ -12,11 +12,11 @@ return new class extends Migration {
     {
         Schema::create('paniers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("client_id")->constrained()->cascadeOnDelete();
-            $table->foreignId("plat_id")->constrained()->cascadeOnDelete();
+            $table->foreignUuid('client_id')->references('id')->on('users');
+            $table->foreignId("plat_id")->constrained('plats')->cascadeOnDelete();
             $table->integer('qte')->default(1);
             $table->float('prix');
-            $table->boolean('status')->default(0);
+            $table->string('status')->default('available');
             $table->timestamps();
         });
     }

@@ -12,18 +12,11 @@ return new class extends Migration {
     {
         Schema::create('livreurs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('prenom');
-            $table->string('nom')->nullable();
-            $table->string('phone')->nullable();
-            $table->longText('photo')->nullable();
-            $table->boolean('status')->default(true);
+            $table->foreignUuid('user_id')->references('id')->on('users');
             $table->string('adresse')->nullable();
             $table->string('commune')->nullable();
-            $table->float("location_lat")->nullable();
-            $table->float('location_lon')->nullable();
-            $table->boolean('busy')->default(false);
-            $table->foreignId('zone_id')->constrained()->cascadeOnDelete();
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
             $table->timestamps();
         });
     }

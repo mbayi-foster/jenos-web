@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -15,6 +14,7 @@ return new class extends Migration
             $table->id();
             $table->string("nom");
             $table->foreignId("zone_id")->constrained()->cascadeOnDelete();
+            $table->boolean('status')->default(false);
             $table->timestamps();
         });
     }

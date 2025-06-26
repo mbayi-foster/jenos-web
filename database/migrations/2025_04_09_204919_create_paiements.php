@@ -13,12 +13,6 @@ return new class extends Migration
     {
         Schema::create('paiements', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->foreignId("client_id")->constrained()->cascadeOnDelete();
-            $table->enum('type', ["visa", "mastercard"]);
-            $table->string("numero");
-            $table->string("date")->nullable();
-            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

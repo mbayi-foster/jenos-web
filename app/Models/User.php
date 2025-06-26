@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enum\UserStatus;
+use App\Enum\UserType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -23,6 +26,11 @@ class User extends Authenticatable
         'password',
         'status',
         'photo'
+    ];
+
+    protected $casts = [
+        'status' => UserStatus::class,
+        'type' => UserType::class
     ];
 
     /**
@@ -59,7 +67,8 @@ class User extends Authenticatable
         return $this->hasMany(Zone::class);
     }
 
-    public function notifications(){
+    public function notifications()
+    {
         return $this->hasMany(Notification::class, 'user_id', 'id');
     }
 

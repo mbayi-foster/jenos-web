@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('rapports', function (Blueprint $table) {
             $table->id();
+            $table->string('label');
+            $table->longText('contenue')->nullable();
+            $table->foreignId('commande_id')->constrained('commandes');
+            $table->foreignId('livreur_id')->constrained('livreurs');
             $table->timestamps();
         });
     }

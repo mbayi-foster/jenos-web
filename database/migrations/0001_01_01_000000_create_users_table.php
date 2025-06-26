@@ -1,5 +1,7 @@
 <?php
 
+use App\Enum\UserStatus;
+use App\Enum\UserType;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,23 +13,13 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('status')->default(true);
+            $table->string('status')->default(UserStatus::ACTIVE->value);
+            $table->string('type')->default(UserType::CLIENT->value);
             $table->rememberToken();
-            $table->timestamps();
-        });
-
-        Schema::create('admins', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('prenom');
-            $table->string('nom')->nullable();
-            $table->string('phone')->nullable();
-            $table->longText('photo')->nullable();
-            $table->boolean('status')->default(true);
             $table->timestamps();
         });
 

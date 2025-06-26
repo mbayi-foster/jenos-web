@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('role_admin', function (Blueprint $table) {
             $table->bigIncrements('id'); 
-            $table->foreignId('admin_id')->constrained()->onDelete('cascade');
+            $table->foreignUuid('user_id')->references('id')->on('users');
             $table->foreignId('role_id')->constrained()->onDelete('cascade');
         });
     }

@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('zones', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->bigInteger('chef')->unsigned();
-            $table->foreign('chef')->references('id')->on('admins');
+            $table->foreignUuid('user_id')->references('id')->on('users');
             $table->boolean('status')->default(false);
             $table->timestamps();
         });
