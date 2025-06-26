@@ -2,7 +2,8 @@
 
 namespace App\Enum;
 
-enum Roles
+enum Roles: string
 {
-    //
+    case ADMIN = "Administrateur";
+    case GERANT = "Gérant";
 }

@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('commune')->nullable();
             $table->decimal('latitude', 10, 7)->nullable();
             $table->decimal('longitude', 10, 7)->nullable();
-            $table->foreignUuid('user_id')->references('id')->on('users');
+            $table->foreignUuid('user_id')->references('id')->on('users')->unique();
             $table->timestamps();
         });
     }

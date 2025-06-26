@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -25,7 +26,8 @@ class User extends Authenticatable
         'email',
         'password',
         'status',
-        'photo'
+        'photo',
+        'type',
     ];
 
     protected $casts = [
@@ -43,6 +45,27 @@ class User extends Authenticatable
         'remember_token',
     ];
 
+
+     /** Clé primaire = string + pas d’auto-increment */
+    public $incrementing = false;
+    protected $keyType   = 'string';
+
+    /**
+     * Génère l’UUID avant l’insertion si besoin.
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            // Si l’id n’est pas déjà fixé, on le crée
+            if (! $model->getKey()) {
+                $model->{$model->getKeyName()} = (string) Str::uuid();
+                // ou Str::orderedUuid() si tu préfères des UUID V7 ordonnées
+            }
+        });
+    }
+
     /**
      * Get the attributes that should be cast.
      *
@@ -59,7 +82,7 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'role_user', 'user_id', 'role_id');
+        return $this->belongsToMany(Role::class, 'role_admin', 'user_id', 'role_id');
     }
 
     public function zones()
@@ -70,6 +93,11 @@ class User extends Authenticatable
     public function notifications()
     {
         return $this->hasMany(Notification::class, 'user_id', 'id');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profil::class, 'user_id', 'id');
     }
 
 }

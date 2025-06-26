@@ -6,5 +6,5 @@ enum UserType: string
 {
     case CLIENT = "client";
     case ADMIN = "admin";
-    case Livreur = "livreur";
+    case LIVREUR = "livreur";
 }

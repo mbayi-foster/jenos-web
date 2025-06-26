@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Enum\Roles;
+use App\Enum\UserType;
+use App\Helpers\ApiResponse;
 use App\Models\Admin;
+use App\Models\Profil;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,8 +19,8 @@ class MainController
 
         if ($roles->count() == 0) {
             $roles = [
-                "Administrateur",
-                "Gérant"
+                Roles::ADMIN,
+                Roles::GERANT
             ];
 
             foreach ($roles as $role) {
@@ -27,27 +31,28 @@ class MainController
             }
         }
 
-        $rootUser = User::where('email', 'admin@jenos-food.store')->first();
+        $rootUser = User::where('email', 'root@jenos-food.store')->first();
 
         if (!$rootUser) {
             $roles = Role::all();
             $roles = $roles->map(fn($role) => $role->id);
             $user = User::create([
-                // 
-                'email' => "admin@jenos-food.store",
-                'password' => bcrypt('@jenos$'),
+                'email' => "root@jenos-food.store",
+                'password' => bcrypt('@jenos-food$'),
+                'type' => UserType::ADMIN,
             ]);
 
             if ($user) {
-                $admin = Admin::create([
-                    'nom' => "Root",
-                    'prenom' => "Utilisateur",
-                    'user_id'=>$user->id,
+                $user->roles()->attach($roles);
+                Profil::create([
+                    'user_id' => $user->id,
+                    'nom' => 'Root',
+                    'prenom' => 'Utilisateur',
                 ]);
-                if($admin) $admin->roles()->attach($roles);
+                
             }
         }
 
-        return view("welcome");
+        return ApiResponse::success(null, "Initialisation de l'application réussie", 200);
     }
 }

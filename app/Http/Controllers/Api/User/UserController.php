@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Api\User;
 use App\Enum\UserType;
 use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Mail\WebMail;
+use App\Models\Profil;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -38,11 +41,50 @@ class UserController extends Controller
 
         switch ($validated['type']) {
             case 'client':
-                $type = UserType::CLIENT;
-                break;
+                $user = User::create([
+                    'email' => $validated['email'],
+                    'password' => bcrypt($validated['password']),
+                    'type' => UserType::CLIENT
+                ]);
+
+                if ($user) {
+                    Profil::create([
+                        'user_id' => $user->id,
+                        'nom' => $validated['nom'],
+                        'prenom' => $validated['prenom'],
+                        'phone' => $validated['phone'],
+                    ]);
+
+                    return ApiResponse::success(message: 'Client enregistré avec succès', code: 201);
+                }
+                return ApiResponse::error('L\'utilisateur n\'a pas pu être créé');
             case 'admin':
-                $type = UserType::ADMIN;
-                break;
+
+                $data = [
+                    'nom' => $validated['nom'],
+                    'prenom' => $validated['prenom'],
+                    'phone' => $validated['phone'],
+                    "email" => $validated['email'],
+                    "password" => $validated['password'],
+                    'sujet' => "Confirmatiom du compte"
+                ];
+                $sendMail = Mail::to($request->email)->send(new WebMail($data));
+                $user = User::create([
+                    'email' => $validated['email'],
+                    'password' => bcrypt($validated['password']),
+                    'type' => UserType::ADMIN
+                ]);
+                if ($user) {
+                    $user->roles()->attach($validated['roles']);
+                    Profil::create([
+                        'user_id' => $user->id,
+                        'nom' => $validated['nom'],
+                        'prenom' => $validated['prenom'],
+                        'phone' => $validated['phone'],
+                    ]);
+                    return ApiResponse::success(message: 'Adminstrateur enregistré avec succès', code: 201);
+                }
+                return ApiResponse::error('L\'utilisateur n\'a pas pu être créé');
             case 'livreur':
                 $type = UserType::Livreur;
                 break;
@@ -51,17 +93,9 @@ class UserController extends Controller
                 break;
         }
 
-        $user = User::create([
-            'email' => $validated['email'],
-            'password' => $validated['password'],
-            'type' => $type
-        ]);
 
-        if ($user) {
-            
-        }
 
-        return ApiResponse::error('L\'utilisateur n\'a pas pu être créé');
+
     }
 
     /**

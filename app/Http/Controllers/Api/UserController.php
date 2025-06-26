@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\UserType;
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\AdminResource;
 use App\Mail\WebMail;
-use App\Jobs\SendEmailJob;
 use App\Mail\CheckMail;
 use App\Models\Admin;
+use App\Models\Profil;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,22 +22,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        $useDB = Admin::all();
-        $admins = $useDB->map(fn($user) => $user->toArray());
-        return response()->json($admins, 200);
-    }
+    $users = User::where('type', UserType::ADMIN)
+             ->with('profile')
+             ->get();
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+return ApiResponse::success(
+    data: AdminResource::collection($users),
+    code: 200
+);
+ }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -58,25 +55,25 @@ class UserController extends Controller
             $user = User::create([
                 'email' => $validated['email'],
                 'password' => bcrypt('@jenos$'),
+                'type' => UserType::ADMIN
             ]);
             if ($user) {
-                $admin = Admin::create([
+                $user->roles()->attach($validated['roles']);
+                Profil::create([
+                    'user_id' => $user->id,
                     'nom' => $validated['nom'],
                     'prenom' => $validated['prenom'],
                     'phone' => $validated['phone'],
-                    'user_id' => $user->id,
                 ]);
-                if ($admin) {
-                    $admin->roles()->attach($validated['roles']);
-                    return response()->json($admin, 200);
-                }
-                return response()->json(false, 500);
+
+
+                return ApiResponse::success(code: 201, message: "Adminstrateur enregistré avec succès");
             } else {
-                return response()->json(false, 500);
+                return ApiResponse::error(message: "L'administrateur n'a pas pu être enregistré", code: 500);
             }
         }
 
-
+        return ApiResponse::error(message: "L'administrateur n'a pas pu être enregistré", code: 500);
     }
 
     /**
@@ -84,7 +81,7 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        $user = Admin::with('roles')->findOrFail($id);
+        $user = User::with('roles')->findOrFail($id);
         $roles = [];
         foreach ($user->roles as $role) {
             $roles[$role->id] = $role->nom;

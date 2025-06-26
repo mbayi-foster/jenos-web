@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\Roles;
 use Illuminate\Database\Eloquent\Model;
 
 class Role extends Model
@@ -12,7 +13,12 @@ class Role extends Model
         'status'
     ];
 
-    public function users(){
+    protected $casts = [
+        'nom' => Roles::class,
+    ];
+
+    public function users()
+    {
         return $this->belongsToMany(User::class, 'role_user', 'role_id', 'user_id');
     }
 }
