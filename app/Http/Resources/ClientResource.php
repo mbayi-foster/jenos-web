@@ -5,19 +5,15 @@ namespace App\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AdminResource extends JsonResource
+class ClientResource extends JsonResource
 {
     /**
-     * Transform the resource collection into an array.
+     * Transform the resource into an array.
      *
-     * @return array<int|string, mixed>
+     * @return array<string, mixed>
      */
     public function toArray(Request $request): array
     {
-        $roles = [];
-        foreach ($this->roles as $value) {
-            $roles[] = $value->nom;
-        }
         return [
             "id" => $this->id,
             "email" => $this->email,
@@ -30,7 +26,6 @@ class AdminResource extends JsonResource
             "longitude" => $this->profile->longitude,
             "status" => $this->status,
             "type" => $this->type,
-            "roles" => $roles,
             "createdAt" => $this->created_at,
         ];
     }

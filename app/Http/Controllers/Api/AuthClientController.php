@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\UserType;
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ClientResource;
 use App\Jobs\MobileMailJob;
 use App\Mail\CheckMail;
 use App\Mail\MobileMail;
@@ -19,8 +22,9 @@ class AuthClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
-        return response()->json($clients);
+        // $clients = User::where("type", UserType::CLIENT)->get();
+        $clients = User::all();
+        return ApiResponse::success(data: ClientResource::collection($clients));
     }
 
     /**
@@ -134,5 +138,5 @@ class AuthClientController extends Controller
         }
     }
 
-    
+
 }

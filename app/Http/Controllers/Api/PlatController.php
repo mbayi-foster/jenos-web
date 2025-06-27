@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\PlatResource;
 use App\Models\Plat;
 use Aws\S3\S3Client;
 use Aws\S3\Exception\S3Exception;
@@ -22,10 +24,8 @@ class PlatController extends Controller
      */
     public function index()
     {
-        $platsDb = Plat::all();
-        $plats = $platsDb->map(fn($plat) => $plat->toArray());
-
-        return response()->json($plats);
+        $plats = Plat::all();
+        return ApiResponse::success(PlatResource::collection($plats));
     }
 
     /**
@@ -47,7 +47,7 @@ class PlatController extends Controller
             $clean_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $clean_name); // Remplace les caractères spéciaux
             $clean_name = str_replace(' ', '_', $clean_name); // Remplace les espaces par des underscores
             $uniqueId = uniqid();
-            $keyname = 'plats/' . $uniqueId . '_' . $clean_name .'.'. $file->getClientOriginalExtension();
+            $keyname = 'plats/' . $uniqueId . '_' . $clean_name . '.' . $file->getClientOriginalExtension();
             // $keyname = 'plats/' . $file->getClientOriginalName();
             $s3 = new S3Client([
                 'version' => 'latest',
@@ -113,7 +113,7 @@ class PlatController extends Controller
                 $clean_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $clean_name); // Remplace les caractères spéciaux
                 $clean_name = str_replace(' ', '_', $clean_name); // Remplace les espaces par des underscores
                 $uniqueId = uniqid();
-                $keyname = 'plats/' . $uniqueId . '_' . $clean_name .'.'. $file->getClientOriginalExtension();
+                $keyname = 'plats/' . $uniqueId . '_' . $clean_name . '.' . $file->getClientOriginalExtension();
                 // $keyname = 'plats/' . $file->getClientOriginalName();
                 $s3 = new S3Client([
                     'version' => 'latest',

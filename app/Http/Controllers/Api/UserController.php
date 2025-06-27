@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\UserStatus;
 use App\Enum\UserType;
 use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
@@ -22,15 +23,15 @@ class UserController extends Controller
      */
     public function index()
     {
-    $users = User::where('type', UserType::ADMIN)
-             ->with('profile')
-             ->get();
+        $users = User::where('type', UserType::ADMIN)
+            ->with('profile')
+            ->get();
 
-return ApiResponse::success(
-    data: AdminResource::collection($users),
-    code: 200
-);
- }
+        return ApiResponse::success(
+            data: AdminResource::collection($users),
+            code: 200
+        );
+    }
 
     public function store(Request $request)
     {
@@ -151,18 +152,16 @@ return ApiResponse::success(
 
     public function change_status(string $id)
     {
-        $admin = Admin::find($id);
+        $user = User::findOrFail($id);
 
-        if ($admin) {
-            $user = User::find($admin->users->id);
-            $user->status = $user->status ? false : true;
-            $admin->status = $admin->status ? false : true;
-            $user->save();
-            $admin->save();
-        }
+        $user->status = $user->status === UserStatus::ACTIVE
+            ? UserStatus::INACTIVE
+            : UserStatus::ACTIVE;
 
+        $user->save();
 
-        return response()->json(true, 200);
+        return ApiResponse::success($user, 'succès', 200);
+
     }
 
     public function gerants()

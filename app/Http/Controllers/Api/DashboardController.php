@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\UserType;
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Models\Commande;
@@ -17,10 +19,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $clients = Client::count();
+        $clients = User::where('type', UserType::CLIENT)->count();
         $plats = Plat::where('status', true)->count();
         $commandes = Commande::count();
-        $livreurs = Livreur::count();
+        $livreurs = User::where('type', operator: UserType::LIVREUR)->count();
         $ordersByMonth = DB::select("
         SELECT 
             COUNT(*) as count, 
@@ -35,13 +37,13 @@ class DashboardController extends Controller
         ORDER BY 
             year ASC, month ASC
     ");
-    $statsClients =  DB::select("
+        $statsClients = DB::select("
     SELECT 
         COUNT(*) as count, 
          MONTHNAME(created_at) as month, 
         YEAR(created_at) as year 
     FROM 
-        clients 
+        users 
     WHERE 
         created_at IS NOT NULL 
     GROUP BY 
@@ -55,12 +57,12 @@ class DashboardController extends Controller
             'plats' => $plats,
             'commandes' => $commandes,
             'stats' => [
-                'commandes'=>$ordersByMonth,
-                'clients'=>$statsClients,
+                'commandes' => $ordersByMonth,
+                'clients' => $statsClients,
             ],
 
         ];
-        return response()->json($data, 200);
+        return ApiResponse::success(data: $data);
     }
 
     /**

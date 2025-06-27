@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MenuResource;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Aws\S3\S3Client;
@@ -15,9 +17,8 @@ class MenuController extends Controller
      */
     public function index()
     {
-        $menu = Menu::withCount('plats')->get();
-        $nouveauMenu = $menu->map(fn($val) => $val->toArray());
-        return response()->json($nouveauMenu);
+        $menu = Menu::all();
+        return ApiResponse::success(data: MenuResource::collection($menu), code: 200);
     }
 
     /**
@@ -37,7 +38,7 @@ class MenuController extends Controller
             $clean_name = preg_replace('/[^A-Za-z0-9_\-\.]/', '_', $clean_name); // Remplace les caractères spéciaux
             $clean_name = str_replace(' ', '_', $clean_name); // Remplace les espaces par des underscores
             $uniqueId = uniqid();
-            $keyname = 'menus/' . $uniqueId . '_' . $clean_name .'.'. $file->getClientOriginalExtension();
+            $keyname = 'menus/' . $uniqueId . '_' . $clean_name . '.' . $file->getClientOriginalExtension();
 
 
             $s3 = new S3Client([
@@ -80,7 +81,7 @@ class MenuController extends Controller
      */
     public function show(string $id)
     {
-        
+
     }
 
     /**
@@ -108,9 +109,7 @@ class MenuController extends Controller
     public function change_status(string $id)
     {
         $menu = Menu::find($id);
-
         $menu->status = ($menu->status == true) ? false : true;
-
         $menu->save();
         return response()->json(true, 200);
     }
