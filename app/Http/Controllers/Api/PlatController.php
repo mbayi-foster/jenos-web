@@ -91,7 +91,7 @@ class PlatController extends Controller
     public function show(string $id)
     {
         $plat = Plat::find($id);
-        return response()->json($plat, 200);
+        return ApiResponse::success(data: new PlatResource($plat));
     }
 
     /**
@@ -135,25 +135,23 @@ class PlatController extends Controller
                     $plat->photo = $result['ObjectURL'];
                     $plat->details = $request->details;
                     $plat->save();
-                    return response()->json([
-                        'message' => 'succès',
-                    ], 201);
+                    // return response()->json([
+                    //     'message' => 'succès',
+                    // ], 201);
+                    return ApiResponse::success(data: new PlatResource($plat), code: 201);
                 } catch (S3Exception $e) {
-                    return response()->json([
-                        'Upload Failed' => $e->getMessage()
-                    ], 500);
+                    return ApiResponse::error(message: $e->getMessage(), code: 500);
+
                 }
             } else {
                 $plat->nom = $request->nom;
                 $plat->prix = $request->prix;
                 $plat->details = $request->details;
                 $plat->save();
-                return response()->json([
-                    'message' => 'succès',
-                ], 201);
+                return ApiResponse::success(data: new PlatResource($plat));
             }
         }
-        return response()->json(["une erreur s'est produite"], 500);
+        return ApiResponse::error();
 
     }
 
@@ -166,7 +164,6 @@ class PlatController extends Controller
         $plat = Plat::findOrFail($id);
         if ($plat) {
             $plat->delete();
-
             return response()->json(true, 200);
         }
 
@@ -180,13 +177,13 @@ class PlatController extends Controller
 
         $plat->status = $plat->status == true ? false : true;
         $plat->save();
-        return response()->json($plat);
+        return ApiResponse::success(new PlatResource($plat));
     }
 
 
     public function plats_status()
     {
-        $plats = Plat::where("status", 1)->get();
+        $plats = Plat::where("status", true)->get();
         $nouveauPlats = [];
         foreach ($plats as $plat) {
             $nouveauPlats[] = [
@@ -194,7 +191,7 @@ class PlatController extends Controller
                 'nom' => $plat->nom
             ];
         }
-        return response()->json($nouveauPlats, 200);
+        return ApiResponse::success($nouveauPlats);
     }
 
     public function search(string $mot, Request $request)
@@ -202,33 +199,13 @@ class PlatController extends Controller
         $request->validate([
             "order" => 'string'
         ]);
-        $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC";
-        // if ($request->order)
-        //     match ($request->order) {
-        //         "new" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY created_at DESC",
-        //         "chers" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix DESC",
-        //         "moins" => $query = " SELECT * FROM plats WHERE status = true AND nom LIKE '%$mot%' ORDER BY prix ASC",
-        //     };
-
         $plats = Plat::where("status", true)->where('nom', 'LIKE', "%$mot%")->get();
-        return response()->json($plats);
+        return ApiResponse::success(PlatResource::collection($plats));
     }
 
     public function all(Request $request)
     {
-        // $request->validate([
-        //     "order" => 'required|string'
-        // ]);
         $plats = Plat::where('status', true)->inRandomOrder()->get();
-        // match ($request->order) {
-        //     "chers"=>$plats = Plat::orderByDesc('prix')->get(),
-        //     "moins"=>$plats = Plat::orderBy('prix', 'ASC')->get(),
-        //     "new"=>$plats = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get(),
-        //     "desirs"=> $plats= Plat::withCount('paniers') // Assurez-vous que la relation 'paniers' est définie dans le modèle Plat
-        //     ->orderBy('paniers_count', 'desc')
-        //     ->limit(5)
-        //     ->get()
-        // };
-        return response()->json($plats);
+        return ApiResponse::success(PlatResource::collection($plats));
     }
 }

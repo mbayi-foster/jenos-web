@@ -29,7 +29,7 @@ class MenuResource extends JsonResource
             'createdAt'=>$this->created_at,
             'details'=>$this->details,
             'photo'=>$this->photo,
-            'count'=>$this->plats->count(),
+            'nbrePlats'=>$this->plats->count(),
             'plats'=>$plats
         ];
     }

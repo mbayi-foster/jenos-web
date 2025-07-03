@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\Roles;
+use App\Enum\UserType;
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ZoneResource;
+use App\Models\User;
 use App\Models\Zone;
 use Illuminate\Http\Request;
 
@@ -13,9 +18,8 @@ class ZoneController extends Controller
      */
     public function index()
     {
-        $zonesDB = Zone::all();
-        $zones = $zonesDB->map(fn($zone) => $zone->toArray());
-        return response()->json($zones, 200);
+        $zones = Zone::all();
+        return ApiResponse::success(data: ZoneResource::collection($zones));
     }
 
     /**
@@ -30,11 +34,12 @@ class ZoneController extends Controller
         $zones = Zone::create(
             [
                 "nom" => $request->nom,
-                "chef" => $request->gerant
+                "user_id" => $request->gerant,
+                "status" => true
             ]
         );
 
-        return response()->json($request, 201);
+        return ApiResponse::success(data: new ZoneResource($zones));
     }
 
     /**
@@ -76,14 +81,9 @@ class ZoneController extends Controller
     {
         $zone = Zone::find($id);
 
-        if ($zone->status == true) {
-            $zone->status = false;
-        } else {
-            $zone->status = true;
-        }
-
+        $zone->status = $zone->status == true ? false : true;
         $zone->save();
-        return response()->json($zone);
+        return ApiResponse::success();
     }
 
     public function zone_by_id(string $id)
@@ -98,5 +98,23 @@ class ZoneController extends Controller
         );
 
         return response()->json($zones, 200);
+    }
+
+    public function gerants()
+    {
+        $users = User::where('type', UserType::ADMIN)
+            ->with('roles')
+            ->get()
+            ->filter(callback: function ($user) {
+                return $user->roles->contains('nom', Roles::GERANT);
+            });
+        $gerants = [];
+        foreach ($users as $user) {
+            $gerants[] = [
+                'id' => $user->id,
+                'nom' => $user->profile->prenom . " " . $user->profile->nom,
+            ];
+        }
+        return ApiResponse::success($gerants);
     }
 }

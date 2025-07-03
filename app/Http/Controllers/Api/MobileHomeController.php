@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MenuResource;
+use App\Http\Resources\PlatResource;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,34 +17,37 @@ class MobileHomeController extends Controller
     public function home()
     {
         /* les plats reçents */
-        $plat_recents_before = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get();
-        $plat_recents = $plat_recents_before->map(fn($plat) => $plat->toArray());
+        $plat_recents = Plat::where('status', true)->orderBy('created_at', 'desc')->take(5)->get();
+
 
         /* plats populaires */
-        $plat_pops = Plat::withCount('paniers') // Assurez-vous que la relation 'paniers' est définie dans le modèle Plat
+        $plat_pops = Plat::withCount('paniers')
             ->orderBy('paniers_count', 'desc')
             ->limit(5)
             ->get();
-        $plats_pas_chers = Plat::where('status', true)->orderBy('prix', 'asc')->take(5)->get();
-        $plat_most_pops = $plats_pas_chers->map(fn($plat) => $plat->toArray());
-
-        $menus = Menu::where("status", true)->orderBy('created_at', 'asc')->take(5)->get();
+        $plat_most_pops = Plat::where('status', true)
+            ->orderBy('prix', 'asc')
+            ->take(5)
+            ->get();
+        $menus = Menu::where("status", true)
+            ->orderBy('created_at', 'asc')
+            ->take(5)
+            ->get();
         $res = [
-            "plat_recents" => $plat_recents,
-            "plat_pops" => $plat_pops,
-            "plat_most_pops" => $plat_most_pops,
-            "menus"=>$menus
+            "plat_recents" => PlatResource::collection($plat_recents),
+            "plat_pops" => PlatResource::collection($plat_pops),
+            "plat_most_pops" => PlatResource::collection($plat_most_pops),
+            "menus" => MenuResource::collection($menus),
         ];
-        return response()->json($res, 200);
+        return ApiResponse::success(data: $res);
     }
 
     public function menu()
     {
-        $menus = [];
-        $menu_befores = Menu::where('status', true)->orderBy('created_at', "desc")->get();
-        $menus = $menu_befores->map(fn($val) => $val->toArray());
-
-        return response()->json($menus, 200);
+        $menus = Menu::where('status', true)
+            ->orderBy('created_at', "desc")
+            ->get();
+        return ApiResponse::success(data: MenuResource::collection($menus));
     }
     public function plats_by_menu($id)
     {

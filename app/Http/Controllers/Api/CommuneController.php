@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CommuneResource;
 use App\Models\Commune;
 use Illuminate\Http\Request;
 
@@ -13,9 +15,8 @@ class CommuneController extends Controller
      */
     public function index()
     {
-        $communesdB = Commune::orderBy("nom", "asc")->get();
-        $communes = $communesdB->map(fn($commune) => $commune->toArray());
-        return response()->json($communes, 200);
+        $communes = Commune::orderBy("nom", "asc")->get();
+        return ApiResponse::success(CommuneResource::collection($communes));
     }
 
     /**
@@ -25,7 +26,7 @@ class CommuneController extends Controller
     {
         $validated = $request->validate([
             "nom" => "required",
-            "zone" => "required",
+            "zone" => "required|exists:zones,id",
             "frais" => 'required'
         ]);
 
@@ -36,7 +37,7 @@ class CommuneController extends Controller
                 "frais" => $validated['frais']
             ]
         );
-        return response()->json(true, 201);
+        return ApiResponse::success(new CommuneResource($commune));
     }
 
     /**
@@ -62,9 +63,9 @@ class CommuneController extends Controller
     {
         $commune = Commune::find($id);
         if ($commune) {
-           $commune->delete();
-        } 
+            $commune->delete();
+        }
         return response()->json('supprimé', 200);
-        
+
     }
 }

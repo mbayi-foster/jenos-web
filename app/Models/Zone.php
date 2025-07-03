@@ -11,11 +11,11 @@ class Zone extends Model
     protected $fillable = [
         'nom',
         'status',
-        'chef',
+        'user_id',
     ];
 
     public function chefs(){
-        return $this->belongsTo(Admin::class, "chef", "id" );
+        return $this->belongsTo(User::class, "user_id", "id" );
     }
 
     public function livreurs(){
@@ -27,15 +27,15 @@ class Zone extends Model
     }
     
 
-    public function toArray(){
-        return [
-            "id"=>$this->id,
-            "nom"=>$this->nom,
-            "status"=>$this->status,
-            "chef"=>$this->chefs->nom. " ". $this->chefs->prenom,
-            "created_at"=>$this->created_at,
-            "count_commune"=>$this->communes->count(),
-            "communes"=>$this->communes
-        ];
-    }
+    // public function toArray(){
+    //     return [
+    //         "id"=>$this->id,
+    //         "nom"=>$this->nom,
+    //         "status"=>$this->status,
+    //         "chef"=>$this->chefs->nom. " ". $this->chefs->prenom,
+    //         "created_at"=>$this->created_at,
+    //         "count_commune"=>$this->communes->count(),
+    //         "communes"=>$this->communes
+    //     ];
+    // }
 }

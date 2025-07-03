@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MenuResource;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -24,25 +26,8 @@ class MenuMobileController extends Controller
 
     public function index()
     {
-        $menus = [];
-        $menu_befores = Menu::where('status', true)->with('plats')->orderBy('created_at', "desc")->get();
-
-        foreach ($menu_befores as $menu) {
-            $url = Storage::disk('public')->url($menu->photo);
-            if (strpos($url, 'http://localhost') !== false) {
-                $url = str_replace('http://localhost', $this->url . ":8000", $url); // Remplacez par le port approprié
-            }
-            $menus[] = [
-                "id" => $menu->id,
-                "nom" => $menu->nom,
-                "details" => $menu->details,
-                "photo" => $url,
-                "created_at" => $menu->created_at,
-                "nbre_plats" => $menu->plats->count()
-            ];
-        }
-
-        return response()->json($menus, 200);
+        $menus = Menu::where('status', true)->with('plats')->orderBy('created_at', "desc")->get();
+        return ApiResponse::success(data:MenuResource::collection($menus));
     }
 
     /**
