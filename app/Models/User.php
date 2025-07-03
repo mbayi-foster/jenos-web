@@ -99,5 +99,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(Profil::class, 'user_id', 'id');
     }
+    public function livreur()
+    {
+        return $this->hasOne(Livreur::class, 'user_id', 'id');
+    }
 
 }

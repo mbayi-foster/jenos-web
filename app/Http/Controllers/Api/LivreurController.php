@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\UserType;
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\LivreurResource;
 use App\Mail\WebMail;
 use App\Models\Livreur;
+use App\Models\Profil;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -17,10 +21,8 @@ class LivreurController extends Controller
      */
     public function index()
     {
-        $livreursDb = Livreur::all();
-        $livreurs = $livreursDb->map(fn($livreur) => $livreur->toArray());
-
-        return response()->json($livreurs, 200);
+        $livreurs = User::where('type', UserType::LIVREUR)->get();
+        return ApiResponse::success(data: LivreurResource::collection($livreurs));
     }
 
     /**
@@ -40,40 +42,48 @@ class LivreurController extends Controller
             'email' => 'required|email|unique:users|max:255',
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'phone' => 'required|numeric|digits_between:9,15', // Exemple de validation
-            'zone' => 'required'
+            'phone' => 'required|regex:/^\+[0-9]{12}$/', // Exemple de validation
+            'zoneId' => 'required|exists:zones,id'
         ]);
 
-        $user = User::create([
-            'email' => $validated['email'],
-            'password' => bcrypt('123456'),
-        ]);
+        $data = [
+            'nom' => $validated['nom'],
+            'prenom' => $validated['prenom'],
+            'phone' => $validated['phone'],
+            "email" => $validated['email'],
+            "password" => "@jenos$",
+            'sujet' => "Confirmatiom du compte"
+        ];
+        $sendMail = Mail::to($request->email)->send(new WebMail($data));
 
-        if ($user) {
-            $livreur = Livreur::create([
-                'nom' => $validated['nom'],
-                'prenom' => $validated['prenom'],
-                'phone' => $validated['phone'],
-                'user_id' => $user->id,
-                'zone_id' => $validated['zone']
+        if ($sendMail) {
+            $user = User::create([
+                'email' => $validated['email'],
+                'password' => bcrypt('@jenos$'),
+                'type' => UserType::LIVREUR,
             ]);
-            if ($livreur) {
-                $data = [
-                    'nom' => $livreur->nom,
-                    'prenom' => $livreur->prenom,
-                    'phone' => $livreur->phone,
-                    "email" => $user->email,
-                    "password" => "123456",
-                    'sujet' => "Confirmatiom du compte"
-                ];
-                //  SendEmailJob::dispatch($livreur->email, $data);
-                Mail::to($user->email)->send(new WebMail($data));
-                return response()->json(true, 201);
+
+            if ($user) {
+                Livreur::create([
+                    'user_id' => $user->id,
+                    'zone_id' => $validated['zoneId'],
+                ]);
+                Profil::create([
+                    'user_id' => $user->id,
+                    'nom' => $validated['nom'],
+                    'prenom' => $validated['prenom'],
+                    'phone' => $validated['phone'],
+                ]);
+
+
+                return ApiResponse::success(code: 201, message: "Adminstrateur enregistré avec succès");
+            } else {
+                return ApiResponse::error(message: "L'administrateur n'a pas pu être enregistré", code: 500);
             }
-            return response()->json(false, 500);
-        } else {
-            return response()->json(false, 500);
         }
+
+        return ApiResponse::error(message: "L'administrateur n'a pas pu être enregistré", code: 500);
+
     }
 
     /**
@@ -81,7 +91,7 @@ class LivreurController extends Controller
      */
     public function show(string $id)
     {
-        
+
     }
 
     /**
@@ -95,7 +105,9 @@ class LivreurController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id) {}
+    public function update(Request $request, string $id)
+    {
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -137,7 +149,7 @@ class LivreurController extends Controller
 
     public function login(Request $request)
     {
-       
+
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',

@@ -10,13 +10,7 @@ class Livreur extends Model
 {
     use HasApiTokens;
     protected $fillable = [
-        'nom',
-        'prenom',
         'user_id',
-        'phone',
-        'photo',
-        'status',
-        'busy',
         'adresse',
         'commune',
         'location_lat',
@@ -33,27 +27,9 @@ class Livreur extends Model
     {
         return $this->hasMany(Commande::class, 'livreur_id', 'id');
     }
-    public function toArray()
-    {
 
-       return [
-            "id" => $this->id,
-            "uid" => $this->user_id,
-            "nom" => $this->nom,
-            "prenom" => $this->prenom,
-            "email" => $this->users->email,
-
-            "created_at" => $this->created_at,
-            "photo" => $this->photo,
-            "phone" => $this->phone,
-            "status" => $this->status,
-            "busy" => $this->busy,
-            'adresse' => [
-                'adresse' => $this->adresse,
-                'commune' => $this->commune,
-                'lat' => $this->location_lat,
-                'lon' => $this->location_lon
-            ]
-        ];
+    public function zone(){
+        return $this->belongsTo(Zone::class, 'zone_id', 'id');
     }
+ 
 }

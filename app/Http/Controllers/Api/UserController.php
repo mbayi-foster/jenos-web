@@ -185,14 +185,14 @@ class UserController extends Controller
         ]);
         $password = $request->password;
         $user = User::where("email", $request->email)->first();
-        if ($user && Hash::check($password, $user->password) && $user->status == true) {
-            $token = $user->createToken("admin-$user->email")->plainTextToken;
-            $admin = Admin::where('user_id', $user->id)->first();
-            $admin_login = $admin->toArray();
-            $admin_login["token"] = $token;
-            return response()->json($admin_login, 201);
+        if ($user && Hash::check($password, $user->password) && $user->status == UserStatus::ACTIVE && $user->type == UserType::ADMIN) {
+            // $token = $user->createToken("admin-$user->email")->plainTextToken;
+            // $admin = Admin::where('user_id', $user->id)->first();
+            // $admin_login = $admin->toArray();
+            // $admin_login["token"] = $token;
+            return ApiResponse::success(new AdminResource($user));
         }
-        return response()->json(false, 500);
+        return ApiResponse::error(message: 'Adresse email ou Mot de passe incorrecte');
     }
 
     public function logout(Request $request)

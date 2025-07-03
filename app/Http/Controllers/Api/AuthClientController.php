@@ -124,8 +124,6 @@ class AuthClientController extends Controller
             'nom' => 'required|string|max:255'
         ]);
         $code = rand(100000, 999999);
-
-
         $data = ['nom' => $request->nom, 'code' => $code, "sujet" => "Confirmer l'adresse email"];
         Mail::to($request->email)->send(new MobileMail($data));
 
