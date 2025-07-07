@@ -13,7 +13,8 @@ Route::apiResource('notifications', NotificationController::class);
 Route::post("check-mail", [UserController::class, 'check_mail']);
 Route::post("update-password", [UserController::class, 'update_password']);
 
-require __DIR__ . '/apiMobile.php';
+// require __DIR__ . '/apiMobile.php';
 require __DIR__ . '/apiWeb.php';
-require __DIR__ . '/apiAuthClient.php';
+// require __DIR__ . '/apiAuthClient.php';
 require __DIR__ . '/apiLivreur.php';
+require __DIR__ . '/apiClient.php';

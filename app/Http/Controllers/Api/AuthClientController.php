@@ -125,7 +125,7 @@ class AuthClientController extends Controller
         ]);
         $code = rand(100000, 999999);
         $data = ['nom' => $request->nom, 'code' => $code, "sujet" => "Confirmer l'adresse email"];
-        Mail::to($request->email)->send(new MobileMail($data));
+        // Mail::to($request->email)->send(new MobileMail($data));
 
         return ApiResponse::success(data: [
             "code" => $code,
