@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Api\AuthClientController;
 use App\Http\Controllers\Api\Clients\AuthClientController as ClientsAuthController;
+use App\Http\Controllers\Api\Clients\ClientHomeController;
 use App\Http\Controllers\Api\CommandeController;
 use App\Http\Controllers\Api\MapController;
 use App\Http\Controllers\Api\MenuMobileController;
@@ -18,6 +19,8 @@ use Illuminate\Support\Facades\Route;
  * 2. Les routes de l'acceuil (menus, plats, recherches, profiles, commandes)
  */
 
+ 
+/// Routes des authentifications
 Route::post('/clients/new-user', [ClientsAuthController::class, 'registreEmail']);
 Route::post('/clients', [ClientsAuthController::class, 'storeClient']);
 Route::post('/clients/login', [ClientsAuthController::class, 'login']);
@@ -25,13 +28,8 @@ Route::post('/clients/forget-password', [ClientsAuthController::class,'verifyEma
 Route::get('/clients/{id}', [ClientsAuthController::class, 'getUser']);
 Route::post('/clients/change-forget-password', [ClientsAuthController::class,'changeForgetPassword']);
 Route::post('/clients/change-password', [ClientsAuthController::class,'changePassword']);
-// Route::apiResource("paniers", PanierController::class);
-// Route::apiResource("map", MapController::class);
-// Route::apiResource("commandes", CommandeController::class);
-// Route::get("mobile-home", [MobileHomeController::class, "home"]);
-// //Route::get("mobile-menu", [MobileHomeController::class, "menu"]);
-// Route::get("mobile-plats-menu/{id}", [MobileHomeController::class, "plats_by_menu"]);
-// Route::get("mobile-plat/{id}", [MobileDetailsController::class, "plat"]);
-// Route::apiResource("mobile-menu", MenuMobileController::class);
-// Route::get("search/{mot}", [PlatController::class, "search"]);
-// Route::get("search/", [PlatController::class, "all"]);
+
+
+
+/// Routes Homes
+Route::get('/clients/home-page', [ClientHomeController::class,'homePage'])->name('clients.homepage');
