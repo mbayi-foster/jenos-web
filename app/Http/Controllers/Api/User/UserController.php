@@ -31,7 +31,7 @@ class UserController extends Controller
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'password' => 'required|min:6|max:15',
-            'phone' => 'numeric|digits_between:9,15', // Exemple de validation
+            'phone' => 'required|regex:/^\+[0-9]{6,15}$/', // Exemple de validation
             'roles' => 'array',
             'roles.*' => 'exists:roles,id',
             'type' => 'required|string',
@@ -86,7 +86,7 @@ class UserController extends Controller
                 }
                 return ApiResponse::error('L\'utilisateur n\'a pas pu être créé');
             case 'livreur':
-                $type = UserType::Livreur;
+                $type = UserType::LIVREUR;
                 break;
             default:
                 $type = UserType::CLIENT;

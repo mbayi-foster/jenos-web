@@ -39,7 +39,7 @@ class AuthClientController extends Controller
             'email' => 'required|unique:users|max:255',
             'nom' => 'required',
             'prenom' => 'required',
-            'phone' => 'required|regex:/^\+[0-9]{12}$/',
+            'phone' => 'required|regex:/^\+[0-9]{6,15}$/',
             'password' => 'required|min:6',
             'code' => 'required|numeric'
         ]);
@@ -160,7 +160,7 @@ class AuthClientController extends Controller
 
         $user = User::where('email', $validated['email'])->where('status', 'active')->first();
         if (!$user) {
-            return ApiResponse::error();
+            return ApiResponse::error(message:"L'email ne correspond à aucun utilisateur");
         }
 
         if (Hash::check($validated['lastPassword'], $user->password)) {
@@ -170,6 +170,6 @@ class AuthClientController extends Controller
             return ApiResponse::success(data: new ClientResource($user), code: 201);
         }
 
-        return ApiResponse::error();
+        return ApiResponse::error(message:"Le mot de passe est incorrecte");
     }
 }

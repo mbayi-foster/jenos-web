@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\FactureStatus;
-use App\OrderStatus;
+use App\Enum\FactureStatus;
+use App\Enum\OrderStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Commande extends Model
@@ -14,15 +14,16 @@ class Commande extends Model
         "status",
         "adresse",
         'commune_id',
-        "location_lat",
-        "location_lon",
+        "latitude",
+        "longitude",
         "facture",
         "livreur_id",
         "client_id",
         "zone_id",
         "note",
         "delivery_coast",
-        "commune"
+        "commune",
+        "paiement_mode",
     ];
 
     protected $casts = [
@@ -40,7 +41,7 @@ class Commande extends Model
         return $this->belongsTo(Livreur::class, "livreur_id", "id");
     }
 
-    public function generateOrderTicketCode(): string
+    static function generateOrderTicketCode(): string
     {
         $date = new \DateTime();
         $datePart = $date->format('d-m-y');
@@ -48,6 +49,9 @@ class Commande extends Model
         return "ORDER-{$datePart}-{$randomPart}";
     }
 
+    public function comune(){
+        return $this->belongsTo(Commune::class, 'commune_id');
+    }
     public function toArray()
     {
         return [

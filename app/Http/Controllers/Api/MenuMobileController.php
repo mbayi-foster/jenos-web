@@ -65,7 +65,7 @@ class MenuMobileController extends Controller
                 "plats" => $plats
             ];
             
-                return response()->json($data, 200);
+            return response()->json($data, 200);
      
     }
 

@@ -1,6 +1,6 @@
 <?php
-use App\OrderStatus;
-use App\FactureStatus;
+use App\Enum\OrderStatus;
+use App\Enum\FactureStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

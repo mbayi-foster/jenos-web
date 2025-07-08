@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Models\Panier;
 use Illuminate\Http\Request;
@@ -32,19 +33,18 @@ class PanierController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            "client_id" => "required|exists:clients,id",
+            "client_id" => "required|exists:users,id",
             "plat_id" => "required|exists:plats,id,status,1",
             "qte" => "required",
             "prix" => "required",
         ]);
 
         $panier = Panier::where("client_id", $validated['client_id'])->where("plat_id", $validated["plat_id"])->where("status", false)->first();
-        // return response()->json($panier->status);
         if ($panier && $panier->status == 0) {
             $panier->prix += $validated["prix"];
             $panier->qte += $validated["qte"];
             $panier->save();
-            return response()->json($panier, 201);
+            return ApiResponse::success(code: 201);
         } else {
             $panier = Panier::create(
                 [
@@ -55,11 +55,11 @@ class PanierController extends Controller
 
                 ]
             );
-            return response()->json(true, 201);
+            ApiResponse::success(code: 201);
         }
 
 
-        return response()->json(false, 500);
+        return ApiResponse::error();
     }
 
     /**

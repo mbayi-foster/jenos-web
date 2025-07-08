@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\PanierStatus;
 use Illuminate\Database\Eloquent\Model;
 
 class Panier extends Model
@@ -17,12 +18,16 @@ class Panier extends Model
         "commande_id",
     ];
 
+    protected $casts = [
+        'status' => PanierStatus::class
+    ];
+
     public function clients()
     {
         return $this->belongsTo(Client::class);
     }
 
-    public function plats()
+    public function plat()
     {
         return $this->belongsTo(Plat::class, "plat_id");
     }
@@ -36,7 +41,7 @@ class Panier extends Model
             "prix" => $this->prix,
             "qte" => $this->qte,
             "created_at" => $this->created_at,
-            "plat" => $this->plats,
+            "plat" => $this->plat,
         ];
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enum\OrderStatus;
+use App\Enum\PanierStatus;
 use App\FactureStatus;
 use App\Http\Controllers\Controller;
 use App\Models\Client;
@@ -10,7 +12,6 @@ use App\Models\Livreur;
 use App\Models\Commune;
 use App\Models\Notification;
 use App\Models\Panier;
-use App\OrderStatus;
 use Illuminate\Http\Request;
 use DateTime;
 
@@ -77,7 +78,7 @@ class CommandeController extends Controller
             foreach ($validated["paniers"] as $panier_id) {
                 $panier = Panier::find($panier_id);
                 if ($panier) {
-                    $panier->status = true;
+                    $panier->status = PanierStatus::COMMANDED;
                     $panier->commande_id = $commande->id;
                     $panier->save();
                 }
