@@ -39,7 +39,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users|max:255',
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'phone' => 'required|numeric|digits_between:9,15', // Exemple de validation
+            'phone' => 'required|regex:/^\+?[0-9\s\-]{6,20}$/', // Exemple de validation
             'roles' => 'required|array', // Assurez-vous que 'roles' est un tableau
             'roles.*' => 'exists:roles,id',
         ]);

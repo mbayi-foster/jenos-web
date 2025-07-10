@@ -31,7 +31,7 @@ class UserController extends Controller
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
             'password' => 'required|min:6|max:15',
-            'phone' => 'required|regex:/^\+[0-9]{6,15}$/', // Exemple de validation
+            'phone' => 'required|regex:/^\+?[0-9\s\-]{6,20}$/', // Exemple de validation
             'roles' => 'array',
             'roles.*' => 'exists:roles,id',
             'type' => 'required|string',
