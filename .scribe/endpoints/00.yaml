@@ -310,7 +310,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":"be3c7279-d07a-4566-a61f-2df34885125f","nom":"Kalala","prenom":"Foster","phone":"+243998115482","email":"mbayifoster@gmail.com","status":"active","adresse":null,"commune":null,"latitude":null,"longitude":null,"zone":"Zone Est","zoneId":1,"createdAt":"2025-07-03T15:21:00.000000Z","updatedAt":"2025-07-03T15:21:00.000000Z"}]}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":"be3c7279-d07a-4566-a61f-2df34885125f","nom":"Mbayi","prenom":"Jean-Foster","phone":"+243998115482","email":"mbayifoster@gmail.com","status":"active","adresse":null,"commune":null,"latitude":null,"longitude":null,"zone":"Zone Est","zoneId":1,"createdAt":"2025-07-03T15:21:00.000000Z","updatedAt":"2025-07-10T12:19:22.000000Z"}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -376,7 +376,7 @@ endpoints:
         custom: []
       phone:
         name: phone
-        description: 'Must match the regex /^\+[0-9]{12}$/.'
+        description: 'Must match the regex /^\+[0-9]{6,15}$/.'
         required: true
         example: '+564255931423'
         type: string
@@ -386,7 +386,7 @@ endpoints:
         custom: []
       zoneId:
         name: zoneId
-        description: 'Exemple de validation. The <code>id</code> of an existing record in the zones table.'
+        description: 'The <code>id</code> of an existing record in the zones table.'
         required: true
         example: architecto
         type: string
@@ -490,8 +490,52 @@ endpoints:
       id: 1
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      nom:
+        name: nom
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      prenom:
+        name: prenom
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      phone:
+        name: phone
+        description: 'Must match the regex /^\+[0-9]{6,15}$/.'
+        required: true
+        example: '+564255931423'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      zoneId:
+        name: zoneId
+        description: 'The <code>id</code> of an existing record in the zones table.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nom: b
+      prenom: 'n'
+      phone: '+564255931423'
+      zoneId: architecto
     fileParameters: []
     responses: []
     responseFields: []
@@ -1233,7 +1277,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":2,"nom":"Masina","status":0,"createdAt":"2025-07-03T15:19:30.000000Z","frais":5000,"zoneId":1},{"id":1,"nom":"Ndjili","status":0,"createdAt":"2025-07-03T15:19:06.000000Z","frais":5000,"zoneId":1}]}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":4,"nom":"Barumbu","status":1,"createdAt":"2025-07-10T11:32:48.000000Z","frais":6000,"zoneId":2},{"id":3,"nom":"Barumbu ou CAS","status":0,"createdAt":"2025-07-10T11:16:41.000000Z","frais":450,"zoneId":2},{"id":2,"nom":"Masina","status":1,"createdAt":"2025-07-03T15:19:30.000000Z","frais":5000,"zoneId":1},{"id":1,"nom":"Ndjili","status":1,"createdAt":"2025-07-03T15:19:06.000000Z","frais":5000,"zoneId":1}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1391,8 +1435,30 @@ endpoints:
       id: 1
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
+    bodyParameters:
+      nom:
+        name: nom
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      frais:
+        name: frais
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      nom: architecto
+      frais: architecto
     fileParameters: []
     responses: []
     responseFields: []
@@ -1468,7 +1534,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Zone Est","status":1,"chef":"Root Utilisateur","createdAt":"2025-07-03T15:18:04.000000Z","countCommunes":2,"communes":[{"id":1,"nom":"Ndjili","status":0,"frais":5000,"zoneId":1},{"id":2,"nom":"Masina","status":0,"frais":5000,"zoneId":1}]},{"id":2,"nom":"Zone Nord","status":1,"chef":"Root Utilisateur","createdAt":"2025-07-08T13:46:07.000000Z","countCommunes":0,"communes":[]}]}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Zone Est","status":1,"chef":"Root Utilisateur","createdAt":"2025-07-03T15:18:04.000000Z","countCommunes":2,"communes":[{"id":1,"nom":"Ndjili","status":1,"frais":5000,"zoneId":1},{"id":2,"nom":"Masina","status":1,"frais":5000,"zoneId":1}]},{"id":2,"nom":"Zone Nord","status":1,"chef":"Root Utilisateur","createdAt":"2025-07-08T13:46:07.000000Z","countCommunes":2,"communes":[{"id":3,"nom":"Barumbu ou CAS","status":0,"frais":450,"zoneId":2},{"id":4,"nom":"Barumbu","status":1,"frais":6000,"zoneId":2}]}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2541,6 +2607,59 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: 'api/communes/status/change/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the change.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\Commune] architecto"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: 'api/plats/status/change/{id}'
     metadata:
       groupName: Endpoints
@@ -3046,6 +3165,45 @@ endpoints:
     cleanBodyParameters: []
     fileParameters: []
     responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/clients
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":"3c171197-b05a-4dc0-b7c6-a523563ef7c3","email":"foster@gmail.com","nom":"Kalala","prenom":"Foster","phone":"+243998115482","adresse":{"adresse":null,"commune":null,"latitude":null,"longitude":null},"status":"active","type":"client","createdAt":"2025-07-07T13:29:12.000000Z"},{"id":"cd7d5c92-43a3-4a06-b89f-006ca6af93a8","email":"foster2@gmail.com","nom":"Kalala","prenom":"Foster","phone":"+243998115482","adresse":{"adresse":null,"commune":null,"latitude":null,"longitude":null},"status":"active","type":"client","createdAt":"2025-07-07T13:30:12.000000Z"},{"id":"d2c87b7e-dc66-49e1-9ac9-dc0f17382ea9","email":"foster32@gmail.com","nom":"Kalala","prenom":"Foster","phone":"+243998115482","adresse":{"adresse":null,"commune":null,"latitude":null,"longitude":null},"status":"active","type":"client","createdAt":"2025-07-07T13:33:15.000000Z"},{"id":"fd3dd150-ec3c-4856-bf0c-39ad4546524e","email":"kalala@ic.cd","nom":"Kalala","prenom":"Foster","phone":"+243998115482","adresse":{"adresse":"Q1","commune":"Ndjili","latitude":"0.0000000","longitude":"0.0000000"},"status":"active","type":"client","createdAt":"2025-07-08T12:36:12.000000Z"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
     responseFields: []
     auth: []
     controller: null
@@ -3631,6 +3789,145 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: 'api/clients/menu/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the menu.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Succ\u00e8s","status":true,"data":{"id":1,"nom":"Fruits","status":1,"createdAt":"2025-07-08T12:51:41.000000Z","details":null,"photo":"https:\/\/jenos-food.s3.amazonaws.com\/menus\/686d145a5d8e9_fruits.jpg","nbrePlats":1,"plats":[{"id":1,"nom":"Banane","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"}]}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/clients/search/{mot}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      mot:
+        name: mot
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      mot: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Succ\u00e8s","status":true,"data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/clients/search
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":13,"nom":"Timothy O''Connell DVM","prix":698574,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":19,"nom":"Miss Stacy Moore","prix":709578,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":17,"nom":"Prof. Isobel Yost DVM","prix":682949,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":15,"nom":"Mrs. Misty Monahan","prix":750289,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":20,"nom":"Name Streich","prix":698010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":14,"nom":"Bill Greenholt Jr.","prix":852342,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":5,"nom":"Mr. Francisco Sipes","prix":158961,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":18,"nom":"Leanna Connelly","prix":845310,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":11,"nom":"Destiny Lowe","prix":970367,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":10,"nom":"Kaycee Beahan II","prix":496790,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: api/clients/commandes
     metadata:
       groupName: Endpoints
@@ -3654,10 +3951,10 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":"BI2CoOzvJ7bP3GMl17isqPLwkBZI6HuzojHZlu4h9V_aNp033HtoE6dZ08uoJoPhJ9aLa4CAk6GymVK0Z47VZTY"}'
+        content: ''
         headers:
+          content-type: 'text/html; charset=UTF-8'
           cache-control: 'no-cache, private'
-          content-type: application/json
           access-control-allow-origin: '*'
         description: null
         custom: []
@@ -3712,7 +4009,7 @@ endpoints:
         name: paiementMode
         description: ''
         required: true
-        example: airtel
+        example: cash
         type: string
         enumValues:
           - cash
@@ -3728,7 +4025,7 @@ endpoints:
         name: facture
         description: ''
         required: true
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -3817,8 +4114,8 @@ endpoints:
     cleanBodyParameters:
       prix: 4326.41688
       deliveryCoast: 4326.41688
-      paiementMode: airtel
-      facture: true
+      paiementMode: cash
+      facture: false
       adresse: architecto
       commune: architecto
       zone: architecto
@@ -3871,7 +4168,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":{"id":8,"ticket":"ORDER-08-07-25-602517","status":"pending","note":null,"prix":878045,"deliveryCoast":5900,"adresse":{"adresse":"Nzoloko 9A","latitude":0,"longitude":0,"commune":"Ndjili"},"paiementMode":"vodacome","facture":true,"livreur":{"id":1,"nom":"Kalala","prenom":"Foster","phone":"+243998115482"},"createdAt":"2025-07-08T15:02:59.000000Z"}}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":{"id":8,"ticket":"ORDER-08-07-25-602517","status":"pending","note":null,"prix":878045,"deliveryCoast":5900,"adresse":{"adresse":"Nzoloko 9A","latitude":0,"longitude":0,"commune":"Ndjili"},"paiementMode":"vodacome","facture":true,"livreur":{"id":1,"nom":"Mbayi","prenom":"Jean-Foster","phone":"+243998115482"},"createdAt":"2025-07-08T15:02:59.000000Z"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4318,6 +4615,45 @@ endpoints:
     custom: []
   -
     httpMethods:
+      - GET
+    uri: api/clients/communes
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Ndjili","zoneId":1},{"id":2,"nom":"Masina","zoneId":1},{"id":4,"nom":"Barumbu","zoneId":2}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
       - POST
     uri: 'api/clients/profile-update/{id}'
     metadata:
@@ -4626,6 +4962,58 @@ endpoints:
       phone: '+564255931423'
       password: 'mi/#iw/kXaz<m5L[)~'
       code: 4326.41688
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/clients/token
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      userId:
+        name: userId
+        description: 'The <code>id</code> of an existing record in the users table.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      token:
+        name: token
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      userId: architecto
+      token: architecto
     fileParameters: []
     responses: []
     responseFields: []

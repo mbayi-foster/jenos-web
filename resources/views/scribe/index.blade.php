@@ -224,6 +224,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-zones-status-change--id-">
                                 <a href="#endpoints-GETapi-zones-status-change--id-">GET api/zones/status/change/{id}</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-communes-status-change--id-">
+                                <a href="#endpoints-GETapi-communes-status-change--id-">GET api/communes/status/change/{id}</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-plats-status-change--id-">
                                 <a href="#endpoints-GETapi-plats-status-change--id-">GET api/plats/status/change/{id}</a>
                             </li>
@@ -257,6 +260,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-dashboard--id-">
                                 <a href="#endpoints-DELETEapi-dashboard--id-">Remove the specified resource from storage.</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients">
+                                <a href="#endpoints-GETapi-clients">GET api/clients</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-zones-id--id-">
                                 <a href="#endpoints-GETapi-zones-id--id-">GET api/zones-id/{id}</a>
                             </li>
@@ -289,6 +295,15 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-plat--id-">
                                 <a href="#endpoints-GETapi-clients-plat--id-">GET api/clients/plat/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-menu--id-">
+                                <a href="#endpoints-GETapi-clients-menu--id-">GET api/clients/menu/{id}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-search--mot-">
+                                <a href="#endpoints-GETapi-clients-search--mot-">GET api/clients/search/{mot}</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-search">
+                                <a href="#endpoints-GETapi-clients-search">GET api/clients/search</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-commandes">
                                 <a href="#endpoints-GETapi-clients-commandes">Display a listing of the resource.</a>
@@ -326,6 +341,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-position-livreur--id-">
                                 <a href="#endpoints-GETapi-clients-position-livreur--id-">GET api/clients/position-livreur/{id}</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-communes">
+                                <a href="#endpoints-GETapi-clients-communes">GET api/clients/communes</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-clients-profile-update--id-">
                                 <a href="#endpoints-POSTapi-clients-profile-update--id-">POST api/clients/profile-update/{id}</a>
                             </li>
@@ -337,6 +355,9 @@
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-clients">
                                 <a href="#endpoints-POSTapi-clients">POST api/clients</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-clients-token">
+                                <a href="#endpoints-POSTapi-clients-token">POST api/clients/token</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-clients-logout">
                                 <a href="#endpoints-POSTapi-clients-logout">POST api/clients/logout</a>
@@ -1141,8 +1162,8 @@ access-control-allow-origin: *
     &quot;data&quot;: [
         {
             &quot;id&quot;: &quot;be3c7279-d07a-4566-a61f-2df34885125f&quot;,
-            &quot;nom&quot;: &quot;Kalala&quot;,
-            &quot;prenom&quot;: &quot;Foster&quot;,
+            &quot;nom&quot;: &quot;Mbayi&quot;,
+            &quot;prenom&quot;: &quot;Jean-Foster&quot;,
             &quot;phone&quot;: &quot;+243998115482&quot;,
             &quot;email&quot;: &quot;mbayifoster@gmail.com&quot;,
             &quot;status&quot;: &quot;active&quot;,
@@ -1153,7 +1174,7 @@ access-control-allow-origin: *
             &quot;zone&quot;: &quot;Zone Est&quot;,
             &quot;zoneId&quot;: 1,
             &quot;createdAt&quot;: &quot;2025-07-03T15:21:00.000000Z&quot;,
-            &quot;updatedAt&quot;: &quot;2025-07-03T15:21:00.000000Z&quot;
+            &quot;updatedAt&quot;: &quot;2025-07-10T12:19:22.000000Z&quot;
         }
     ]
 }</code>
@@ -1396,7 +1417,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="+564255931423"
                data-component="body">
     <br>
-<p>Must match the regex /^+[0-9]{12}$/. Example: <code>+564255931423</code></p>
+<p>Must match the regex /^+[0-9]{6,15}$/. Example: <code>+564255931423</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>zoneId</code></b>&nbsp;&nbsp;
@@ -1407,7 +1428,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value="architecto"
                data-component="body">
     <br>
-<p>Exemple de validation. The <code>id</code> of an existing record in the zones table. Example: <code>architecto</code></p>
+<p>The <code>id</code> of an existing record in the zones table. Example: <code>architecto</code></p>
         </div>
         </form>
 
@@ -1560,7 +1581,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request PUT \
     "http://localhost/api/livreurs/1" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --data "{
+    \"nom\": \"b\",
+    \"prenom\": \"n\",
+    \"phone\": \"+564255931423\",
+    \"zoneId\": \"architecto\"
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
@@ -1573,9 +1601,17 @@ const headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "nom": "b",
+    "prenom": "n",
+    "phone": "+564255931423",
+    "zoneId": "architecto"
+};
+
 fetch(url, {
     method: "PUT",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -1667,7 +1703,52 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>The ID of the livreur. Example: <code>1</code></p>
             </div>
-                    </form>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>nom</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="nom"                data-endpoint="PUTapi-livreurs--id-"
+               value="b"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>b</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>prenom</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="prenom"                data-endpoint="PUTapi-livreurs--id-"
+               value="n"
+               data-component="body">
+    <br>
+<p>Must not be greater than 255 characters. Example: <code>n</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="phone"                data-endpoint="PUTapi-livreurs--id-"
+               value="+564255931423"
+               data-component="body">
+    <br>
+<p>Must match the regex /^+[0-9]{6,15}$/. Example: <code>+564255931423</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>zoneId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="zoneId"                data-endpoint="PUTapi-livreurs--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the zones table. Example: <code>architecto</code></p>
+        </div>
+        </form>
 
                     <h2 id="endpoints-DELETEapi-livreurs--id-">Remove the specified resource from storage.</h2>
 
@@ -3661,9 +3742,25 @@ access-control-allow-origin: *
     &quot;status&quot;: true,
     &quot;data&quot;: [
         {
+            &quot;id&quot;: 4,
+            &quot;nom&quot;: &quot;Barumbu&quot;,
+            &quot;status&quot;: 1,
+            &quot;createdAt&quot;: &quot;2025-07-10T11:32:48.000000Z&quot;,
+            &quot;frais&quot;: 6000,
+            &quot;zoneId&quot;: 2
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;nom&quot;: &quot;Barumbu ou CAS&quot;,
+            &quot;status&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-10T11:16:41.000000Z&quot;,
+            &quot;frais&quot;: 450,
+            &quot;zoneId&quot;: 2
+        },
+        {
             &quot;id&quot;: 2,
             &quot;nom&quot;: &quot;Masina&quot;,
-            &quot;status&quot;: 0,
+            &quot;status&quot;: 1,
             &quot;createdAt&quot;: &quot;2025-07-03T15:19:30.000000Z&quot;,
             &quot;frais&quot;: 5000,
             &quot;zoneId&quot;: 1
@@ -3671,7 +3768,7 @@ access-control-allow-origin: *
         {
             &quot;id&quot;: 1,
             &quot;nom&quot;: &quot;Ndjili&quot;,
-            &quot;status&quot;: 0,
+            &quot;status&quot;: 1,
             &quot;createdAt&quot;: &quot;2025-07-03T15:19:06.000000Z&quot;,
             &quot;frais&quot;: 5000,
             &quot;zoneId&quot;: 1
@@ -4055,7 +4152,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <pre><code class="language-bash">curl --request PUT \
     "http://localhost/api/communes/1" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --data "{
+    \"nom\": \"architecto\",
+    \"frais\": \"architecto\"
+}"
+</code></pre></div>
 
 
 <div class="javascript-example">
@@ -4068,9 +4170,15 @@ const headers = {
     "Accept": "application/json",
 };
 
+let body = {
+    "nom": "architecto",
+    "frais": "architecto"
+};
+
 fetch(url, {
     method: "PUT",
     headers,
+    body: JSON.stringify(body),
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -4162,7 +4270,30 @@ You can check the Dev Tools console for debugging information.</code></pre>
     <br>
 <p>The ID of the commune. Example: <code>1</code></p>
             </div>
-                    </form>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>nom</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="nom"                data-endpoint="PUTapi-communes--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>frais</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="frais"                data-endpoint="PUTapi-communes--id-"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
+        </div>
+        </form>
 
                     <h2 id="endpoints-DELETEapi-communes--id-">Remove the specified resource from storage.</h2>
 
@@ -4347,14 +4478,14 @@ access-control-allow-origin: *
                 {
                     &quot;id&quot;: 1,
                     &quot;nom&quot;: &quot;Ndjili&quot;,
-                    &quot;status&quot;: 0,
+                    &quot;status&quot;: 1,
                     &quot;frais&quot;: 5000,
                     &quot;zoneId&quot;: 1
                 },
                 {
                     &quot;id&quot;: 2,
                     &quot;nom&quot;: &quot;Masina&quot;,
-                    &quot;status&quot;: 0,
+                    &quot;status&quot;: 1,
                     &quot;frais&quot;: 5000,
                     &quot;zoneId&quot;: 1
                 }
@@ -4366,8 +4497,23 @@ access-control-allow-origin: *
             &quot;status&quot;: 1,
             &quot;chef&quot;: &quot;Root Utilisateur&quot;,
             &quot;createdAt&quot;: &quot;2025-07-08T13:46:07.000000Z&quot;,
-            &quot;countCommunes&quot;: 0,
-            &quot;communes&quot;: []
+            &quot;countCommunes&quot;: 2,
+            &quot;communes&quot;: [
+                {
+                    &quot;id&quot;: 3,
+                    &quot;nom&quot;: &quot;Barumbu ou CAS&quot;,
+                    &quot;status&quot;: 0,
+                    &quot;frais&quot;: 450,
+                    &quot;zoneId&quot;: 2
+                },
+                {
+                    &quot;id&quot;: 4,
+                    &quot;nom&quot;: &quot;Barumbu&quot;,
+                    &quot;status&quot;: 1,
+                    &quot;frais&quot;: 6000,
+                    &quot;zoneId&quot;: 2
+                }
+            ]
         }
     ]
 }</code>
@@ -5367,7 +5513,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "nom=architecto"\
     --form "prix=4326.41688"\
     --form "details=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php7547.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\phpA8C.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5508,7 +5654,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php7547.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\phpA8C.tmp</code></p>
         </div>
         </form>
 
@@ -5680,7 +5826,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "nom=architecto"\
     --form "prix=4326.41688"\
     --form "details=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php7567.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\phpCA1.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5837,7 +5983,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php7567.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\phpCA1.tmp</code></p>
         </div>
         </form>
 
@@ -6158,7 +6304,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --form "nom=architecto"\
     --form "plats=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php7587.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\phpD1F.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6287,7 +6433,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php7587.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\phpD1F.tmp</code></p>
         </div>
         </form>
 
@@ -7773,6 +7919,142 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                    <h2 id="endpoints-GETapi-communes-status-change--id-">GET api/communes/status/change/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-communes-status-change--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/communes/status/change/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/communes/status/change/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-communes-status-change--id-">
+            <blockquote>
+            <p>Example response (404):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;No query results for model [App\\Models\\Commune] architecto&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-communes-status-change--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-communes-status-change--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-communes-status-change--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-communes-status-change--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-communes-status-change--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-communes-status-change--id-" data-method="GET"
+      data-path="api/communes/status/change/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-communes-status-change--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-communes-status-change--id-"
+                    onclick="tryItOut('GETapi-communes-status-change--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-communes-status-change--id-"
+                    onclick="cancelTryOut('GETapi-communes-status-change--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-communes-status-change--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/communes/status/change/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-communes-status-change--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-communes-status-change--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="id"                data-endpoint="GETapi-communes-status-change--id-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>The ID of the change. Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
                     <h2 id="endpoints-GETapi-plats-status-change--id-">GET api/plats/status/change/{id}</h2>
 
 <p>
@@ -9240,6 +9522,197 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                    <h2 id="endpoints-GETapi-clients">GET api/clients</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-clients">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Succ&egrave;s&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: &quot;3c171197-b05a-4dc0-b7c6-a523563ef7c3&quot;,
+            &quot;email&quot;: &quot;foster@gmail.com&quot;,
+            &quot;nom&quot;: &quot;Kalala&quot;,
+            &quot;prenom&quot;: &quot;Foster&quot;,
+            &quot;phone&quot;: &quot;+243998115482&quot;,
+            &quot;adresse&quot;: {
+                &quot;adresse&quot;: null,
+                &quot;commune&quot;: null,
+                &quot;latitude&quot;: null,
+                &quot;longitude&quot;: null
+            },
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;type&quot;: &quot;client&quot;,
+            &quot;createdAt&quot;: &quot;2025-07-07T13:29:12.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: &quot;cd7d5c92-43a3-4a06-b89f-006ca6af93a8&quot;,
+            &quot;email&quot;: &quot;foster2@gmail.com&quot;,
+            &quot;nom&quot;: &quot;Kalala&quot;,
+            &quot;prenom&quot;: &quot;Foster&quot;,
+            &quot;phone&quot;: &quot;+243998115482&quot;,
+            &quot;adresse&quot;: {
+                &quot;adresse&quot;: null,
+                &quot;commune&quot;: null,
+                &quot;latitude&quot;: null,
+                &quot;longitude&quot;: null
+            },
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;type&quot;: &quot;client&quot;,
+            &quot;createdAt&quot;: &quot;2025-07-07T13:30:12.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: &quot;d2c87b7e-dc66-49e1-9ac9-dc0f17382ea9&quot;,
+            &quot;email&quot;: &quot;foster32@gmail.com&quot;,
+            &quot;nom&quot;: &quot;Kalala&quot;,
+            &quot;prenom&quot;: &quot;Foster&quot;,
+            &quot;phone&quot;: &quot;+243998115482&quot;,
+            &quot;adresse&quot;: {
+                &quot;adresse&quot;: null,
+                &quot;commune&quot;: null,
+                &quot;latitude&quot;: null,
+                &quot;longitude&quot;: null
+            },
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;type&quot;: &quot;client&quot;,
+            &quot;createdAt&quot;: &quot;2025-07-07T13:33:15.000000Z&quot;
+        },
+        {
+            &quot;id&quot;: &quot;fd3dd150-ec3c-4856-bf0c-39ad4546524e&quot;,
+            &quot;email&quot;: &quot;kalala@ic.cd&quot;,
+            &quot;nom&quot;: &quot;Kalala&quot;,
+            &quot;prenom&quot;: &quot;Foster&quot;,
+            &quot;phone&quot;: &quot;+243998115482&quot;,
+            &quot;adresse&quot;: {
+                &quot;adresse&quot;: &quot;Q1&quot;,
+                &quot;commune&quot;: &quot;Ndjili&quot;,
+                &quot;latitude&quot;: &quot;0.0000000&quot;,
+                &quot;longitude&quot;: &quot;0.0000000&quot;
+            },
+            &quot;status&quot;: &quot;active&quot;,
+            &quot;type&quot;: &quot;client&quot;,
+            &quot;createdAt&quot;: &quot;2025-07-08T12:36:12.000000Z&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients" data-method="GET"
+      data-path="api/clients"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients"
+                    onclick="tryItOut('GETapi-clients');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients"
+                    onclick="cancelTryOut('GETapi-clients');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
                     <h2 id="endpoints-GETapi-zones-id--id-">GET api/zones-id/{id}</h2>
 
 <p>
@@ -9395,7 +9868,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "nom=architecto"\
     --form "prix=4326.41688"\
     --form "details=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php76B1.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\php19A4.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -9548,7 +10021,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php76B1.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php19A4.tmp</code></p>
         </div>
         </form>
 
@@ -11146,6 +11619,676 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                    <h2 id="endpoints-GETapi-clients-menu--id-">GET api/clients/menu/{id}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-clients-menu--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients/menu/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/menu/1"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients-menu--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Succ&egrave;s&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: {
+        &quot;id&quot;: 1,
+        &quot;nom&quot;: &quot;Fruits&quot;,
+        &quot;status&quot;: 1,
+        &quot;createdAt&quot;: &quot;2025-07-08T12:51:41.000000Z&quot;,
+        &quot;details&quot;: null,
+        &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/menus/686d145a5d8e9_fruits.jpg&quot;,
+        &quot;nbrePlats&quot;: 1,
+        &quot;plats&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;nom&quot;: &quot;Banane&quot;,
+                &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;
+            }
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients-menu--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients-menu--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients-menu--id-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients-menu--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients-menu--id-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients-menu--id-" data-method="GET"
+      data-path="api/clients/menu/{id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-menu--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients-menu--id-"
+                    onclick="tryItOut('GETapi-clients-menu--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients-menu--id-"
+                    onclick="cancelTryOut('GETapi-clients-menu--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients-menu--id-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients/menu/{id}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients-menu--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients-menu--id-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               step="any"               name="id"                data-endpoint="GETapi-clients-menu--id-"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the menu. Example: <code>1</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-clients-search--mot-">GET api/clients/search/{mot}</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-clients-search--mot-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients/search/architecto" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/search/architecto"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients-search--mot-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Succ&egrave;s&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: []
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients-search--mot-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients-search--mot-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients-search--mot-"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients-search--mot-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients-search--mot-">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients-search--mot-" data-method="GET"
+      data-path="api/clients/search/{mot}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-search--mot-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients-search--mot-"
+                    onclick="tryItOut('GETapi-clients-search--mot-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients-search--mot-"
+                    onclick="cancelTryOut('GETapi-clients-search--mot-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients-search--mot-"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients/search/{mot}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients-search--mot-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients-search--mot-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>mot</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="mot"                data-endpoint="GETapi-clients-search--mot-"
+               value="architecto"
+               data-component="url">
+    <br>
+<p>Example: <code>architecto</code></p>
+            </div>
+                    </form>
+
+                    <h2 id="endpoints-GETapi-clients-search">GET api/clients/search</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-clients-search">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients/search" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/search"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients-search">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Succ&egrave;s&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 7,
+            &quot;nom&quot;: &quot;Omer Kuhic&quot;,
+            &quot;prix&quot;: 514773,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 13,
+            &quot;nom&quot;: &quot;Timothy O&#039;Connell DVM&quot;,
+            &quot;prix&quot;: 698574,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 19,
+            &quot;nom&quot;: &quot;Miss Stacy Moore&quot;,
+            &quot;prix&quot;: 709578,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 17,
+            &quot;nom&quot;: &quot;Prof. Isobel Yost DVM&quot;,
+            &quot;prix&quot;: 682949,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 15,
+            &quot;nom&quot;: &quot;Mrs. Misty Monahan&quot;,
+            &quot;prix&quot;: 750289,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;nom&quot;: &quot;Torrance O&#039;Conner&quot;,
+            &quot;prix&quot;: 462865,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 16,
+            &quot;nom&quot;: &quot;Harrison Kassulke&quot;,
+            &quot;prix&quot;: 165010,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;nom&quot;: &quot;Adeline Erdman&quot;,
+            &quot;prix&quot;: 344896,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 20,
+            &quot;nom&quot;: &quot;Name Streich&quot;,
+            &quot;prix&quot;: 698010,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;nom&quot;: &quot;Friedrich Hilpert&quot;,
+            &quot;prix&quot;: 878045,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:06.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 14,
+            &quot;nom&quot;: &quot;Bill Greenholt Jr.&quot;,
+            &quot;prix&quot;: 852342,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 12,
+            &quot;nom&quot;: &quot;Nikita Schuster Jr.&quot;,
+            &quot;prix&quot;: 374789,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;nom&quot;: &quot;Mr. Francisco Sipes&quot;,
+            &quot;prix&quot;: 158961,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 9,
+            &quot;nom&quot;: &quot;Jazmyn Ziemann&quot;,
+            &quot;prix&quot;: 691661,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 18,
+            &quot;nom&quot;: &quot;Leanna Connelly&quot;,
+            &quot;prix&quot;: 845310,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 1,
+            &quot;nom&quot;: &quot;Banane&quot;,
+            &quot;prix&quot;: 2500,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T12:50:33.000000Z&quot;,
+            &quot;details&quot;: &quot;Cette banane est juste d&eacute;licieuse&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 12h50&quot;
+        },
+        {
+            &quot;id&quot;: 21,
+            &quot;nom&quot;: &quot;Sterling Windler&quot;,
+            &quot;prix&quot;: 340322,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;nom&quot;: &quot;Dr. Vivian Wisoky&quot;,
+            &quot;prix&quot;: 774610,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:06.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;nom&quot;: &quot;Destiny Lowe&quot;,
+            &quot;prix&quot;: 970367,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;nom&quot;: &quot;Alec Durgan&quot;,
+            &quot;prix&quot;: 798307,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;nom&quot;: &quot;Kaycee Beahan II&quot;,
+            &quot;prix&quot;: 496790,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients-search" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients-search"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients-search"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients-search" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients-search">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients-search" data-method="GET"
+      data-path="api/clients/search"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-search', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients-search"
+                    onclick="tryItOut('GETapi-clients-search');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients-search"
+                    onclick="cancelTryOut('GETapi-clients-search');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients-search"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients/search</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients-search"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients-search"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
                     <h2 id="endpoints-GETapi-clients-commandes">Display a listing of the resource.</h2>
 
 <p>
@@ -11189,16 +12332,12 @@ fetch(url, {
             <summary style="cursor: pointer;">
                 <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
             </summary>
-            <pre><code class="language-http">cache-control: no-cache, private
-content-type: application/json
+            <pre><code class="language-http">content-type: text/html; charset=UTF-8
+cache-control: no-cache, private
 access-control-allow-origin: *
  </code></pre></details>         <pre>
 
-<code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Succ&egrave;s&quot;,
-    &quot;status&quot;: true,
-    &quot;data&quot;: &quot;BI2CoOzvJ7bP3GMl17isqPLwkBZI6HuzojHZlu4h9V_aNp033HtoE6dZ08uoJoPhJ9aLa4CAk6GymVK0Z47VZTY&quot;
-}</code>
+<code class="language-json" style="max-height: 300px;"></code>
  </pre>
     </span>
 <span id="execution-results-GETapi-clients-commandes" hidden>
@@ -11291,8 +12430,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"prix\": 4326.41688,
     \"deliveryCoast\": 4326.41688,
-    \"paiementMode\": \"airtel\",
-    \"facture\": true,
+    \"paiementMode\": \"cash\",
+    \"facture\": false,
     \"adresse\": \"architecto\",
     \"commune\": \"architecto\",
     \"zone\": \"architecto\",
@@ -11317,8 +12456,8 @@ const headers = {
 let body = {
     "prix": 4326.41688,
     "deliveryCoast": 4326.41688,
-    "paiementMode": "airtel",
-    "facture": true,
+    "paiementMode": "cash",
+    "facture": false,
     "adresse": "architecto",
     "commune": "architecto",
     "zone": "architecto",
@@ -11436,10 +12575,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="paiementMode"                data-endpoint="POSTapi-clients-commandes"
-               value="airtel"
+               value="cash"
                data-component="body">
     <br>
-<p>Example: <code>airtel</code></p>
+<p>Example: <code>cash</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>cash</code></li> <li><code>vodacome</code></li> <li><code>airtel</code></li> <li><code>orange</code></li> <li><code>africell</code></li> <li><code>visa</code></li></ul>
         </div>
@@ -11462,7 +12601,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>paniers</code></b>&nbsp;&nbsp;
@@ -11624,8 +12763,8 @@ access-control-allow-origin: *
         &quot;facture&quot;: true,
         &quot;livreur&quot;: {
             &quot;id&quot;: 1,
-            &quot;nom&quot;: &quot;Kalala&quot;,
-            &quot;prenom&quot;: &quot;Foster&quot;,
+            &quot;nom&quot;: &quot;Mbayi&quot;,
+            &quot;prenom&quot;: &quot;Jean-Foster&quot;,
             &quot;phone&quot;: &quot;+243998115482&quot;
         },
         &quot;createdAt&quot;: &quot;2025-07-08T15:02:59.000000Z&quot;
@@ -12906,6 +14045,148 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
+                    <h2 id="endpoints-GETapi-clients-communes">GET api/clients/communes</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETapi-clients-communes">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost/api/clients/communes" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/communes"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-clients-communes">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;Succ&egrave;s&quot;,
+    &quot;status&quot;: true,
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;nom&quot;: &quot;Ndjili&quot;,
+            &quot;zoneId&quot;: 1
+        },
+        {
+            &quot;id&quot;: 2,
+            &quot;nom&quot;: &quot;Masina&quot;,
+            &quot;zoneId&quot;: 1
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;nom&quot;: &quot;Barumbu&quot;,
+            &quot;zoneId&quot;: 2
+        }
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-clients-communes" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-clients-communes"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-clients-communes"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-clients-communes" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-clients-communes">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-GETapi-clients-communes" data-method="GET"
+      data-path="api/clients/communes"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-communes', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-clients-communes"
+                    onclick="tryItOut('GETapi-clients-communes');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-clients-communes"
+                    onclick="cancelTryOut('GETapi-clients-communes');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-clients-communes"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/clients/communes</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="GETapi-clients-communes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="GETapi-clients-communes"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
                     <h2 id="endpoints-POSTapi-clients-profile-update--id-">POST api/clients/profile-update/{id}</h2>
 
 <p>
@@ -13599,6 +14880,148 @@ You can check the Dev Tools console for debugging information.</code></pre>
                data-component="body">
     <br>
 <p>Example: <code>4326.41688</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-clients-token">POST api/clients/token</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTapi-clients-token">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost/api/clients/token" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"userId\": \"architecto\",
+    \"token\": \"architecto\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost/api/clients/token"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "userId": "architecto",
+    "token": "architecto"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-clients-token">
+</span>
+<span id="execution-results-POSTapi-clients-token" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-clients-token"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-clients-token"
+      data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-clients-token" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-clients-token">
+
+Tip: Check that you&#039;re properly connected to the network.
+If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
+You can check the Dev Tools console for debugging information.</code></pre>
+</span>
+<form id="form-POSTapi-clients-token" data-method="POST"
+      data-path="api/clients/token"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients-token', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-clients-token"
+                    onclick="tryItOut('POSTapi-clients-token');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-clients-token"
+                    onclick="cancelTryOut('POSTapi-clients-token');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-clients-token"
+                    data-initial-text="Send Request 💥"
+                    data-loading-text="⏱ Sending..."
+                    hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/clients/token</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Content-Type"                data-endpoint="POSTapi-clients-token"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="Accept"                data-endpoint="POSTapi-clients-token"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>userId</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="userId"                data-endpoint="POSTapi-clients-token"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>The <code>id</code> of an existing record in the users table. Example: <code>architecto</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>token</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="token"                data-endpoint="POSTapi-clients-token"
+               value="architecto"
+               data-component="body">
+    <br>
+<p>Example: <code>architecto</code></p>
         </div>
         </form>
 
