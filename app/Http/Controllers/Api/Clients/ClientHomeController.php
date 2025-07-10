@@ -93,5 +93,25 @@ class ClientHomeController extends Controller
         return ApiResponse::error();
     }
 
+    public function menuById(string $id)
+    {
+        $menu = Menu::findOrFail($id);
+        return ApiResponse::success(data: new MenuResource($menu));
+    }
+
+    public function searchPlats(string $mot)
+    {
+        // $request->validate([
+        //     "order" => 'string'
+        // ]);
+        $plats = Plat::where("status", true)->where('nom', 'LIKE', "%$mot%")->get();
+        return ApiResponse::success(PlatResource::collection($plats));
+    }
+
+    public function allPlats()
+    {
+        $plats = Plat::where('status', true)->inRandomOrder()->get();
+        return ApiResponse::success(PlatResource::collection($plats));
+    }
 
 }

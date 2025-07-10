@@ -196,9 +196,9 @@ class PlatController extends Controller
 
     public function search(string $mot, Request $request)
     {
-        $request->validate([
-            "order" => 'string'
-        ]);
+        // $request->validate([
+        //     "order" => 'string'
+        // ]);
         $plats = Plat::where("status", true)->where('nom', 'LIKE', "%$mot%")->get();
         return ApiResponse::success(PlatResource::collection($plats));
     }

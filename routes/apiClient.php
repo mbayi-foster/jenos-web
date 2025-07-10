@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/clients/home-page', [ClientHomeController::class, 'homePage']);
 Route::get('/clients/menus-page', [ClientHomeController::class, 'menusPage']);
 Route::get('/clients/plat/{id}', [ClientHomeController::class, 'platById']);
+Route::get('/clients/menu/{id}', [ClientHomeController::class, 'menuById']);
+Route::get("/clients/search/{mot}", [ClientHomeController::class, "searchPlats"]);
+Route::get("/clients/search/", [ClientHomeController::class, "allPlats"]);
 
 Route::apiResource('clients/commandes', ClientCommandeController::class);
 Route::apiResource('/clients/paniers', ClientPanierController::class);

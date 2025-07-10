@@ -29,7 +29,7 @@ class AuthClientController extends Controller
         $code = rand(100000, 999999);
         Code::create(['code' => $code, 'email' => $validated['email']]);
         $data = ['nom' => $validated['prenom'] . ' ' . $validated['nom'], 'code' => $code, "sujet" => "Confirmer l'adresse email"];
-        // Mail::to($request->email)->send(new MobileMail($data));
+        Mail::to($request->email)->send(new MobileMail($data));
 
         return ApiResponse::success(code: 201, data: ['code' => $code]);
     }
@@ -116,7 +116,7 @@ class AuthClientController extends Controller
         $code = rand(100000, 999999);
         Code::create(['code' => $code, 'email' => $user->email]);
         $data = ['nom' => $user->profile->prenom . ' ' . $user->profile->nom, 'code' => $code, "sujet" => "Vérifier l'adresse email"];
-        // Mail::to($request->email)->send(new CheckMail($data));
+        Mail::to($request->email)->send(new CheckMail($data));
         return ApiResponse::success(data: ['code' => $code], code: 201);
     }
 
@@ -199,8 +199,8 @@ class AuthClientController extends Controller
 
         $lastToken = TokenFcm::where('token', $validated['token'])->first();
 
-        if($lastToken != null){
-            return ApiResponse::success(code:201, message:'Le token existe déjà plus besoin de le stocker');
+        if ($lastToken != null) {
+            return ApiResponse::success(code: 201, message: 'Le token existe déjà plus besoin de le stocker');
         }
 
         $token = TokenFcm::create([
