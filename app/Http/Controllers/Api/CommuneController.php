@@ -34,7 +34,8 @@ class CommuneController extends Controller
             [
                 "nom" => $validated['nom'],
                 "zone_id" => $validated["zone"],
-                "frais" => $validated['frais']
+                "frais" => $validated['frais'],
+                "status"=>true,
             ]
         );
         return ApiResponse::success(new CommuneResource($commune));

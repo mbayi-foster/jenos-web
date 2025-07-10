@@ -25,7 +25,6 @@ class ClientCommandeController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -137,10 +136,10 @@ class ClientCommandeController extends Controller
     {
         $livreur = Livreur::findOrFail($id);
         return ApiResponse::success(data: [
-            "adresse" => $livreur->adresse,
-            "latitude" => $livreur->latitude,
-            "longitude" => $livreur->longitude,
-            "commune" => $livreur->commune
+            "adresse" => $livreur->adresse ?? '',
+            "latitude" => $livreur->latitude ?? 0.0,
+            "longitude" => $livreur->longitude ?? 0.0,
+            "commune" => $livreur->commune ?? ''
         ]);
     }
 }

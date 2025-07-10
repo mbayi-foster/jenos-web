@@ -16,12 +16,15 @@ Route::apiResource('/clients/paniers', ClientPanierController::class);
 Route::get('/clients/mes-commandes/{id}', [ClientCommandeController::class, 'mesCommandes']);
 Route::get('/clients/position-livreur/{id}', [ClientCommandeController::class, 'positionLivreur']);
 
+Route::get('/clients/communes', [ClientProfileController::class, 'communes']);
 Route::post('/clients/profile-update/{id}', [ClientProfileController::class, 'update']);
 Route::post('/clients/profile-adresse/{id}', [ClientProfileController::class, 'updateAdresse']);
 
 Route::post('/clients/new-user', [ClientsAuthController::class, 'registreEmail']);
 Route::post('/clients', [ClientsAuthController::class, 'storeClient']);
 Route::post('/clients/login', [ClientsAuthController::class, 'login']);
+Route::post('/clients/token', [ClientsAuthController::class, 'newFcmToken']);
+Route::post('/clients/logout', [ClientsAuthController::class, 'logout']);
 Route::post('/clients/forget-password', [ClientsAuthController::class, 'verifyEmail']);
 Route::get('/clients/{id}', [ClientsAuthController::class, 'getUser']);
 Route::post('/clients/change-forget-password', [ClientsAuthController::class, 'changeForgetPassword']);

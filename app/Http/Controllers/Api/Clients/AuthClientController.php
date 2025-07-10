@@ -10,6 +10,7 @@ use App\Mail\CheckMail;
 use App\Mail\MobileMail;
 use App\Models\Code;
 use App\Models\Profil;
+use App\Models\TokenFcm;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -160,7 +161,7 @@ class AuthClientController extends Controller
 
         $user = User::where('email', $validated['email'])->where('status', 'active')->first();
         if (!$user) {
-            return ApiResponse::error(message:"L'email ne correspond à aucun utilisateur");
+            return ApiResponse::error(message: "L'email ne correspond à aucun utilisateur");
         }
 
         if (Hash::check($validated['lastPassword'], $user->password)) {
@@ -170,6 +171,47 @@ class AuthClientController extends Controller
             return ApiResponse::success(data: new ClientResource($user), code: 201);
         }
 
-        return ApiResponse::error(message:"Le mot de passe est incorrecte");
+        return ApiResponse::error(message: "Le mot de passe est incorrecte");
+    }
+
+    public function logout(Request $request)
+    {
+        $validated = $request->validate([
+            'token' => 'required|string',
+        ]);
+
+        $token = TokenFcm::where('token', $validated['token'])->first();
+
+        if ($token == null)
+            return ApiResponse::error(code: 404);
+
+        $token->delete();
+
+        return ApiResponse::success();
+    }
+
+    public function newFcmToken(Request $request)
+    {
+        $validated = $request->validate([
+            'userId' => 'required|exists:users,id',
+            'token' => 'required|string'
+        ]);
+
+        $lastToken = TokenFcm::where('token', $validated['token'])->first();
+
+        if($lastToken != null){
+            return ApiResponse::success(code:201, message:'Le token existe déjà plus besoin de le stocker');
+        }
+
+        $token = TokenFcm::create([
+            'user_id' => $validated['userId'],
+            'token' => $validated['token']
+        ]);
+
+        if ($token != null) {
+            return ApiResponse::success(code: 201);
+        }
+
+        return ApiResponse::error();
     }
 }
