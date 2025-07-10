@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Enum\UserType;
 use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use App\Models\Commande;
 use App\Models\Livreur;
@@ -95,5 +96,11 @@ class DashboardController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function clients()
+    {
+        $clients = User::where('type', UserType::CLIENT)->get();
+        return ApiResponse::success(data: ClientResource::collection($clients));
     }
 }

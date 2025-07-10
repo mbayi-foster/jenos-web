@@ -35,7 +35,7 @@ class CommuneController extends Controller
                 "nom" => $validated['nom'],
                 "zone_id" => $validated["zone"],
                 "frais" => $validated['frais'],
-                "status"=>true,
+                "status" => true,
             ]
         );
         return ApiResponse::success(new CommuneResource($commune));
@@ -54,7 +54,16 @@ class CommuneController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            "nom" => "required",
+            "frais" => 'required'
+        ]);
+
+        $commune = Commune::findOrFail($id);
+        $commune->nom = $validated['nom'];
+        $commune->frais = $validated['frais'];
+        $commune->save();
+        return ApiResponse::success(new CommuneResource($commune));
     }
 
     /**
@@ -68,5 +77,15 @@ class CommuneController extends Controller
         }
         return response()->json('supprimé', 200);
 
+    }
+
+    public function changeStatus(string $id)
+    {
+        $commune = Commune::findOrFail($id);
+
+        $commune->status = !$commune->status;
+        $commune->save();
+
+        return ApiResponse::success();
     }
 }

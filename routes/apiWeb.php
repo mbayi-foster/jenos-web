@@ -4,7 +4,6 @@ use App\Http\Controllers\Api\CommuneController;
 use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\LivreurController;
 use App\Http\Controllers\Api\MenuController;
-use App\Http\Controllers\Api\NotificationController;
 use App\Http\Controllers\Api\PlatController;
 use App\Http\Controllers\Api\RoleController;
 use App\Http\Controllers\Api\UserController;
@@ -22,7 +21,8 @@ Route::apiResource('menus', MenuController::class);
 Route::apiResource('roles', RoleController::class);
 Route::get('status/change/{id}', [UserController::class, 'change_status'])->name('status.users.change');
 Route::get('plats/status/true/', [PlatController::class, 'plats_status'])->name('plats.true');
-Route::get('zones/status/change/{id}', [ZoneController::class, 'change_status'])->name('status.zones.change');
+Route::get('zones/status/change/{id}', [ZoneController::class, 'change_status']);
+Route::get('communes/status/change/{id}', [CommuneController::class, 'changeStatus']);
 Route::get('plats/status/change/{id}', [PlatController::class, 'change_status']);
 Route::get('menus/status/change/{id}', [MenuController::class, 'change_status']);
 
@@ -36,6 +36,7 @@ Route::get('gerants', [UserController::class, 'gerants'])->name('gerants');
 
 /* tablea de bord */
 Route::apiResource("dashboard", DashboardController::class);
+Route::get('/clients', [DashboardController::class, 'clients']);
 
 /* gerant*/
 

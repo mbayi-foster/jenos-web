@@ -42,7 +42,7 @@ class LivreurController extends Controller
             'email' => 'required|email|unique:users|max:255',
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
-            'phone' => 'required|regex:/^\+[0-9]{12}$/', // Exemple de validation
+            'phone' => 'required|regex:/^\+[0-9]{6,15}$/',
             'zoneId' => 'required|exists:zones,id'
         ]);
 
@@ -107,6 +107,36 @@ class LivreurController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        $validated = $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'phone' => 'required|regex:/^\+[0-9]{6,15}$/',
+            'zoneId' => 'required|exists:zones,id'
+        ]);
+
+        // return ApiResponse::success(data: $validated);
+
+        $livreur = Livreur::where('user_id', $id)->first();
+        if ($livreur != null) {
+            $livreur->zone_id = $validated['zoneId'];
+            $livreur->save();
+
+            $profile = Profil::where('user_id', $id)->first();
+
+            if ($profile != null) {
+                $profile->nom = $validated['nom'];
+                $profile->prenom = $validated['prenom'];
+                $profile->phone = $validated['phone'];
+                $profile->save();
+
+                return ApiResponse::success();
+
+            } else {
+                return ApiResponse::error(code: 201);
+            }
+        } else {
+            return ApiResponse::error();
+        }
     }
 
     /**
@@ -132,9 +162,11 @@ class LivreurController extends Controller
 
         if ($livreur) {
             $user = User::find($livreur->users->id);
-            $user->status = $user->status ? false : true;
-            $livreur->status = $livreur->status ? false : true;
+
+            $user->status = !$user->status;
             $user->save();
+
+            $livreur->status = !$livreur->status;
             $livreur->save();
         }
         return response()->json(true, 200);
