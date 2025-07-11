@@ -36,9 +36,14 @@ class Commande extends Model
         return $this->hasMany(Panier::class, 'commande_id', 'id');
     }
 
+
     public function livreur()
     {
         return $this->belongsTo(Livreur::class, "livreur_id", "id");
+    }
+
+    public function client(){
+        return $this->belongsTo(User::class, "client_id", "id");
     }
 
     static function generateOrderTicketCode(): string
@@ -49,7 +54,7 @@ class Commande extends Model
         return "ORDER-{$datePart}-{$randomPart}";
     }
 
-    public function comune(){
+    public function commune(){
         return $this->belongsTo(Commune::class, 'commune_id');
     }
     public function toArray()

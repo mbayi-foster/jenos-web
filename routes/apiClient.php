@@ -7,28 +7,34 @@ use App\Http\Controllers\Api\Clients\ClientHomeController;
 use App\Http\Controllers\Api\Clients\ClientPanierController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/clients/home-page', [ClientHomeController::class, 'homePage']);
-Route::get('/clients/menus-page', [ClientHomeController::class, 'menusPage']);
-Route::get('/clients/plat/{id}', [ClientHomeController::class, 'platById']);
-Route::get('/clients/menu/{id}', [ClientHomeController::class, 'menuById']);
-Route::get("/clients/search/{mot}", [ClientHomeController::class, "searchPlats"]);
-Route::get("/clients/search/", [ClientHomeController::class, "allPlats"]);
+Route::prefix('clients')->group(function () {
 
-Route::apiResource('clients/commandes', ClientCommandeController::class);
-Route::apiResource('/clients/paniers', ClientPanierController::class);
-Route::get('/clients/mes-commandes/{id}', [ClientCommandeController::class, 'mesCommandes']);
-Route::get('/clients/position-livreur/{id}', [ClientCommandeController::class, 'positionLivreur']);
 
-Route::get('/clients/communes', [ClientProfileController::class, 'communes']);
-Route::post('/clients/profile-update/{id}', [ClientProfileController::class, 'update']);
-Route::post('/clients/profile-adresse/{id}', [ClientProfileController::class, 'updateAdresse']);
 
-Route::post('/clients/new-user', [ClientsAuthController::class, 'registreEmail']);
-Route::post('/clients', [ClientsAuthController::class, 'storeClient']);
-Route::post('/clients/login', [ClientsAuthController::class, 'login']);
-Route::post('/clients/token', [ClientsAuthController::class, 'newFcmToken']);
-Route::post('/clients/logout', [ClientsAuthController::class, 'logout']);
-Route::post('/clients/forget-password', [ClientsAuthController::class, 'verifyEmail']);
-Route::get('/clients/{id}', [ClientsAuthController::class, 'getUser']);
-Route::post('/clients/change-forget-password', [ClientsAuthController::class, 'changeForgetPassword']);
-Route::post('/clients/change-password', [ClientsAuthController::class, 'changePassword']);
+    Route::get('home-page', [ClientHomeController::class, 'homePage']);
+    Route::get('menus-page', [ClientHomeController::class, 'menusPage']);
+    Route::get('plat/{id}', [ClientHomeController::class, 'platById']);
+    Route::get('menu/{id}', [ClientHomeController::class, 'menuById']);
+    Route::get("search/{mot}", [ClientHomeController::class, "searchPlats"]);
+    Route::get("search/", [ClientHomeController::class, "allPlats"]);
+
+    Route::apiResource('clients/commandes', ClientCommandeController::class);
+    Route::apiResource('paniers', ClientPanierController::class);
+    Route::get('mes-commandes/{id}', [ClientCommandeController::class, 'mesCommandes']);
+    Route::get('position-livreur/{id}', [ClientCommandeController::class, 'positionLivreur']);
+
+    Route::get('communes', [ClientProfileController::class, 'communes']);
+    Route::post('profile-update/{id}', [ClientProfileController::class, 'update']);
+    Route::post('profile-adresse/{id}', [ClientProfileController::class, 'updateAdresse']);
+
+    Route::post('new-user', [ClientsAuthController::class, 'registreEmail']);
+    Route::post('clients', [ClientsAuthController::class, 'storeClient']);
+    Route::post('login', [ClientsAuthController::class, 'login']);
+    Route::post('token', [ClientsAuthController::class, 'newFcmToken']);
+    Route::post('logout', [ClientsAuthController::class, 'logout']);
+    Route::post('forget-password', [ClientsAuthController::class, 'verifyEmail']);
+    Route::get('{id}', [ClientsAuthController::class, 'getUser']);
+    Route::post('change-forget-password', [ClientsAuthController::class, 'changeForgetPassword']);
+    Route::post('change-password', [ClientsAuthController::class, 'changePassword']);
+
+});

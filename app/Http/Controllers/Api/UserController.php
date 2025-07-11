@@ -66,8 +66,6 @@ class UserController extends Controller
                     'prenom' => $validated['prenom'],
                     'phone' => $validated['phone'],
                 ]);
-
-
                 return ApiResponse::success(code: 201, message: "Adminstrateur enregistré avec succès");
             } else {
                 return ApiResponse::error(message: "L'administrateur n'a pas pu être enregistré", code: 500);
@@ -164,18 +162,6 @@ class UserController extends Controller
 
     }
 
-    public function gerants()
-    {
-        $gerants = Admin::where('status', true)->whereHas('roles', function ($query) {
-            $query->where('nom', 'gérant');
-        })->get();
-
-        $nouveauGerants = $gerants->map(fn($gerant) => [
-            'id' => $gerant->id,
-            'nom' => "$gerant->prenom $gerant->nom"
-        ]);
-        return response()->json($nouveauGerants, 200);
-    }
 
     public function login(Request $request)
     {
