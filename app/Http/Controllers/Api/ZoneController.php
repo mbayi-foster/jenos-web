@@ -86,18 +86,10 @@ class ZoneController extends Controller
         return ApiResponse::success();
     }
 
-    public function zone_by_id(string $id)
+    public function gerantZones(string $id)
     {
-        $zonesDb = Zone::where('chef', $id)->get();
-        $zones = $zonesDb->map(
-            fn($zone) =>
-            [
-                'id' => $zone->id,
-                'nom' => $zone->nom
-            ]
-        );
-
-        return response()->json($zones, 200);
+        $zones = Zone::where('user_id', $id)->get();
+        return ApiResponse::success(data:ZoneResource::collection($zones));
     }
 
     public function gerants()

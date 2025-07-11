@@ -45,7 +45,7 @@ Route::prefix('users')->group(function () {
 
     Route::get("zones-id/{id}", [ZoneController::class, 'zone_by_id']);
     Route::get("gerants", [ZoneController::class, 'gerants']);
-
+    Route::get("gerants/zones/{id}", [ZoneController::class, 'gerantZones']);
     Route::post("plats-update/{id}", [PlatController::class, "update"]);
 
     // commandes

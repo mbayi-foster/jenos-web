@@ -20,6 +20,8 @@ class CommandeResource extends JsonResource
         $livreur = $this->livreur_id != null ? $this->livreur->user->profile : null;
         $client = Profil::where('user_id', $this->client_id)->first();
 
+        $paniers = PanierResource::collection($this->paniers);
+
         return [
             "id" => $this->id,
             "ticket" => $this->ticket,
@@ -47,6 +49,7 @@ class CommandeResource extends JsonResource
                 "nom" => $client['prenom'] . ' ' . $client['nom'],
                 "phone" => $client->phone,
             ],
+            'paniers' => PanierResource::collection($this->whenLoaded('paniers')),
             "createdAt" => $this->created_at,
         ];
     }
