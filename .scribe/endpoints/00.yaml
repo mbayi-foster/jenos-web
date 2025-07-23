@@ -306,6 +306,343 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: 'api/users/status/change/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the change.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\User] architecto"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/users/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'Must be a valid email address.'
+        required: true
+        example: gbailey@example.net
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      email: gbailey@example.net
+      password: architecto
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/users/logout
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/users/roles
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Administrateur"},{"id":2,"nom":"G\u00e9rant"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/users/roles
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Store a newly created resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/roles/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the role.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: ''
+        headers:
+          content-type: 'text/html; charset=UTF-8'
+          cache-control: 'no-cache, private'
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+      - PATCH
+    uri: 'api/users/roles/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the role.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/users/roles/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the role.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: api/users/livreurs
     metadata:
       groupName: Endpoints
@@ -329,7 +666,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":"22a6db27-55ac-441e-8f01-a890bb608f05","nom":"Kalongo","prenom":"Zikito","phone":"+243998115482","email":"zikito@gmail.com","status":"active","adresse":null,"commune":null,"latitude":null,"longitude":null,"zone":"Zone Est","zoneId":1,"createdAt":"2025-07-10T17:13:32.000000Z","updatedAt":"2025-07-11T01:18:13.000000Z"},{"id":"be3c7279-d07a-4566-a61f-2df34885125f","nom":"Mbayi","prenom":"Jean-Foster","phone":"+243998115482","email":"mbayifoster@gmail.com","status":"active","adresse":null,"commune":null,"latitude":null,"longitude":null,"zone":"Zone Est","zoneId":1,"createdAt":"2025-07-03T15:21:00.000000Z","updatedAt":"2025-07-10T12:19:22.000000Z"}]}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":"22a6db27-55ac-441e-8f01-a890bb608f05","nom":"Kizitoko","prenom":"Zikito","phone":"+243998115482","email":"zikito@gmail.com","status":"active","adresse":null,"commune":null,"latitude":null,"longitude":null,"zone":"Zone Est","zoneId":1,"createdAt":"2025-07-10T17:13:32.000000Z","updatedAt":"2025-07-23T20:36:13.000000Z"},{"id":"be3c7279-d07a-4566-a61f-2df34885125f","nom":"Mbayi","prenom":"Jean-Foster","phone":"+243998115482","email":"mbayifoster@gmail.com","status":"active","adresse":null,"commune":null,"latitude":null,"longitude":null,"zone":"Zone Est","zoneId":1,"createdAt":"2025-07-03T15:21:00.000000Z","updatedAt":"2025-07-23T20:36:14.000000Z"}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1088,6 +1425,151 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: 'api/users/zones/status/change/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the change.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/communes/status/change/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the change.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: |-
+          {
+              "message": "No query results for model [App\\Models\\Commune] architecto"
+          }
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/users/gerants
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":"45c920ec-fe1a-4d51-ac99-88283e8d303a","nom":"Utilisateur Root"},{"id":"ddcd63e7-a209-40ed-b712-c2004b8ed8ff","nom":"Patrick Kitoko"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
     uri: api/users/plats
     metadata:
       groupName: Endpoints
@@ -1111,7 +1593,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":0,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":5,"nom":"Mr. Francisco Sipes","prix":158961,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":10,"nom":"Kaycee Beahan II","prix":496790,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":11,"nom":"Destiny Lowe","prix":970367,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":13,"nom":"Timothy O''Connell DVM","prix":698574,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":14,"nom":"Bill Greenholt Jr.","prix":852342,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":15,"nom":"Mrs. Misty Monahan","prix":750289,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":17,"nom":"Prof. Isobel Yost DVM","prix":682949,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":18,"nom":"Leanna Connelly","prix":845310,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":19,"nom":"Miss Stacy Moore","prix":709578,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":20,"nom":"Name Streich","prix":698010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}]}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":5,"nom":"Mr. Francisco Sipes","prix":158961,"status":0,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":10,"nom":"Kaycee Beahan II","prix":496790,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":11,"nom":"Destiny Lowe","prix":970367,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":13,"nom":"Timothy O''Connell DVM","prix":698574,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":14,"nom":"Bill Greenholt Jr.","prix":852342,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":15,"nom":"Mrs. Misty Monahan","prix":750289,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":17,"nom":"Prof. Isobel Yost DVM","prix":682949,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":18,"nom":"Leanna Connelly","prix":845310,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":19,"nom":"Miss Stacy Moore","prix":709578,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":20,"nom":"Name Streich","prix":698010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -1613,406 +2095,6 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/users/roles
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Display a listing of the resource.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Administrateur"},{"id":2,"nom":"G\u00e9rant"}]}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/users/roles
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Store a newly created resource in storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/users/roles/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Display the specified resource.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: ''
-        headers:
-          content-type: 'text/html; charset=UTF-8'
-          cache-control: 'no-cache, private'
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - PUT
-      - PATCH
-    uri: 'api/users/roles/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Update the specified resource in storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'api/users/roles/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Remove the specified resource from storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the role.'
-        required: true
-        example: 1
-        type: integer
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: 1
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/users/status/change/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the change.'
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: architecto
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\User] architecto"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: api/users/plats/status/true
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Banane"},{"id":2,"nom":"Dr. Vivian Wisoky"},{"id":3,"nom":"Friedrich Hilpert"},{"id":5,"nom":"Mr. Francisco Sipes"},{"id":6,"nom":"Alec Durgan"},{"id":7,"nom":"Omer Kuhic"},{"id":8,"nom":"Torrance O''Conner"},{"id":9,"nom":"Jazmyn Ziemann"},{"id":10,"nom":"Kaycee Beahan II"},{"id":11,"nom":"Destiny Lowe"},{"id":12,"nom":"Nikita Schuster Jr."},{"id":13,"nom":"Timothy O''Connell DVM"},{"id":14,"nom":"Bill Greenholt Jr."},{"id":15,"nom":"Mrs. Misty Monahan"},{"id":16,"nom":"Harrison Kassulke"},{"id":17,"nom":"Prof. Isobel Yost DVM"},{"id":18,"nom":"Leanna Connelly"},{"id":19,"nom":"Miss Stacy Moore"},{"id":20,"nom":"Name Streich"},{"id":21,"nom":"Sterling Windler"}]}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/users/zones/status/change/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the change.'
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: architecto
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
-    uri: 'api/users/communes/status/change/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the change.'
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: architecto
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 404
-        content: |-
-          {
-              "message": "No query results for model [App\\Models\\Commune] architecto"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
     uri: 'api/users/plats/status/change/{id}'
     metadata:
       groupName: Endpoints
@@ -2110,173 +2192,6 @@ endpoints:
           access-control-allow-origin: '*'
         description: null
         custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/users/login
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'Must be a valid email address.'
-        required: true
-        example: gbailey@example.net
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      password:
-        name: password
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      email: gbailey@example.net
-      password: architecto
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/users/register
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: 'Store a newly created resource in storage.'
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'Must not be greater than 255 characters.'
-        required: true
-        example: gbailey@example.net
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      nom:
-        name: nom
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      prenom:
-        name: prenom
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      phone:
-        name: phone
-        description: 'Must match the regex /^\+[0-9]{12}$/.'
-        required: true
-        example: '+564255931423'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      password:
-        name: password
-        description: 'Must be at least 6 characters.'
-        required: true
-        example: 'mi/#iw/kXaz<m5L[)~'
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      email: gbailey@example.net
-      nom: architecto
-      prenom: architecto
-      phone: '+564255931423'
-      password: 'mi/#iw/kXaz<m5L[)~'
-    fileParameters: []
-    responses: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - POST
-    uri: api/users/logout
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -2527,45 +2442,6 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/users/gerants
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":"45c920ec-fe1a-4d51-ac99-88283e8d303a","nom":"Utilisateur Root"},{"id":"ddcd63e7-a209-40ed-b712-c2004b8ed8ff","nom":"Patrick Kitoko"}]}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
-      - GET
     uri: 'api/users/gerants/zones/{id}'
     metadata:
       groupName: Endpoints
@@ -2615,83 +2491,48 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - POST
-    uri: 'api/users/plats-update/{id}'
+      - GET
+    uri: 'api/users/gerants/zones/livreurs/{id}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: 'Update the specified resource in storage.'
+      title: ''
       description: ''
       authenticated: false
       custom: []
     headers:
-      Content-Type: multipart/form-data
+      Content-Type: application/json
       Accept: application/json
     urlParameters:
       id:
         name: id
-        description: 'The ID of the plats update.'
+        description: 'The ID of the livreur.'
         required: true
-        example: architecto
-        type: string
+        example: 1
+        type: integer
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: architecto
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters:
-      nom:
-        name: nom
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Livreurs retrieved successfully","status":true,"data":[{"id":"be3c7279-d07a-4566-a61f-2df34885125f","nom":"Mbayi","prenom":"Jean-Foster","phone":"+243998115482","email":"mbayifoster@gmail.com","status":"active","adresse":null,"commune":null,"latitude":null,"longitude":null,"zone":"Zone Est","zoneId":1,"createdAt":"2025-07-03T15:21:00.000000Z","updatedAt":"2025-07-23T20:36:14.000000Z"},{"id":"22a6db27-55ac-441e-8f01-a890bb608f05","nom":"Kizitoko","prenom":"Zikito","phone":"+243998115482","email":"zikito@gmail.com","status":"active","adresse":null,"commune":null,"latitude":null,"longitude":null,"zone":"Zone Est","zoneId":1,"createdAt":"2025-07-10T17:13:32.000000Z","updatedAt":"2025-07-23T20:36:13.000000Z"}]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
         custom: []
-      prix:
-        name: prix
-        description: ''
-        required: true
-        example: 4326.41688
-        type: number
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      details:
-        name: details
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-      photo:
-        name: photo
-        description: 'Must be an image.'
-        required: false
-        example: null
-        type: file
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanBodyParameters:
-      nom: architecto
-      prix: 4326.41688
-      details: architecto
-    fileParameters:
-      photo: null
-    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -2736,6 +2577,59 @@ endpoints:
       -
         status: 200
         content: '{"message":"Succ\u00e8s","status":true,"data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/commandes-id/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the commandes id.'
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2838,7 +2732,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '[{"id":9,"ticket":"ORDER-08-07-25-382330","prix":878045,"delivery_coast":5900,"status":"pending","confirm":null,"facture":"paid","livraison":null,"paiement":null,"adresse":{"adresse":"Nzoloko 9A","commune":{"id":1,"nom":"Ndjili","zone":"Zone Est","zone_id":1,"frais":5000},"lat":null,"lon":null},"zone":1,"livreur":{"nom":null,"prenom":null,"phone":null},"paniers":[{"id":9,"client_id":"fd3dd150-ec3c-4856-bf0c-39ad4546524e","status":"commanded","prix":2323830,"qte":3,"created_at":"2025-07-08T13:34:38.000000Z","plat":{"id":2,"nom":"Dr. Vivian Wisoky","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","status":1,"prix":774610,"commandes":1,"like":0,"created_at":"2025-07-08T13:00:06.000000Z","date":"Tuesday, 08 July 2025 \u00e0 13h00"}}],"created_at":"2025-07-08T15:35:40.000000Z"},{"id":8,"ticket":"ORDER-08-07-25-602517","prix":878045,"delivery_coast":5900,"status":"pending","confirm":null,"facture":"paid","livraison":null,"paiement":null,"adresse":{"adresse":"Nzoloko 9A","commune":{"id":1,"nom":"Ndjili","zone":"Zone Est","zone_id":1,"frais":5000},"lat":null,"lon":null},"zone":1,"livreur":{"nom":null,"prenom":null,"phone":null},"paniers":[],"created_at":"2025-07-08T15:02:59.000000Z"}]'
+        content: '[{"id":9,"ticket":"ORDER-08-07-25-382330","prix":878045,"delivery_coast":5900,"note":null,"status":"delivery_failed","adresse":"Nzoloko 9A","latitude":0,"longitude":0,"facture":"paid","client_id":"fd3dd150-ec3c-4856-bf0c-39ad4546524e","livreur_id":1,"zone_id":1,"created_at":"2025-07-08T15:35:40.000000Z","updated_at":"2025-07-23T21:39:12.000000Z","paiement_mode":"vodacome","commune_id":1},{"id":8,"ticket":"ORDER-08-07-25-602517","prix":878045,"delivery_coast":5900,"note":null,"status":"arrived","adresse":"Nzoloko 9A","latitude":0,"longitude":0,"facture":"paid","client_id":"fd3dd150-ec3c-4856-bf0c-39ad4546524e","livreur_id":1,"zone_id":1,"created_at":"2025-07-08T15:02:59.000000Z","updated_at":"2025-07-23T21:41:31.000000Z","paiement_mode":"vodacome","commune_id":1}]'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -2905,61 +2799,8 @@ endpoints:
     custom: []
   -
     httpMethods:
-      - GET
-    uri: 'api/users/livreurs-by-zone/{id}'
-    metadata:
-      groupName: Endpoints
-      groupDescription: ''
-      subgroup: ''
-      subgroupDescription: ''
-      title: ''
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: 'The ID of the livreurs by zone.'
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
-    cleanUrlParameters:
-      id: architecto
-    queryParameters: []
-    cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 500
-        content: |-
-          {
-              "message": "Server Error"
-          }
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
-        custom: []
-    responseFields: []
-    auth: []
-    controller: null
-    method: null
-    route: null
-    custom: []
-  -
-    httpMethods:
       - POST
-    uri: api/login-livreur
+    uri: api/livreurs/login
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -2979,7 +2820,7 @@ endpoints:
     bodyParameters:
       email:
         name: email
-        description: 'Must be a valid email address.'
+        description: 'Must be a valid email address. The <code>email</code> of an existing record in the users table.'
         required: true
         example: gbailey@example.net
         type: string
@@ -3011,7 +2852,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/pending-commandes-livreur/{id}'
+    uri: 'api/livreurs/commandes/{id}/{status}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -3027,7 +2868,68 @@ endpoints:
     urlParameters:
       id:
         name: id
-        description: 'The ID of the pending commandes livreur.'
+        description: 'The ID of the commande.'
+        required: true
+        example: 8
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      status:
+        name: status
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 8
+      status: architecto
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"message":"Commandes retrieved successfully","status":true,"data":[]}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PATCH
+    uri: 'api/livreurs/event/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the event.'
         required: true
         example: architecto
         type: string
@@ -3039,19 +2941,32 @@ endpoints:
       id: architecto
     queryParameters: []
     cleanQueryParameters: []
-    bodyParameters: []
-    cleanBodyParameters: []
-    fileParameters: []
-    responses:
-      -
-        status: 200
-        content: '{"status":true,"data":[],"message":"Commandes r\u00e9cup\u00e9r\u00e9es avec succ\u00e8s"}'
-        headers:
-          cache-control: 'no-cache, private'
-          content-type: application/json
-          access-control-allow-origin: '*'
-        description: null
+    bodyParameters:
+      event:
+        name: event
+        description: ''
+        required: true
+        example: architecto
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
         custom: []
+      mot:
+        name: mot
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: 'n'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanBodyParameters:
+      event: architecto
+      mot: 'n'
+    fileParameters: []
+    responses: []
     responseFields: []
     auth: []
     controller: null
@@ -3084,7 +2999,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":{"plat_recents":[{"id":5,"nom":"Mr. Francisco Sipes","prix":158961,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}],"plat_pops":[{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":0,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":5,"nom":"Mr. Francisco Sipes","prix":158961,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}],"plat_most_pops":[{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":5,"nom":"Mr. Francisco Sipes","prix":158961,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}],"menus":[{"id":1,"nom":"Fruits","status":1,"createdAt":"2025-07-08T12:51:41.000000Z","details":null,"photo":"https:\/\/jenos-food.s3.amazonaws.com\/menus\/686d145a5d8e9_fruits.jpg","nbrePlats":1,"plats":[{"id":1,"nom":"Banane","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"}]},{"id":2,"nom":"Others","status":1,"createdAt":"2025-07-08T13:01:49.000000Z","details":null,"photo":"https:\/\/jenos-food.s3.amazonaws.com\/menus\/686d16b943e81_others.jpg","nbrePlats":5,"plats":[{"id":2,"nom":"Dr. Vivian Wisoky","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"},{"id":3,"nom":"Friedrich Hilpert","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"},{"id":4,"nom":"Adeline Erdman","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"},{"id":5,"nom":"Mr. Francisco Sipes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"},{"id":18,"nom":"Leanna Connelly","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"}]}]}}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":{"plat_recents":[{"id":4,"nom":"Adeline Erdman","prix":344896,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}],"plat_pops":[{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":5,"nom":"Mr. Francisco Sipes","prix":158961,"status":0,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}],"plat_most_pops":[{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}],"menus":[{"id":1,"nom":"Fruits","status":1,"createdAt":"2025-07-08T12:51:41.000000Z","details":null,"photo":"https:\/\/jenos-food.s3.amazonaws.com\/menus\/686d145a5d8e9_fruits.jpg","nbrePlats":1,"plats":[{"id":1,"nom":"Banane","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"}]},{"id":2,"nom":"Others","status":1,"createdAt":"2025-07-08T13:01:49.000000Z","details":null,"photo":"https:\/\/jenos-food.s3.amazonaws.com\/menus\/686d16b943e81_others.jpg","nbrePlats":5,"plats":[{"id":2,"nom":"Dr. Vivian Wisoky","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"},{"id":3,"nom":"Friedrich Hilpert","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"},{"id":4,"nom":"Adeline Erdman","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"},{"id":5,"nom":"Mr. Francisco Sipes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"},{"id":18,"nom":"Leanna Connelly","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg"}]}]}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -3312,7 +3227,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":15,"nom":"Mrs. Misty Monahan","prix":750289,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":13,"nom":"Timothy O''Connell DVM","prix":698574,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":19,"nom":"Miss Stacy Moore","prix":709578,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":17,"nom":"Prof. Isobel Yost DVM","prix":682949,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":5,"nom":"Mr. Francisco Sipes","prix":158961,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":11,"nom":"Destiny Lowe","prix":970367,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":18,"nom":"Leanna Connelly","prix":845310,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":10,"nom":"Kaycee Beahan II","prix":496790,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":20,"nom":"Name Streich","prix":698010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":14,"nom":"Bill Greenholt Jr.","prix":852342,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}]}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":10,"nom":"Kaycee Beahan II","prix":496790,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":15,"nom":"Mrs. Misty Monahan","prix":750289,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":18,"nom":"Leanna Connelly","prix":845310,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":20,"nom":"Name Streich","prix":698010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":14,"nom":"Bill Greenholt Jr.","prix":852342,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":17,"nom":"Prof. Isobel Yost DVM","prix":682949,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":13,"nom":"Timothy O''Connell DVM","prix":698574,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":19,"nom":"Miss Stacy Moore","prix":709578,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":11,"nom":"Destiny Lowe","prix":970367,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -3425,7 +3340,7 @@ endpoints:
         name: facture
         description: ''
         required: true
-        example: true
+        example: false
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -3515,7 +3430,7 @@ endpoints:
       prix: 4326.41688
       deliveryCoast: 4326.41688
       paiementMode: vodacome
-      facture: true
+      facture: false
       adresse: architecto
       commune: architecto
       zone: architecto
@@ -3568,7 +3483,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":{"id":8,"ticket":"ORDER-08-07-25-602517","status":"pending","note":null,"prix":878045,"deliveryCoast":5900,"paiementMode":"vodacome","facture":true,"livreur":{"id":1,"nom":"Mbayi","prenom":"Jean-Foster","phone":"+243998115482"},"localisation":{"adresse":"Nzoloko 9A","latitude":0,"longitude":0,"commune":"Ndjili"},"client":{"id":"fd3dd150-ec3c-4856-bf0c-39ad4546524e","email":"kalala@ic.cd","nom":"Foster Kalala","phone":"+243998115482"},"paniers":[],"createdAt":"2025-07-08T15:02:59.000000Z"}}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":{"id":8,"ticket":"ORDER-08-07-25-602517","status":"arrived","note":null,"prix":878045,"deliveryCoast":5900,"paiementMode":"vodacome","facture":true,"livreur":{"id":1,"nom":"Mbayi","prenom":"Jean-Foster","phone":"+243998115482"},"localisation":{"adresse":"Nzoloko 9A","latitude":0,"longitude":0,"commune":"Ndjili"},"client":{"id":"fd3dd150-ec3c-4856-bf0c-39ad4546524e","email":"kalala@ic.cd","nom":"Foster Kalala","phone":"+243998115482"},"paniers":[],"createdAt":"2025-07-08T15:02:59.000000Z"}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -4277,7 +4192,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/clients/clients
+    uri: api/clients
     metadata:
       groupName: Endpoints
       groupDescription: ''

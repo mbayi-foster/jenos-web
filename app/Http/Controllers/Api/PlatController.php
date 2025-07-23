@@ -181,19 +181,6 @@ class PlatController extends Controller
     }
 
 
-    public function plats_status()
-    {
-        $plats = Plat::where("status", true)->get();
-        $nouveauPlats = [];
-        foreach ($plats as $plat) {
-            $nouveauPlats[] = [
-                'id' => $plat->id,
-                'nom' => $plat->nom
-            ];
-        }
-        return ApiResponse::success($nouveauPlats);
-    }
-
     public function search(string $mot, Request $request)
     {
         // $request->validate([

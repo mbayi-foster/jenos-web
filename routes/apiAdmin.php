@@ -16,45 +16,45 @@ use App\Http\Controllers\Api\CommandeController;
 
 
 Route::prefix('users')->group(function () {
+
+    // gestions des utilisateurs
     Route::apiResource('/', UserController::class);
+    Route::get('status/change/{id}', [UserController::class, 'change_status']);
+    Route::post('login', [UserController::class, 'login']);
+    Route::post('logout', [UserController::class, 'logout']);
+    Route::apiResource('roles', RoleController::class);
+
+    // gestion des livreurs
     Route::apiResource('livreurs', LivreurController::class);
+    Route::get("zone/livreurs/{id}", [LivreurController::class, 'livreurs_by_zone']);
+
+    // gestion des communes & des zones
     Route::apiResource('communes', CommuneController::class);
     Route::apiResource('zones', ZoneController::class);
-    Route::apiResource('plats', PlatController::class);
-    Route::apiResource('menus', MenuController::class);
-    Route::apiResource('roles', RoleController::class);
-    Route::get('status/change/{id}', [UserController::class, 'change_status']);
-    Route::get('plats/status/true/', [PlatController::class, 'plats_status']);
     Route::get('zones/status/change/{id}', [ZoneController::class, 'change_status']);
     Route::get('communes/status/change/{id}', [CommuneController::class, 'changeStatus']);
+    Route::get("gerants", [ZoneController::class, 'gerants']);
+
+    // gestion des plats & des menus
+    Route::apiResource('plats', PlatController::class);
+    Route::apiResource('menus', MenuController::class);
     Route::get('plats/status/change/{id}', [PlatController::class, 'change_status']);
     Route::get('menus/status/change/{id}', [MenuController::class, 'change_status']);
 
-
-
-    Route::post('login', [UserController::class, 'login']);
-    Route::post('register', [AuthClientController::class, 'store']);
-
-    Route::post('logout', [UserController::class, 'logout']);
-
-    /* tablea de bord */
+    // tableau de board
     Route::apiResource("dashboard", DashboardController::class);
     Route::get('clients', [DashboardController::class, 'clients']);
 
-    /* gerant*/
-
-    Route::get("zones-id/{id}", [ZoneController::class, 'zone_by_id']);
-    Route::get("gerants", [ZoneController::class, 'gerants']);
+    // gerants
     Route::get("gerants/zones/{id}", [ZoneController::class, 'gerantZones']);
-    Route::post("plats-update/{id}", [PlatController::class, "update"]);
+    Route::get('gerants/zones/livreurs/{id}', [LivreurController::class, 'livreurByZone']);
 
     // commandes
-
     Route::get('commandes/{zone}', [CommandeController::class, 'commandes']);
+    Route::get('commandes-id/{id}', [CommandeController::class, 'show']);
     Route::get("commandes-gerant/{id}", [CommandeController::class, 'commandes_gerant']);
     Route::get("commandes-gerant/zone/{id}", [CommandeController::class, 'commandes_gerant_by_zone']);
     Route::post("commandes-gerant/valider/{id}", [CommandeController::class, 'valider_commande']);
 
-    // livreur
-    Route::get("livreurs-by-zone/{id}", [LivreurController::class, 'livreurs_by_zone']);
+
 });

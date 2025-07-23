@@ -42,7 +42,8 @@ class Commande extends Model
         return $this->belongsTo(Livreur::class, "livreur_id", "id");
     }
 
-    public function client(){
+    public function client()
+    {
         return $this->belongsTo(User::class, "client_id", "id");
     }
 
@@ -54,35 +55,13 @@ class Commande extends Model
         return "ORDER-{$datePart}-{$randomPart}";
     }
 
-    public function commune(){
+    public function commune()
+    {
         return $this->belongsTo(Commune::class, 'commune_id');
     }
-    public function toArray()
+
+    public function rapports()
     {
-        return [
-            "id" => $this->id,
-            "ticket" => $this->ticket,
-            "prix" => $this->prix,
-            "delivery_coast" => $this->delivery_coast,
-            "status" => $this->status,
-            "confirm" => $this->confirm,
-            "facture" => $this->facture,
-            "livraison" => $this->livraison,
-            "paiement" => $this->paiement,
-            "adresse" => [
-                'adresse' => $this->adresse,
-                'commune' => $this->commune,
-                'lat' => $this->location_lat,
-                'lon' => $this->location_lon
-            ],
-            "zone" => $this->zone_id,
-            "livreur" => $this->livreur != null ? [
-                "nom" => $this->livreur->nom,
-                "prenom" => $this->livreur->prenom,
-                "phone" => $this->livreur->phone
-            ] : null,
-            "paniers" => $this->paniers,
-            "created_at" => $this->created_at
-        ];
+        return $this->hasMany(Rapport::class, 'commande_id', 'id');
     }
 }

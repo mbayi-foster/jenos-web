@@ -8,9 +8,6 @@ use App\Http\Controllers\Api\Clients\ClientPanierController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('clients')->group(function () {
-
-
-
     Route::get('home-page', [ClientHomeController::class, 'homePage']);
     Route::get('menus-page', [ClientHomeController::class, 'menusPage']);
     Route::get('plat/{id}', [ClientHomeController::class, 'platById']);
@@ -28,7 +25,7 @@ Route::prefix('clients')->group(function () {
     Route::post('profile-adresse/{id}', [ClientProfileController::class, 'updateAdresse']);
 
     Route::post('new-user', [ClientsAuthController::class, 'registreEmail']);
-    Route::post('clients', [ClientsAuthController::class, 'storeClient']);
+    Route::post('/', [ClientsAuthController::class, 'storeClient']);
     Route::post('login', [ClientsAuthController::class, 'login']);
     Route::post('token', [ClientsAuthController::class, 'newFcmToken']);
     Route::post('logout', [ClientsAuthController::class, 'logout']);

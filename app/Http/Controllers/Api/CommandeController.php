@@ -19,16 +19,15 @@ use DateTime;
 
 class CommandeController extends Controller
 {
-    
+
 
     /**
      * Display the specified resource.
      */
     public function show(string $id)
     {
-        $commandesDb = Commande::where('client_id', $id)->orderBy("created_at", "desc")->get();
-        $commandes = $commandesDb->map(fn($commande) => $commande->toArray());
-        return response()->json($commandes, 200);
+        $commande = Commande::where('id', $id)->with('paniers')->first();
+        return ApiResponse::success(data: new CommandeResource($commande), message: 'Commande trouvée');
     }
 
 
@@ -58,8 +57,9 @@ class CommandeController extends Controller
         return response()->json(true, 200);
     }
 
-    public function commandes(string $zone){
-         $commandes = Commande::where('zone_id', $zone)->orderBy("created_at", "desc")->get();
-         return ApiResponse::success(data:CommandeResource::collection($commandes));
+    public function commandes(string $zone)
+    {
+        $commandes = Commande::where('zone_id', $zone)->orderBy("created_at", "desc")->get();
+        return ApiResponse::success(data: CommandeResource::collection($commandes));
     }
 }

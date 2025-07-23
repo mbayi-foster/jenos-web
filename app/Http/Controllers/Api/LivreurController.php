@@ -26,14 +26,6 @@ class LivreurController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -94,13 +86,6 @@ class LivreurController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -165,34 +150,21 @@ class LivreurController extends Controller
 
             $user->status = !$user->status;
             $user->save();
-
-            $livreur->status = !$livreur->status;
-            $livreur->save();
         }
         return response()->json(true, 200);
     }
 
-    public function livreurs_by_zone($id)
+    public function livreurByZone($id)
     {
-        $livreursDb = Livreur::where('zone_id', $id)->where('status', true)->orderBy('busy', 'asc')->get();
-        $livreurs = $livreursDb->map(fn($livreur) => $livreur->toArray());
-        return response()->json($livreurs, 200);
-    }
-
-    public function login(Request $request)
-    {
-
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-        $user = User::where('email', $request->email)->first();
-        if ($user && Hash::check($request->password, $user->password) && $user->status == true) {
-            $livreur = Livreur::where('user_id', $user->id)->first();
-            if ($livreur) {
-                return response()->json($livreur->toArray(), 200);
-            }
+        $livreurs = Livreur::where('zone_id', $id)
+            ->get();
+        if ($livreurs->isEmpty()) {
+            return ApiResponse::error(message: 'No livreurs found for this zone', code: 404);
         }
-        return response()->json(['sa passeword ou email est incorrect'], 400);
+        $users = [];
+        foreach ($livreurs as $key => $value) {
+            $users[] = User::find($value->user_id);
+        }
+        return ApiResponse::success(data: LivreurResource::collection($users), message: 'Livreurs retrieved successfully');
     }
 }

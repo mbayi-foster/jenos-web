@@ -10,7 +10,9 @@ enum OrderStatus: string
     case PREPARING        = 'preparing';         // En cours de préparation
     case READY_FOR_PICKUP = 'ready_for_pickup';  // Prête à être récupérée par le livreur
     case PICKED_UP        = 'picked_up';         // Récupérée par le livreur
-    case IN_TRANSIT       = 'in_transit';        // En route vers le client
+    case PROGRESS       = 'progress';        // En route vers le client
+
+    case ARRIVED        = 'arrived';            // Arrivée au point de livraison
     case DELIVERED        = 'delivered';         // Remise avec succès
 
     /* Terminaisons “anormales” */
