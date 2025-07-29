@@ -9,6 +9,6 @@ Route::get("pending-commandes-livreur/{id}", [CommandeLivreurController::class, 
 
 Route::prefix('livreurs')->group(function () {
     Route::post('login', [AuthLivreurController::class, 'login']);
-    Route::get('commandes/{id}/{status}', [CommandeLivreurController::class, 'commandes']);
+    Route::get('commandes/{id}', [CommandeLivreurController::class, 'commandes']);
     Route::patch('event/{id}', [CommandeLivreurController::class, 'event']);
 });

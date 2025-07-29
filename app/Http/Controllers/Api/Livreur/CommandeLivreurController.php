@@ -11,10 +11,13 @@ use Illuminate\Http\Request;
 
 class CommandeLivreurController extends Controller
 {
-    public function commandes($id, $status)
+    public function commandes($id, Request $request)
     {
+        $validated = $request->validated([
+            'status' => 'required|array'
+        ]);
         $commandes = Commande::where('livreur_id', $id)
-            ->where('status', $status)
+            ->whereIn('status', $validated['status'])
             ->get();
 
         return ApiResponse::success(data: $commandes, message: 'Commandes retrieved successfully');
