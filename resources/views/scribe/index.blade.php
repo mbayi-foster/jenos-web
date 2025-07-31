@@ -8,8 +8,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
-    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+    <link rel="stylesheet" href="{{ asset("/vendor/scribe/css/theme-default.style.css") }}" media="screen">
+    <link rel="stylesheet" href="{{ asset("/vendor/scribe/css/theme-default.print.css") }}" media="print">
 
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
 
@@ -30,9 +30,9 @@
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
-    <script src="../docs/js/tryitout-5.2.1.js"></script>
+    <script src="{{ asset("/vendor/scribe/js/tryitout-5.2.1.js") }}"></script>
 
-    <script src="../docs/js/theme-default-5.2.1.js"></script>
+    <script src="{{ asset("/vendor/scribe/js/theme-default-5.2.1.js") }}"></script>
 
 </head>
 
@@ -41,7 +41,7 @@
 <a href="#" id="nav-button">
     <span>
         MENU
-        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+        <img src="{{ asset("/vendor/scribe/images/navbar.png") }}" alt="navbar-image"/>
     </span>
 </a>
 <div class="tocify-wrapper">
@@ -242,8 +242,8 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-livreurs-login">
                                 <a href="#endpoints-POSTapi-livreurs-login">POST api/livreurs/login</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-livreurs-commandes--id---status-">
-                                <a href="#endpoints-GETapi-livreurs-commandes--id---status-">GET api/livreurs/commandes/{id}/{status}</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-livreurs-commandes--id-">
+                                <a href="#endpoints-GETapi-livreurs-commandes--id-">GET api/livreurs/commandes/{id}</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-PATCHapi-livreurs-event--id-">
                                 <a href="#endpoints-PATCHapi-livreurs-event--id-">PATCH api/livreurs/event/{id}</a>
@@ -331,13 +331,13 @@
             </div>
 
     <ul class="toc-footer" id="toc-footer">
-                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
-                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                    <li style="padding-bottom: 5px;"><a href="{{ route("scribe.postman") }}">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="{{ route("scribe.openapi") }}">View OpenAPI spec</a></li>
                 <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: July 23, 2025</li>
+        <li>Last updated: July 31, 2025</li>
     </ul>
 </div>
 
@@ -5160,7 +5160,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "nom=architecto"\
     --form "prix=4326.41688"\
     --form "details=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php459D.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\php282A.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5301,7 +5301,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php459D.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php282A.tmp</code></p>
         </div>
         </form>
 
@@ -5473,7 +5473,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "nom=architecto"\
     --form "prix=4326.41688"\
     --form "details=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php463B.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\php2B39.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5630,7 +5630,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php463B.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php2B39.tmp</code></p>
         </div>
         </form>
 
@@ -5951,7 +5951,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --form "nom=architecto"\
     --form "plats=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php46F8.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\php2C15.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6080,7 +6080,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php46F8.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php2C15.tmp</code></p>
         </div>
         </form>
 
@@ -8733,27 +8733,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-livreurs-commandes--id---status-">GET api/livreurs/commandes/{id}/{status}</h2>
+                    <h2 id="endpoints-GETapi-livreurs-commandes--id-">GET api/livreurs/commandes/{id}</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-livreurs-commandes--id---status-">
+<span id="example-requests-GETapi-livreurs-commandes--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/livreurs/commandes/8/architecto" \
+    --get "http://localhost/api/livreurs/commandes/8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/livreurs/commandes/8/architecto"
+    "http://localhost/api/livreurs/commandes/8"
 );
 
 const headers = {
@@ -8768,9 +8768,9 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-livreurs-commandes--id---status-">
+<span id="example-responses-GETapi-livreurs-commandes--id-">
             <blockquote>
-            <p>Example response (200):</p>
+            <p>Example response (500):</p>
         </blockquote>
                 <details class="annotation">
             <summary style="cursor: pointer;">
@@ -8782,49 +8782,47 @@ access-control-allow-origin: *
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
-    &quot;message&quot;: &quot;Commandes retrieved successfully&quot;,
-    &quot;status&quot;: true,
-    &quot;data&quot;: []
+    &quot;message&quot;: &quot;Server Error&quot;
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-livreurs-commandes--id---status-" hidden>
+<span id="execution-results-GETapi-livreurs-commandes--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-livreurs-commandes--id---status-"></span>:
+                id="execution-response-status-GETapi-livreurs-commandes--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-livreurs-commandes--id---status-"
+    <pre class="json"><code id="execution-response-content-GETapi-livreurs-commandes--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-livreurs-commandes--id---status-" hidden>
+<span id="execution-error-GETapi-livreurs-commandes--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-livreurs-commandes--id---status-">
+    <pre><code id="execution-error-message-GETapi-livreurs-commandes--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-livreurs-commandes--id---status-" data-method="GET"
-      data-path="api/livreurs/commandes/{id}/{status}"
+<form id="form-GETapi-livreurs-commandes--id-" data-method="GET"
+      data-path="api/livreurs/commandes/{id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-livreurs-commandes--id---status-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-livreurs-commandes--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-livreurs-commandes--id---status-"
-                    onclick="tryItOut('GETapi-livreurs-commandes--id---status-');">Try it out ⚡
+                    id="btn-tryout-GETapi-livreurs-commandes--id-"
+                    onclick="tryItOut('GETapi-livreurs-commandes--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-livreurs-commandes--id---status-"
-                    onclick="cancelTryOut('GETapi-livreurs-commandes--id---status-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-livreurs-commandes--id-"
+                    onclick="cancelTryOut('GETapi-livreurs-commandes--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-livreurs-commandes--id---status-"
+                    id="btn-executetryout-GETapi-livreurs-commandes--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -8832,7 +8830,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/livreurs/commandes/{id}/{status}</code></b>
+            <b><code>api/livreurs/commandes/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -8840,7 +8838,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-livreurs-commandes--id---status-"
+                              name="Content-Type"                data-endpoint="GETapi-livreurs-commandes--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -8851,7 +8849,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-livreurs-commandes--id---status-"
+                              name="Accept"                data-endpoint="GETapi-livreurs-commandes--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -8863,22 +8861,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-livreurs-commandes--id---status-"
+               step="any"               name="id"                data-endpoint="GETapi-livreurs-commandes--id-"
                value="8"
                data-component="url">
     <br>
 <p>The ID of the commande. Example: <code>8</code></p>
-            </div>
-                    <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>status</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-                              name="status"                data-endpoint="GETapi-livreurs-commandes--id---status-"
-               value="architecto"
-               data-component="url">
-    <br>
-<p>Example: <code>architecto</code></p>
             </div>
                     </form>
 
@@ -10075,40 +10062,16 @@ access-control-allow-origin: *
     &quot;status&quot;: true,
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 2,
-            &quot;nom&quot;: &quot;Dr. Vivian Wisoky&quot;,
-            &quot;prix&quot;: 774610,
+            &quot;id&quot;: 1,
+            &quot;nom&quot;: &quot;Banane&quot;,
+            &quot;prix&quot;: 2500,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:06.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;createdAt&quot;: &quot;2025-07-08T12:50:33.000000Z&quot;,
+            &quot;details&quot;: &quot;Cette banane est juste d&eacute;licieuse&quot;,
             &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
             &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 7,
-            &quot;nom&quot;: &quot;Omer Kuhic&quot;,
-            &quot;prix&quot;: 514773,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 10,
-            &quot;nom&quot;: &quot;Kaycee Beahan II&quot;,
-            &quot;prix&quot;: 496790,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 12h50&quot;
         },
         {
             &quot;id&quot;: 15,
@@ -10123,69 +10086,9 @@ access-control-allow-origin: *
             &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
         },
         {
-            &quot;id&quot;: 12,
-            &quot;nom&quot;: &quot;Nikita Schuster Jr.&quot;,
-            &quot;prix&quot;: 374789,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 18,
-            &quot;nom&quot;: &quot;Leanna Connelly&quot;,
-            &quot;prix&quot;: 845310,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 6,
-            &quot;nom&quot;: &quot;Alec Durgan&quot;,
-            &quot;prix&quot;: 798307,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 21,
-            &quot;nom&quot;: &quot;Sterling Windler&quot;,
-            &quot;prix&quot;: 340322,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 20,
-            &quot;nom&quot;: &quot;Name Streich&quot;,
-            &quot;prix&quot;: 698010,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 14,
-            &quot;nom&quot;: &quot;Bill Greenholt Jr.&quot;,
-            &quot;prix&quot;: 852342,
+            &quot;id&quot;: 7,
+            &quot;nom&quot;: &quot;Omer Kuhic&quot;,
+            &quot;prix&quot;: 514773,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
             &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
@@ -10207,16 +10110,40 @@ access-control-allow-origin: *
             &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
         },
         {
-            &quot;id&quot;: 1,
-            &quot;nom&quot;: &quot;Banane&quot;,
-            &quot;prix&quot;: 2500,
+            &quot;id&quot;: 17,
+            &quot;nom&quot;: &quot;Prof. Isobel Yost DVM&quot;,
+            &quot;prix&quot;: 682949,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T12:50:33.000000Z&quot;,
-            &quot;details&quot;: &quot;Cette banane est juste d&eacute;licieuse&quot;,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
             &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
             &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 12h50&quot;
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 18,
+            &quot;nom&quot;: &quot;Leanna Connelly&quot;,
+            &quot;prix&quot;: 845310,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;nom&quot;: &quot;Destiny Lowe&quot;,
+            &quot;prix&quot;: 970367,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
         },
         {
             &quot;id&quot;: 3,
@@ -10231,24 +10158,12 @@ access-control-allow-origin: *
             &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
         },
         {
-            &quot;id&quot;: 17,
-            &quot;nom&quot;: &quot;Prof. Isobel Yost DVM&quot;,
-            &quot;prix&quot;: 682949,
+            &quot;id&quot;: 2,
+            &quot;nom&quot;: &quot;Dr. Vivian Wisoky&quot;,
+            &quot;prix&quot;: 774610,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 4,
-            &quot;nom&quot;: &quot;Adeline Erdman&quot;,
-            &quot;prix&quot;: 344896,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:06.000000Z&quot;,
             &quot;details&quot;: &quot;les details de la commandes&quot;,
             &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
             &quot;like&quot;: 0,
@@ -10267,21 +10182,9 @@ access-control-allow-origin: *
             &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
         },
         {
-            &quot;id&quot;: 16,
-            &quot;nom&quot;: &quot;Harrison Kassulke&quot;,
-            &quot;prix&quot;: 165010,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 19,
-            &quot;nom&quot;: &quot;Miss Stacy Moore&quot;,
-            &quot;prix&quot;: 709578,
+            &quot;id&quot;: 10,
+            &quot;nom&quot;: &quot;Kaycee Beahan II&quot;,
+            &quot;prix&quot;: 496790,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
             &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
@@ -10303,9 +10206,93 @@ access-control-allow-origin: *
             &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
         },
         {
-            &quot;id&quot;: 11,
-            &quot;nom&quot;: &quot;Destiny Lowe&quot;,
-            &quot;prix&quot;: 970367,
+            &quot;id&quot;: 16,
+            &quot;nom&quot;: &quot;Harrison Kassulke&quot;,
+            &quot;prix&quot;: 165010,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 20,
+            &quot;nom&quot;: &quot;Name Streich&quot;,
+            &quot;prix&quot;: 698010,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;nom&quot;: &quot;Adeline Erdman&quot;,
+            &quot;prix&quot;: 344896,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 21,
+            &quot;nom&quot;: &quot;Sterling Windler&quot;,
+            &quot;prix&quot;: 340322,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 12,
+            &quot;nom&quot;: &quot;Nikita Schuster Jr.&quot;,
+            &quot;prix&quot;: 374789,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 14,
+            &quot;nom&quot;: &quot;Bill Greenholt Jr.&quot;,
+            &quot;prix&quot;: 852342,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 19,
+            &quot;nom&quot;: &quot;Miss Stacy Moore&quot;,
+            &quot;prix&quot;: 709578,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 6,
+            &quot;nom&quot;: &quot;Alec Durgan&quot;,
+            &quot;prix&quot;: 798307,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
             &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
@@ -10530,8 +10517,8 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --data "{
     \"prix\": 4326.41688,
     \"deliveryCoast\": 4326.41688,
-    \"paiementMode\": \"vodacome\",
-    \"facture\": false,
+    \"paiementMode\": \"orange\",
+    \"facture\": true,
     \"adresse\": \"architecto\",
     \"commune\": \"architecto\",
     \"zone\": \"architecto\",
@@ -10556,8 +10543,8 @@ const headers = {
 let body = {
     "prix": 4326.41688,
     "deliveryCoast": 4326.41688,
-    "paiementMode": "vodacome",
-    "facture": false,
+    "paiementMode": "orange",
+    "facture": true,
     "adresse": "architecto",
     "commune": "architecto",
     "zone": "architecto",
@@ -10675,10 +10662,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="paiementMode"                data-endpoint="POSTapi-clients-clients-commandes"
-               value="vodacome"
+               value="orange"
                data-component="body">
     <br>
-<p>Example: <code>vodacome</code></p>
+<p>Example: <code>orange</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>cash</code></li> <li><code>vodacome</code></li> <li><code>airtel</code></li> <li><code>orange</code></li> <li><code>africell</code></li> <li><code>visa</code></li></ul>
         </div>
@@ -10701,7 +10688,7 @@ Must be one of:
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>false</code></p>
+<p>Example: <code>true</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>paniers</code></b>&nbsp;&nbsp;

@@ -2852,7 +2852,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'api/livreurs/commandes/{id}/{status}'
+    uri: 'api/livreurs/commandes/{id}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -2876,19 +2876,8 @@ endpoints:
         exampleWasSpecified: false
         nullable: false
         custom: []
-      status:
-        name: status
-        description: ''
-        required: true
-        example: architecto
-        type: string
-        enumValues: []
-        exampleWasSpecified: false
-        nullable: false
-        custom: []
     cleanUrlParameters:
       id: 8
-      status: architecto
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -2896,8 +2885,11 @@ endpoints:
     fileParameters: []
     responses:
       -
-        status: 200
-        content: '{"message":"Commandes retrieved successfully","status":true,"data":[]}'
+        status: 500
+        content: |-
+          {
+              "message": "Server Error"
+          }
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -3227,7 +3219,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":10,"nom":"Kaycee Beahan II","prix":496790,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":15,"nom":"Mrs. Misty Monahan","prix":750289,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":18,"nom":"Leanna Connelly","prix":845310,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":20,"nom":"Name Streich","prix":698010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":14,"nom":"Bill Greenholt Jr.","prix":852342,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":17,"nom":"Prof. Isobel Yost DVM","prix":682949,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":13,"nom":"Timothy O''Connell DVM","prix":698574,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":19,"nom":"Miss Stacy Moore","prix":709578,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":11,"nom":"Destiny Lowe","prix":970367,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}]}'
+        content: '{"message":"Succ\u00e8s","status":true,"data":[{"id":1,"nom":"Banane","prix":2500,"status":1,"commandes":0,"createdAt":"2025-07-08T12:50:33.000000Z","details":"Cette banane est juste d\u00e9licieuse","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 12h50"},{"id":15,"nom":"Mrs. Misty Monahan","prix":750289,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":7,"nom":"Omer Kuhic","prix":514773,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":8,"nom":"Torrance O''Conner","prix":462865,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":17,"nom":"Prof. Isobel Yost DVM","prix":682949,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":18,"nom":"Leanna Connelly","prix":845310,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":11,"nom":"Destiny Lowe","prix":970367,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":3,"nom":"Friedrich Hilpert","prix":878045,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":2,"nom":"Dr. Vivian Wisoky","prix":774610,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:06.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":13,"nom":"Timothy O''Connell DVM","prix":698574,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":10,"nom":"Kaycee Beahan II","prix":496790,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":9,"nom":"Jazmyn Ziemann","prix":691661,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":16,"nom":"Harrison Kassulke","prix":165010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":20,"nom":"Name Streich","prix":698010,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":4,"nom":"Adeline Erdman","prix":344896,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":21,"nom":"Sterling Windler","prix":340322,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":12,"nom":"Nikita Schuster Jr.","prix":374789,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":14,"nom":"Bill Greenholt Jr.","prix":852342,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":19,"nom":"Miss Stacy Moore","prix":709578,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"},{"id":6,"nom":"Alec Durgan","prix":798307,"status":1,"commandes":0,"createdAt":"2025-07-08T13:00:07.000000Z","details":"les details de la commandes","photo":"https:\/\/jenos-food.s3.amazonaws.com\/plats\/686d140a7d3da_banane.jpg","like":0,"date":"Tuesday, 08 July 2025 \u00e0 13h00"}]}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
@@ -3324,7 +3316,7 @@ endpoints:
         name: paiementMode
         description: ''
         required: true
-        example: vodacome
+        example: orange
         type: string
         enumValues:
           - cash
@@ -3340,7 +3332,7 @@ endpoints:
         name: facture
         description: ''
         required: true
-        example: false
+        example: true
         type: boolean
         enumValues: []
         exampleWasSpecified: false
@@ -3429,8 +3421,8 @@ endpoints:
     cleanBodyParameters:
       prix: 4326.41688
       deliveryCoast: 4326.41688
-      paiementMode: vodacome
-      facture: false
+      paiementMode: orange
+      facture: true
       adresse: architecto
       commune: architecto
       zone: architecto
