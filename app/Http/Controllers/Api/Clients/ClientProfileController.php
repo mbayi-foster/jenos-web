@@ -50,7 +50,7 @@ class ClientProfileController extends Controller
             $user->longitude = $validated['longitude'];
             $user->commune = $validated['commune'];
             $user->save();
-            return ApiResponse::success(code: 201, data: $user);
+            return ApiResponse::success(code: 201, data: new ClientResource(User::find($user->user_id)));
         }
 
         return ApiResponse::error();
