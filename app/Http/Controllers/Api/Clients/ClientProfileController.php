@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Clients;
 
 use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ClientResource;
 use App\Http\Resources\CommuneResource;
 use App\Models\Commune;
 use App\Models\Profil;
@@ -27,7 +28,7 @@ class ClientProfileController extends Controller
             $user->prenom = $validated['prenom'];
             $user->phone = $validated['phone'];
             $user->save();
-            return ApiResponse::success(code: 201, data: $user);
+            return ApiResponse::success(code: 201, data: new ClientResource(User::find($user->user_id)));
         }
 
         return ApiResponse::error();
