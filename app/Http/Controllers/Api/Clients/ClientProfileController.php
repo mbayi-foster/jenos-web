@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Clients;
 
 use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\CommuneResource;
 use App\Models\Commune;
 use App\Models\Profil;
 use App\Models\User;
@@ -58,13 +59,7 @@ class ClientProfileController extends Controller
     {
         $communes = Commune::where('status', true)->get();
 
-        $communes = $communes->map(fn($e) => [
-            'id' => $e->id,
-            'nom' => $e->nom,
-            'zoneId' => $e->zone_id
-        ]);
-
-        return ApiResponse::success(data: $communes);
+        return ApiResponse::success(data: CommuneResource::collection($communes));
     }
 
 

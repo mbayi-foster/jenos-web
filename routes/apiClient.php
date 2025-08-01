@@ -15,7 +15,7 @@ Route::prefix('clients')->group(function () {
     Route::get("search/{mot}", [ClientHomeController::class, "searchPlats"]);
     Route::get("search/", [ClientHomeController::class, "allPlats"]);
 
-    Route::apiResource('clients/commandes', ClientCommandeController::class);
+    Route::apiResource('commandes', ClientCommandeController::class);
     Route::apiResource('paniers', ClientPanierController::class);
     Route::get('mes-commandes/{id}', [ClientCommandeController::class, 'mesCommandes']);
     Route::get('position-livreur/{id}', [ClientCommandeController::class, 'positionLivreur']);
