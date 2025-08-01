@@ -266,20 +266,20 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-search">
                                 <a href="#endpoints-GETapi-clients-search">GET api/clients/search</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-clients-commandes">
-                                <a href="#endpoints-GETapi-clients-clients-commandes">Display a listing of the resource.</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-commandes">
+                                <a href="#endpoints-GETapi-clients-commandes">Display a listing of the resource.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-clients-clients-commandes">
-                                <a href="#endpoints-POSTapi-clients-clients-commandes">Store a newly created resource in storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-clients-commandes">
+                                <a href="#endpoints-POSTapi-clients-commandes">Store a newly created resource in storage.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-clients-commandes--id-">
-                                <a href="#endpoints-GETapi-clients-clients-commandes--id-">Display the specified resource.</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-commandes--id-">
+                                <a href="#endpoints-GETapi-clients-commandes--id-">Display the specified resource.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-clients-clients-commandes--id-">
-                                <a href="#endpoints-PUTapi-clients-clients-commandes--id-">Update the specified resource in storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-PUTapi-clients-commandes--id-">
+                                <a href="#endpoints-PUTapi-clients-commandes--id-">Update the specified resource in storage.</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-clients-clients-commandes--id-">
-                                <a href="#endpoints-DELETEapi-clients-clients-commandes--id-">Remove the specified resource from storage.</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-DELETEapi-clients-commandes--id-">
+                                <a href="#endpoints-DELETEapi-clients-commandes--id-">Remove the specified resource from storage.</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-clients-paniers">
                                 <a href="#endpoints-GETapi-clients-paniers">Display a listing of the resource.</a>
@@ -337,7 +337,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: July 31, 2025</li>
+        <li>Last updated: August 1, 2025</li>
     </ul>
 </div>
 
@@ -5160,7 +5160,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "nom=architecto"\
     --form "prix=4326.41688"\
     --form "details=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php282A.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\phpD6EE.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5301,7 +5301,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php282A.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\phpD6EE.tmp</code></p>
         </div>
         </form>
 
@@ -5473,7 +5473,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --form "nom=architecto"\
     --form "prix=4326.41688"\
     --form "details=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php2B39.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\phpD7F9.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -5630,7 +5630,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php2B39.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\phpD7F9.tmp</code></p>
         </div>
         </form>
 
@@ -5951,7 +5951,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
     --header "Accept: application/json" \
     --form "nom=architecto"\
     --form "plats=architecto"\
-    --form "photo=@C:\Users\VON\AppData\Local\Temp\php2C15.tmp" </code></pre></div>
+    --form "photo=@C:\Users\VON\AppData\Local\Temp\phpD858.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -6080,7 +6080,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
                value=""
                data-component="body">
     <br>
-<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\php2C15.tmp</code></p>
+<p>Must be an image. Example: <code>C:\Users\VON\AppData\Local\Temp\phpD858.tmp</code></p>
         </div>
         </form>
 
@@ -10062,96 +10062,12 @@ access-control-allow-origin: *
     &quot;status&quot;: true,
     &quot;data&quot;: [
         {
-            &quot;id&quot;: 1,
-            &quot;nom&quot;: &quot;Banane&quot;,
-            &quot;prix&quot;: 2500,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T12:50:33.000000Z&quot;,
-            &quot;details&quot;: &quot;Cette banane est juste d&eacute;licieuse&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 12h50&quot;
-        },
-        {
-            &quot;id&quot;: 15,
-            &quot;nom&quot;: &quot;Mrs. Misty Monahan&quot;,
-            &quot;prix&quot;: 750289,
+            &quot;id&quot;: 9,
+            &quot;nom&quot;: &quot;Jazmyn Ziemann&quot;,
+            &quot;prix&quot;: 691661,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
             &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 7,
-            &quot;nom&quot;: &quot;Omer Kuhic&quot;,
-            &quot;prix&quot;: 514773,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 8,
-            &quot;nom&quot;: &quot;Torrance O&#039;Conner&quot;,
-            &quot;prix&quot;: 462865,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 17,
-            &quot;nom&quot;: &quot;Prof. Isobel Yost DVM&quot;,
-            &quot;prix&quot;: 682949,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 18,
-            &quot;nom&quot;: &quot;Leanna Connelly&quot;,
-            &quot;prix&quot;: 845310,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 11,
-            &quot;nom&quot;: &quot;Destiny Lowe&quot;,
-            &quot;prix&quot;: 970367,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 3,
-            &quot;nom&quot;: &quot;Friedrich Hilpert&quot;,
-            &quot;prix&quot;: 878045,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:06.000000Z&quot;,
             &quot;details&quot;: &quot;les details de la commandes&quot;,
             &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
             &quot;like&quot;: 0,
@@ -10170,81 +10086,9 @@ access-control-allow-origin: *
             &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
         },
         {
-            &quot;id&quot;: 13,
-            &quot;nom&quot;: &quot;Timothy O&#039;Connell DVM&quot;,
-            &quot;prix&quot;: 698574,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 10,
-            &quot;nom&quot;: &quot;Kaycee Beahan II&quot;,
-            &quot;prix&quot;: 496790,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 9,
-            &quot;nom&quot;: &quot;Jazmyn Ziemann&quot;,
-            &quot;prix&quot;: 691661,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 16,
-            &quot;nom&quot;: &quot;Harrison Kassulke&quot;,
-            &quot;prix&quot;: 165010,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 20,
-            &quot;nom&quot;: &quot;Name Streich&quot;,
-            &quot;prix&quot;: 698010,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 4,
-            &quot;nom&quot;: &quot;Adeline Erdman&quot;,
-            &quot;prix&quot;: 344896,
-            &quot;status&quot;: 1,
-            &quot;commandes&quot;: 0,
-            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
-            &quot;details&quot;: &quot;les details de la commandes&quot;,
-            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
-            &quot;like&quot;: 0,
-            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
-        },
-        {
-            &quot;id&quot;: 21,
-            &quot;nom&quot;: &quot;Sterling Windler&quot;,
-            &quot;prix&quot;: 340322,
+            &quot;id&quot;: 7,
+            &quot;nom&quot;: &quot;Omer Kuhic&quot;,
+            &quot;prix&quot;: 514773,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
             &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
@@ -10278,9 +10122,9 @@ access-control-allow-origin: *
             &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
         },
         {
-            &quot;id&quot;: 19,
-            &quot;nom&quot;: &quot;Miss Stacy Moore&quot;,
-            &quot;prix&quot;: 709578,
+            &quot;id&quot;: 15,
+            &quot;nom&quot;: &quot;Mrs. Misty Monahan&quot;,
+            &quot;prix&quot;: 750289,
             &quot;status&quot;: 1,
             &quot;commandes&quot;: 0,
             &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
@@ -10300,6 +10144,162 @@ access-control-allow-origin: *
             &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
             &quot;like&quot;: 0,
             &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 4,
+            &quot;nom&quot;: &quot;Adeline Erdman&quot;,
+            &quot;prix&quot;: 344896,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 10,
+            &quot;nom&quot;: &quot;Kaycee Beahan II&quot;,
+            &quot;prix&quot;: 496790,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 19,
+            &quot;nom&quot;: &quot;Miss Stacy Moore&quot;,
+            &quot;prix&quot;: 709578,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 20,
+            &quot;nom&quot;: &quot;Name Streich&quot;,
+            &quot;prix&quot;: 698010,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 3,
+            &quot;nom&quot;: &quot;Friedrich Hilpert&quot;,
+            &quot;prix&quot;: 878045,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:06.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 16,
+            &quot;nom&quot;: &quot;Harrison Kassulke&quot;,
+            &quot;prix&quot;: 165010,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 11,
+            &quot;nom&quot;: &quot;Destiny Lowe&quot;,
+            &quot;prix&quot;: 970367,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 13,
+            &quot;nom&quot;: &quot;Timothy O&#039;Connell DVM&quot;,
+            &quot;prix&quot;: 698574,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 18,
+            &quot;nom&quot;: &quot;Leanna Connelly&quot;,
+            &quot;prix&quot;: 845310,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 17,
+            &quot;nom&quot;: &quot;Prof. Isobel Yost DVM&quot;,
+            &quot;prix&quot;: 682949,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 8,
+            &quot;nom&quot;: &quot;Torrance O&#039;Conner&quot;,
+            &quot;prix&quot;: 462865,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 21,
+            &quot;nom&quot;: &quot;Sterling Windler&quot;,
+            &quot;prix&quot;: 340322,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T13:00:07.000000Z&quot;,
+            &quot;details&quot;: &quot;les details de la commandes&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 13h00&quot;
+        },
+        {
+            &quot;id&quot;: 1,
+            &quot;nom&quot;: &quot;Banane&quot;,
+            &quot;prix&quot;: 2500,
+            &quot;status&quot;: 1,
+            &quot;commandes&quot;: 0,
+            &quot;createdAt&quot;: &quot;2025-07-08T12:50:33.000000Z&quot;,
+            &quot;details&quot;: &quot;Cette banane est juste d&eacute;licieuse&quot;,
+            &quot;photo&quot;: &quot;https://jenos-food.s3.amazonaws.com/plats/686d140a7d3da_banane.jpg&quot;,
+            &quot;like&quot;: 0,
+            &quot;date&quot;: &quot;Tuesday, 08 July 2025 &agrave; 12h50&quot;
         }
     ]
 }</code>
@@ -10376,27 +10376,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-GETapi-clients-clients-commandes">Display a listing of the resource.</h2>
+                    <h2 id="endpoints-GETapi-clients-commandes">Display a listing of the resource.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-clients-clients-commandes">
+<span id="example-requests-GETapi-clients-commandes">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients/clients/commandes" \
+    --get "http://localhost/api/clients/commandes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/clients/commandes"
+    "http://localhost/api/clients/commandes"
 );
 
 const headers = {
@@ -10411,7 +10411,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-clients-clients-commandes">
+<span id="example-responses-GETapi-clients-commandes">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -10427,43 +10427,43 @@ access-control-allow-origin: *
 <code class="language-json" style="max-height: 300px;"></code>
  </pre>
     </span>
-<span id="execution-results-GETapi-clients-clients-commandes" hidden>
+<span id="execution-results-GETapi-clients-commandes" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-clients-clients-commandes"></span>:
+                id="execution-response-status-GETapi-clients-commandes"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-clients-clients-commandes"
+    <pre class="json"><code id="execution-response-content-GETapi-clients-commandes"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-clients-clients-commandes" hidden>
+<span id="execution-error-GETapi-clients-commandes" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-clients-clients-commandes">
+    <pre><code id="execution-error-message-GETapi-clients-commandes">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-clients-clients-commandes" data-method="GET"
-      data-path="api/clients/clients/commandes"
+<form id="form-GETapi-clients-commandes" data-method="GET"
+      data-path="api/clients/commandes"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-clients-commandes', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-commandes', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-clients-clients-commandes"
-                    onclick="tryItOut('GETapi-clients-clients-commandes');">Try it out ⚡
+                    id="btn-tryout-GETapi-clients-commandes"
+                    onclick="tryItOut('GETapi-clients-commandes');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-clients-clients-commandes"
-                    onclick="cancelTryOut('GETapi-clients-clients-commandes');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-clients-commandes"
+                    onclick="cancelTryOut('GETapi-clients-commandes');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-clients-clients-commandes"
+                    id="btn-executetryout-GETapi-clients-commandes"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -10471,7 +10471,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/clients/clients/commandes</code></b>
+            <b><code>api/clients/commandes</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -10479,7 +10479,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-clients-clients-commandes"
+                              name="Content-Type"                data-endpoint="GETapi-clients-commandes"
                value="application/json"
                data-component="header">
     <br>
@@ -10490,7 +10490,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-clients-clients-commandes"
+                              name="Accept"                data-endpoint="GETapi-clients-commandes"
                value="application/json"
                data-component="header">
     <br>
@@ -10498,27 +10498,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                         </form>
 
-                    <h2 id="endpoints-POSTapi-clients-clients-commandes">Store a newly created resource in storage.</h2>
+                    <h2 id="endpoints-POSTapi-clients-commandes">Store a newly created resource in storage.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-clients-clients-commandes">
+<span id="example-requests-POSTapi-clients-commandes">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/api/clients/clients/commandes" \
+    "http://localhost/api/clients/commandes" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"prix\": 4326.41688,
     \"deliveryCoast\": 4326.41688,
-    \"paiementMode\": \"orange\",
-    \"facture\": true,
+    \"paiementMode\": \"cash\",
+    \"facture\": false,
     \"adresse\": \"architecto\",
     \"commune\": \"architecto\",
     \"zone\": \"architecto\",
@@ -10532,7 +10532,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/clients/commandes"
+    "http://localhost/api/clients/commandes"
 );
 
 const headers = {
@@ -10543,8 +10543,8 @@ const headers = {
 let body = {
     "prix": 4326.41688,
     "deliveryCoast": 4326.41688,
-    "paiementMode": "orange",
-    "facture": true,
+    "paiementMode": "cash",
+    "facture": false,
     "adresse": "architecto",
     "commune": "architecto",
     "zone": "architecto",
@@ -10562,45 +10562,45 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-clients-clients-commandes">
+<span id="example-responses-POSTapi-clients-commandes">
 </span>
-<span id="execution-results-POSTapi-clients-clients-commandes" hidden>
+<span id="execution-results-POSTapi-clients-commandes" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-clients-clients-commandes"></span>:
+                id="execution-response-status-POSTapi-clients-commandes"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-clients-clients-commandes"
+    <pre class="json"><code id="execution-response-content-POSTapi-clients-commandes"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-clients-clients-commandes" hidden>
+<span id="execution-error-POSTapi-clients-commandes" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-clients-clients-commandes">
+    <pre><code id="execution-error-message-POSTapi-clients-commandes">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-POSTapi-clients-clients-commandes" data-method="POST"
-      data-path="api/clients/clients/commandes"
+<form id="form-POSTapi-clients-commandes" data-method="POST"
+      data-path="api/clients/commandes"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients-clients-commandes', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-clients-commandes', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-clients-clients-commandes"
-                    onclick="tryItOut('POSTapi-clients-clients-commandes');">Try it out ⚡
+                    id="btn-tryout-POSTapi-clients-commandes"
+                    onclick="tryItOut('POSTapi-clients-commandes');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-clients-clients-commandes"
-                    onclick="cancelTryOut('POSTapi-clients-clients-commandes');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-clients-commandes"
+                    onclick="cancelTryOut('POSTapi-clients-commandes');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-clients-clients-commandes"
+                    id="btn-executetryout-POSTapi-clients-commandes"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -10608,7 +10608,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/clients/clients/commandes</code></b>
+            <b><code>api/clients/commandes</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -10616,7 +10616,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="POSTapi-clients-clients-commandes"
+                              name="Content-Type"                data-endpoint="POSTapi-clients-commandes"
                value="application/json"
                data-component="header">
     <br>
@@ -10627,7 +10627,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="POSTapi-clients-clients-commandes"
+                              name="Accept"                data-endpoint="POSTapi-clients-commandes"
                value="application/json"
                data-component="header">
     <br>
@@ -10639,7 +10639,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>number</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="prix"                data-endpoint="POSTapi-clients-clients-commandes"
+               step="any"               name="prix"                data-endpoint="POSTapi-clients-commandes"
                value="4326.41688"
                data-component="body">
     <br>
@@ -10650,7 +10650,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>number</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="deliveryCoast"                data-endpoint="POSTapi-clients-clients-commandes"
+               step="any"               name="deliveryCoast"                data-endpoint="POSTapi-clients-commandes"
                value="4326.41688"
                data-component="body">
     <br>
@@ -10661,11 +10661,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="paiementMode"                data-endpoint="POSTapi-clients-clients-commandes"
-               value="orange"
+                              name="paiementMode"                data-endpoint="POSTapi-clients-commandes"
+               value="cash"
                data-component="body">
     <br>
-<p>Example: <code>orange</code></p>
+<p>Example: <code>cash</code></p>
 Must be one of:
 <ul style="list-style-type: square;"><li><code>cash</code></li> <li><code>vodacome</code></li> <li><code>airtel</code></li> <li><code>orange</code></li> <li><code>africell</code></li> <li><code>visa</code></li></ul>
         </div>
@@ -10673,32 +10673,32 @@ Must be one of:
             <b style="line-height: 2;"><code>facture</code></b>&nbsp;&nbsp;
 <small>boolean</small>&nbsp;
  &nbsp;
-                <label data-endpoint="POSTapi-clients-clients-commandes" style="display: none">
+                <label data-endpoint="POSTapi-clients-commandes" style="display: none">
             <input type="radio" name="facture"
                    value="true"
-                   data-endpoint="POSTapi-clients-clients-commandes"
+                   data-endpoint="POSTapi-clients-commandes"
                    data-component="body"             >
             <code>true</code>
         </label>
-        <label data-endpoint="POSTapi-clients-clients-commandes" style="display: none">
+        <label data-endpoint="POSTapi-clients-commandes" style="display: none">
             <input type="radio" name="facture"
                    value="false"
-                   data-endpoint="POSTapi-clients-clients-commandes"
+                   data-endpoint="POSTapi-clients-commandes"
                    data-component="body"             >
             <code>false</code>
         </label>
     <br>
-<p>Example: <code>true</code></p>
+<p>Example: <code>false</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>paniers</code></b>&nbsp;&nbsp;
 <small>string[]</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="paniers[0]"                data-endpoint="POSTapi-clients-clients-commandes"
+                              name="paniers[0]"                data-endpoint="POSTapi-clients-commandes"
                data-component="body">
         <input type="text" style="display: none"
-               name="paniers[1]"                data-endpoint="POSTapi-clients-clients-commandes"
+               name="paniers[1]"                data-endpoint="POSTapi-clients-commandes"
                data-component="body">
     <br>
 <p>The <code>id</code> of an existing record in the paniers table.</p>
@@ -10708,7 +10708,7 @@ Must be one of:
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="adresse"                data-endpoint="POSTapi-clients-clients-commandes"
+                              name="adresse"                data-endpoint="POSTapi-clients-commandes"
                value="architecto"
                data-component="body">
     <br>
@@ -10719,7 +10719,7 @@ Must be one of:
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="commune"                data-endpoint="POSTapi-clients-clients-commandes"
+                              name="commune"                data-endpoint="POSTapi-clients-commandes"
                value="architecto"
                data-component="body">
     <br>
@@ -10730,7 +10730,7 @@ Must be one of:
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="zone"                data-endpoint="POSTapi-clients-clients-commandes"
+                              name="zone"                data-endpoint="POSTapi-clients-commandes"
                value="architecto"
                data-component="body">
     <br>
@@ -10741,7 +10741,7 @@ Must be one of:
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="clientId"                data-endpoint="POSTapi-clients-clients-commandes"
+                              name="clientId"                data-endpoint="POSTapi-clients-commandes"
                value="architecto"
                data-component="body">
     <br>
@@ -10752,7 +10752,7 @@ Must be one of:
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="latitude"                data-endpoint="POSTapi-clients-clients-commandes"
+               step="any"               name="latitude"                data-endpoint="POSTapi-clients-commandes"
                value="4326.41688"
                data-component="body">
     <br>
@@ -10763,7 +10763,7 @@ Must be one of:
 <small>number</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="longitude"                data-endpoint="POSTapi-clients-clients-commandes"
+               step="any"               name="longitude"                data-endpoint="POSTapi-clients-commandes"
                value="4326.41688"
                data-component="body">
     <br>
@@ -10774,7 +10774,7 @@ Must be one of:
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-                              name="note"                data-endpoint="POSTapi-clients-clients-commandes"
+                              name="note"                data-endpoint="POSTapi-clients-commandes"
                value="architecto"
                data-component="body">
     <br>
@@ -10782,27 +10782,27 @@ Must be one of:
         </div>
         </form>
 
-                    <h2 id="endpoints-GETapi-clients-clients-commandes--id-">Display the specified resource.</h2>
+                    <h2 id="endpoints-GETapi-clients-commandes--id-">Display the specified resource.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-clients-clients-commandes--id-">
+<span id="example-requests-GETapi-clients-commandes--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/api/clients/clients/commandes/8" \
+    --get "http://localhost/api/clients/commandes/8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/clients/commandes/8"
+    "http://localhost/api/clients/commandes/8"
 );
 
 const headers = {
@@ -10817,7 +10817,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-clients-clients-commandes--id-">
+<span id="example-responses-GETapi-clients-commandes--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -10866,43 +10866,43 @@ access-control-allow-origin: *
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-clients-clients-commandes--id-" hidden>
+<span id="execution-results-GETapi-clients-commandes--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-clients-clients-commandes--id-"></span>:
+                id="execution-response-status-GETapi-clients-commandes--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-clients-clients-commandes--id-"
+    <pre class="json"><code id="execution-response-content-GETapi-clients-commandes--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-clients-clients-commandes--id-" hidden>
+<span id="execution-error-GETapi-clients-commandes--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-clients-clients-commandes--id-">
+    <pre><code id="execution-error-message-GETapi-clients-commandes--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-GETapi-clients-clients-commandes--id-" data-method="GET"
-      data-path="api/clients/clients/commandes/{id}"
+<form id="form-GETapi-clients-commandes--id-" data-method="GET"
+      data-path="api/clients/commandes/{id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-clients-commandes--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-clients-commandes--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-clients-clients-commandes--id-"
-                    onclick="tryItOut('GETapi-clients-clients-commandes--id-');">Try it out ⚡
+                    id="btn-tryout-GETapi-clients-commandes--id-"
+                    onclick="tryItOut('GETapi-clients-commandes--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-clients-clients-commandes--id-"
-                    onclick="cancelTryOut('GETapi-clients-clients-commandes--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-clients-commandes--id-"
+                    onclick="cancelTryOut('GETapi-clients-commandes--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-clients-clients-commandes--id-"
+                    id="btn-executetryout-GETapi-clients-commandes--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -10910,7 +10910,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/clients/clients/commandes/{id}</code></b>
+            <b><code>api/clients/commandes/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -10918,7 +10918,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="GETapi-clients-clients-commandes--id-"
+                              name="Content-Type"                data-endpoint="GETapi-clients-commandes--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -10929,7 +10929,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="GETapi-clients-clients-commandes--id-"
+                              name="Accept"                data-endpoint="GETapi-clients-commandes--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -10941,7 +10941,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="GETapi-clients-clients-commandes--id-"
+               step="any"               name="id"                data-endpoint="GETapi-clients-commandes--id-"
                value="8"
                data-component="url">
     <br>
@@ -10949,27 +10949,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="endpoints-PUTapi-clients-clients-commandes--id-">Update the specified resource in storage.</h2>
+                    <h2 id="endpoints-PUTapi-clients-commandes--id-">Update the specified resource in storage.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-PUTapi-clients-clients-commandes--id-">
+<span id="example-requests-PUTapi-clients-commandes--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/api/clients/clients/commandes/8" \
+    "http://localhost/api/clients/commandes/8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/clients/commandes/8"
+    "http://localhost/api/clients/commandes/8"
 );
 
 const headers = {
@@ -10984,45 +10984,45 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-PUTapi-clients-clients-commandes--id-">
+<span id="example-responses-PUTapi-clients-commandes--id-">
 </span>
-<span id="execution-results-PUTapi-clients-clients-commandes--id-" hidden>
+<span id="execution-results-PUTapi-clients-commandes--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-PUTapi-clients-clients-commandes--id-"></span>:
+                id="execution-response-status-PUTapi-clients-commandes--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTapi-clients-clients-commandes--id-"
+    <pre class="json"><code id="execution-response-content-PUTapi-clients-commandes--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-PUTapi-clients-clients-commandes--id-" hidden>
+<span id="execution-error-PUTapi-clients-commandes--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTapi-clients-clients-commandes--id-">
+    <pre><code id="execution-error-message-PUTapi-clients-commandes--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-PUTapi-clients-clients-commandes--id-" data-method="PUT"
-      data-path="api/clients/clients/commandes/{id}"
+<form id="form-PUTapi-clients-commandes--id-" data-method="PUT"
+      data-path="api/clients/commandes/{id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTapi-clients-clients-commandes--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-clients-commandes--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTapi-clients-clients-commandes--id-"
-                    onclick="tryItOut('PUTapi-clients-clients-commandes--id-');">Try it out ⚡
+                    id="btn-tryout-PUTapi-clients-commandes--id-"
+                    onclick="tryItOut('PUTapi-clients-commandes--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTapi-clients-clients-commandes--id-"
-                    onclick="cancelTryOut('PUTapi-clients-clients-commandes--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-PUTapi-clients-commandes--id-"
+                    onclick="cancelTryOut('PUTapi-clients-commandes--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTapi-clients-clients-commandes--id-"
+                    id="btn-executetryout-PUTapi-clients-commandes--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -11030,11 +11030,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-darkblue">PUT</small>
-            <b><code>api/clients/clients/commandes/{id}</code></b>
+            <b><code>api/clients/commandes/{id}</code></b>
         </p>
             <p>
             <small class="badge badge-purple">PATCH</small>
-            <b><code>api/clients/clients/commandes/{id}</code></b>
+            <b><code>api/clients/commandes/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -11042,7 +11042,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="PUTapi-clients-clients-commandes--id-"
+                              name="Content-Type"                data-endpoint="PUTapi-clients-commandes--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -11053,7 +11053,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="PUTapi-clients-clients-commandes--id-"
+                              name="Accept"                data-endpoint="PUTapi-clients-commandes--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -11065,7 +11065,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="PUTapi-clients-clients-commandes--id-"
+               step="any"               name="id"                data-endpoint="PUTapi-clients-commandes--id-"
                value="8"
                data-component="url">
     <br>
@@ -11073,27 +11073,27 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </div>
                     </form>
 
-                    <h2 id="endpoints-DELETEapi-clients-clients-commandes--id-">Remove the specified resource from storage.</h2>
+                    <h2 id="endpoints-DELETEapi-clients-commandes--id-">Remove the specified resource from storage.</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-DELETEapi-clients-clients-commandes--id-">
+<span id="example-requests-DELETEapi-clients-commandes--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/api/clients/clients/commandes/8" \
+    "http://localhost/api/clients/commandes/8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/api/clients/clients/commandes/8"
+    "http://localhost/api/clients/commandes/8"
 );
 
 const headers = {
@@ -11108,45 +11108,45 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-DELETEapi-clients-clients-commandes--id-">
+<span id="example-responses-DELETEapi-clients-commandes--id-">
 </span>
-<span id="execution-results-DELETEapi-clients-clients-commandes--id-" hidden>
+<span id="execution-results-DELETEapi-clients-commandes--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-DELETEapi-clients-clients-commandes--id-"></span>:
+                id="execution-response-status-DELETEapi-clients-commandes--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEapi-clients-clients-commandes--id-"
+    <pre class="json"><code id="execution-response-content-DELETEapi-clients-commandes--id-"
       data-empty-response-text="<Empty response>" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-DELETEapi-clients-clients-commandes--id-" hidden>
+<span id="execution-error-DELETEapi-clients-commandes--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEapi-clients-clients-commandes--id-">
+    <pre><code id="execution-error-message-DELETEapi-clients-commandes--id-">
 
 Tip: Check that you&#039;re properly connected to the network.
 If you&#039;re a maintainer of ths API, verify that your API is running and you&#039;ve enabled CORS.
 You can check the Dev Tools console for debugging information.</code></pre>
 </span>
-<form id="form-DELETEapi-clients-clients-commandes--id-" data-method="DELETE"
-      data-path="api/clients/clients/commandes/{id}"
+<form id="form-DELETEapi-clients-commandes--id-" data-method="DELETE"
+      data-path="api/clients/commandes/{id}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-clients-clients-commandes--id-', this);">
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-clients-commandes--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEapi-clients-clients-commandes--id-"
-                    onclick="tryItOut('DELETEapi-clients-clients-commandes--id-');">Try it out ⚡
+                    id="btn-tryout-DELETEapi-clients-commandes--id-"
+                    onclick="tryItOut('DELETEapi-clients-commandes--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEapi-clients-clients-commandes--id-"
-                    onclick="cancelTryOut('DELETEapi-clients-clients-commandes--id-');" hidden>Cancel 🛑
+                    id="btn-canceltryout-DELETEapi-clients-commandes--id-"
+                    onclick="cancelTryOut('DELETEapi-clients-commandes--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEapi-clients-clients-commandes--id-"
+                    id="btn-executetryout-DELETEapi-clients-commandes--id-"
                     data-initial-text="Send Request 💥"
                     data-loading-text="⏱ Sending..."
                     hidden>Send Request 💥
@@ -11154,7 +11154,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
             </h3>
             <p>
             <small class="badge badge-red">DELETE</small>
-            <b><code>api/clients/clients/commandes/{id}</code></b>
+            <b><code>api/clients/commandes/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -11162,7 +11162,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Content-Type"                data-endpoint="DELETEapi-clients-clients-commandes--id-"
+                              name="Content-Type"                data-endpoint="DELETEapi-clients-commandes--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -11173,7 +11173,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-                              name="Accept"                data-endpoint="DELETEapi-clients-clients-commandes--id-"
+                              name="Accept"                data-endpoint="DELETEapi-clients-commandes--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -11185,7 +11185,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               step="any"               name="id"                data-endpoint="DELETEapi-clients-clients-commandes--id-"
+               step="any"               name="id"                data-endpoint="DELETEapi-clients-commandes--id-"
                value="8"
                data-component="url">
     <br>
@@ -12194,21 +12194,33 @@ access-control-allow-origin: *
         {
             &quot;id&quot;: 1,
             &quot;nom&quot;: &quot;Ndjili&quot;,
+            &quot;status&quot;: 1,
+            &quot;createdAt&quot;: &quot;2025-07-03T15:19:06.000000Z&quot;,
+            &quot;frais&quot;: 5000,
             &quot;zoneId&quot;: 1
         },
         {
             &quot;id&quot;: 2,
             &quot;nom&quot;: &quot;Masina&quot;,
+            &quot;status&quot;: 1,
+            &quot;createdAt&quot;: &quot;2025-07-03T15:19:30.000000Z&quot;,
+            &quot;frais&quot;: 5000,
             &quot;zoneId&quot;: 1
         },
         {
             &quot;id&quot;: 3,
             &quot;nom&quot;: &quot;Barumbu ou CAS&quot;,
+            &quot;status&quot;: 1,
+            &quot;createdAt&quot;: &quot;2025-07-10T11:16:41.000000Z&quot;,
+            &quot;frais&quot;: 450,
             &quot;zoneId&quot;: 2
         },
         {
             &quot;id&quot;: 4,
             &quot;nom&quot;: &quot;Barumbu&quot;,
+            &quot;status&quot;: 1,
+            &quot;createdAt&quot;: &quot;2025-07-10T11:32:48.000000Z&quot;,
+            &quot;frais&quot;: 6000,
             &quot;zoneId&quot;: 2
         }
     ]
