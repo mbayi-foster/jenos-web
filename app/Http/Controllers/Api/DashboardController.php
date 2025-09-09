@@ -24,28 +24,21 @@ class DashboardController extends Controller
         $plats = Plat::where('status', true)->count();
         $commandes = Commande::count();
         $livreurs = User::where('type', operator: UserType::LIVREUR)->count();
-        $ordersByMonth = DB::select("
-    SELECT 
-        COUNT(*) as count, 
-        MONTHNAME(created_at) as month, 
-        YEAR(created_at) as year 
-    FROM commandes 
-    WHERE created_at IS NOT NULL 
-    GROUP BY year, month 
-    ORDER BY year ASC, MONTH(created_at) ASC
-");
-
-        $statsClients = DB::select("
-    SELECT 
-        COUNT(*) as count, 
-        MONTHNAME(created_at) as month, 
-        YEAR(created_at) as year 
-    FROM users 
-    WHERE created_at IS NOT NULL 
-    GROUP BY year, month 
-    ORDER BY year ASC, MONTH(created_at) ASC
-");
-
+        $ordersByMonth = DB::table('commandes')
+            ->selectRaw('COUNT(*) as count, MONTH(created_at) as month, YEAR(created_at) as year')
+            ->whereNotNull('created_at')
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
+            ->get();
+        $statsClients = DB::table('users')
+            ->selectRaw('COUNT(*) as count, MONTH(created_at) as month, YEAR(created_at) as year')
+            ->where('type', UserType::CLIENT)   // <-- filtrer uniquement les clients
+            ->whereNotNull('created_at')
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
+            ->get();
         $data = [
             'users' => $clients,
             'livreurs' => $livreurs,
