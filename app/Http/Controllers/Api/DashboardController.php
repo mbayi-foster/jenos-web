@@ -25,33 +25,27 @@ class DashboardController extends Controller
         $commandes = Commande::count();
         $livreurs = User::where('type', operator: UserType::LIVREUR)->count();
         $ordersByMonth = DB::select("
-        SELECT 
-            COUNT(*) as count, 
-             MONTHNAME(created_at) as month, 
-            YEAR(created_at) as year 
-        FROM 
-            commandes 
-        WHERE 
-            created_at IS NOT NULL 
-        GROUP BY 
-            year, month 
-        ORDER BY 
-            year ASC, month ASC
-    ");
+    SELECT 
+        COUNT(*) as count, 
+        MONTHNAME(created_at) as month, 
+        YEAR(created_at) as year 
+    FROM commandes 
+    WHERE created_at IS NOT NULL 
+    GROUP BY year, month 
+    ORDER BY year ASC, MONTH(created_at) ASC
+");
+
         $statsClients = DB::select("
     SELECT 
         COUNT(*) as count, 
-         MONTHNAME(created_at) as month, 
+        MONTHNAME(created_at) as month, 
         YEAR(created_at) as year 
-    FROM 
-        users 
-    WHERE 
-        created_at IS NOT NULL 
-    GROUP BY 
-        year, month 
-    ORDER BY 
-        created_at ASC
+    FROM users 
+    WHERE created_at IS NOT NULL 
+    GROUP BY year, month 
+    ORDER BY year ASC, MONTH(created_at) ASC
 ");
+
         $data = [
             'users' => $clients,
             'livreurs' => $livreurs,
